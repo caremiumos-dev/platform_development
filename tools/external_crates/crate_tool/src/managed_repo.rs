@@ -247,19 +247,23 @@ impl ManagedRepo {
         }
 
         let pseudo_crate = self.pseudo_crate();
-        if unpinned {
-            pseudo_crate.cargo_add_unpinned(krate)
-        } else {
-            pseudo_crate.cargo_add(krate)
+        if crate_name != "libsqlite3-sys" {
+            if unpinned {
+                pseudo_crate.cargo_add_unpinned(krate)
+            } else {
+                pseudo_crate.cargo_add(krate)
+            }
+            .inspect_err(|_e| {
+                let _ = pseudo_crate.remove(krate.name());
+            })?;
         }
-        .inspect_err(|_e| {
-            let _ = pseudo_crate.remove(krate.name());
-        })?;
         let pseudo_crate = pseudo_crate.vendor()?;
 
         let mc = ManagedCrate::new(Crate::from(krate.path().clone())?).stage(&pseudo_crate)?;
 
-        pseudo_crate.remove(krate.name())?;
+        if crate_name != "libsqlite3-sys" {
+            pseudo_crate.remove(krate.name())?;
+        }
 
         let version = mc.vendored_version().clone();
         if mc.android_version() != mc.vendored_version() {
