@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "93c384ff_0d37bdf5",
+        "filename": "tools/external_crates/test_mapping/Cargo.toml",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1903830
+      },
+      "writtenOn": "2024-11-13T18:19:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f0cc025e_8547deef",
+      "revId": "98f3763f92833bae943518b548656d8980bf5ca5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e48ef10d_5ed5b917",
@@ -31,6 +49,30 @@
       "writtenOn": "2024-11-12T23:10:22Z",
       "side": 1,
       "message": "minor typo: \u0027r\u0027\nAlso do you expect to error out here? Perhaps return `None` similar to `as_string_vec`?",
+      "range": {
+        "startLine": 123,
+        "startChar": 65,
+        "endLine": 123,
+        "endChar": 66
+      },
+      "revId": "98f3763f92833bae943518b548656d8980bf5ca5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6ad68fb5_00def88a",
+        "filename": "tools/external_crates/test_mapping/src/blueprint.rs",
+        "patchSetId": 2
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1903830
+      },
+      "writtenOn": "2024-11-13T18:19:31Z",
+      "side": 1,
+      "message": "Fixed typo.\n\nI don\u0027t expect it to error. I kinda want to know if it does, but I don\u0027t want it to be fatal.",
+      "parentUuid": "e48ef10d_5ed5b917",
       "range": {
         "startLine": 123,
         "startChar": 65,
