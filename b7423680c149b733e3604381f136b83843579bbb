@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eb8f8565_acb421e6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2024-11-19T18:19:31Z",
+      "side": 1,
+      "message": "Overall fine, left some style nits.",
+      "revId": "b7423680c149b733e3604381f136b83843579bbb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8c348d67_96cb62ed",
+        "filename": "tools/external_crates/crate_tool/src/managed_crate.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2024-11-19T18:19:31Z",
+      "side": 1,
+      "message": "Long term, I think we should probably have this in a per-crate config file rather than stored in the program, but this is fine for now. (I still want the dream of:\n\nrepo1: Source code for crate_tool\nrepo2: A network of configuration files for crate_tool (encoding both this and the contents of `cargo_embargo.json` and patches, and the semantics of the `Cargo.toml` used for the vendoring)\nrepo3: The output, which is actually used in Android.\n\nRepo {1,2,3} would be mapped into a side manifest, and only repo 3 would actually be mapped into Android.",
+      "revId": "b7423680c149b733e3604381f136b83843579bbb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "180cf80d_dc00ebb0",
+        "filename": "tools/external_crates/crate_tool/src/managed_crate.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2024-11-19T18:19:31Z",
+      "side": 1,
+      "message": "Note: `\u0027static` is implicit here, you don\u0027t need it.",
+      "revId": "b7423680c149b733e3604381f136b83843579bbb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d1c22bd4_ff1d0d1b",
+        "filename": "tools/external_crates/crate_tool/src/managed_crate.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 360,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2024-11-19T18:19:31Z",
+      "side": 1,
+      "message": "Consider\n\n```\nensure!(dir.abs().is_dir(), \"{dir} is not a directory\");\nremove_dir_all(dir)?;\n```\n\nThe `ensure` macro is from `anyhow`. If you need to do this in a more complex situation in the future, `bail` is also helpful, `bail!(` \u003d `return Err(anyhow!(`",
+      "range": {
+        "startLine": 356,
+        "startChar": 0,
+        "endLine": 360,
+        "endChar": 13
+      },
+      "revId": "b7423680c149b733e3604381f136b83843579bbb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
