@@ -176,7 +176,7 @@ public class MediaScannerActivity extends Activity
                 String artist = getRandomName();
                 final ContentValues map = mValues[i];
                 map.put(MediaStore.MediaColumns.DATA,
-                        "http://bogus/" + albumName + "/" + artist + "_" + i);
+                        "/storage/emulated/0/Music/" + albumName + "/" + artist + "_" + i + ".mp3");
                 map.put(MediaStore.MediaColumns.TITLE,
                         getRandomWord(4) + " " + getRandomWord(2) + " " + (i + 1));
                 map.put(MediaStore.MediaColumns.MIME_TYPE, "audio/mp3");
