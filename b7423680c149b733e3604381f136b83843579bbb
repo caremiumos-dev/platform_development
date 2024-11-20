@@ -52,6 +52,42 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "94adfc3a_2571ce0f",
+        "filename": "tools/external_crates/crate_tool/src/managed_crate.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1903830
+      },
+      "writtenOn": "2024-11-20T16:21:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "180cf80d_dc00ebb0",
+      "revId": "b7423680c149b733e3604381f136b83843579bbb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9f83600b_569870ee",
+        "filename": "tools/external_crates/crate_tool/src/managed_crate.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1903830
+      },
+      "writtenOn": "2024-11-20T16:21:12Z",
+      "side": 1,
+      "message": "I definitely agree about maintaining better separation between the crate dirs and the configuration and patches. But a separate manifest means that you have to check out another copy of AOSP to make changes to crates, which doesn\u0027t seem great.",
+      "parentUuid": "8c348d67_96cb62ed",
+      "revId": "b7423680c149b733e3604381f136b83843579bbb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d1c22bd4_ff1d0d1b",
@@ -65,6 +101,30 @@
       "writtenOn": "2024-11-19T18:19:31Z",
       "side": 1,
       "message": "Consider\n\n```\nensure!(dir.abs().is_dir(), \"{dir} is not a directory\");\nremove_dir_all(dir)?;\n```\n\nThe `ensure` macro is from `anyhow`. If you need to do this in a more complex situation in the future, `bail` is also helpful, `bail!(` \u003d `return Err(anyhow!(`",
+      "range": {
+        "startLine": 356,
+        "startChar": 0,
+        "endLine": 360,
+        "endChar": 13
+      },
+      "revId": "b7423680c149b733e3604381f136b83843579bbb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d41129f8_2bec6b63",
+        "filename": "tools/external_crates/crate_tool/src/managed_crate.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 360,
+      "author": {
+        "id": 1903830
+      },
+      "writtenOn": "2024-11-20T16:21:12Z",
+      "side": 1,
+      "message": "I wish I had known this earlier.",
+      "parentUuid": "d1c22bd4_ff1d0d1b",
       "range": {
         "startLine": 356,
         "startChar": 0,
