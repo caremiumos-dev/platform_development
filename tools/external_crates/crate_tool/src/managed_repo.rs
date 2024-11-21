@@ -23,13 +23,19 @@ use std::{
     str::from_utf8,
 };
 
+use android_bp::BluePrint;
 use anyhow::{anyhow, bail, Context, Result};
+use bp_util::{CrateFeatures, RustTests};
 use crates_index::DependencyKind;
+use crates_io_util::{
+    AndroidTarget, CratesIoIndex, DependencyDiffer, FeatureDiffer, FeatureResolver,
+    FeaturesAndOptionalDeps, ParsedVersionReq,
+};
 use glob::glob;
 use google_metadata::GoogleMetadata;
 use itertools::Itertools;
 use license_checker::find_licenses;
-use name_and_version::{NameAndVersion, NameAndVersionMap, NameAndVersionRef, NamedAndVersioned};
+use name_and_version::{NameAndVersion, NameAndVersionRef, NamedAndVersioned};
 use repo_config::RepoConfig;
 use rooted_path::RootedPath;
 use semver::{Version, VersionReq};
@@ -41,7 +47,7 @@ use crate::{
     copy_dir,
     crate_collection::CrateCollection,
     crate_type::Crate,
-    crates_io::{AndroidDependencies, CratesIoIndex, DependencyChanges, SafeVersions},
+    crates_io::{AndroidDependencies, DependencyChanges, SafeVersions},
     license::{most_restrictive_type, update_module_license_files},
     managed_crate::ManagedCrate,
     pseudo_crate::{CargoVendorDirty, PseudoCrate},
@@ -426,7 +432,6 @@ impl ManagedRepo {
             println!("Version {}", version.version());
             let mut found_problems = false;
             for (dep, req) in version.android_deps_with_version_reqs() {
-                println!("Found dep {}", dep.crate_name());
                 let cc = if managed_crates.contains_crate(dep.crate_name()) {
                     &managed_crates
                 } else {
@@ -720,11 +725,92 @@ impl ManagedRepo {
         }
         Ok(())
     }
-    pub fn analyze_updates(&self, crate_name: impl AsRef<str>) -> Result<()> {
-        let mut managed_crates = self.new_cc();
-        managed_crates.add_from(self.managed_dir().rel())?;
-        let legacy_crates = self.legacy_crates()?;
+    // pub fn analyze_all_updates(&self) -> Result<()> {
+    //     let mut managed_crates = self.new_cc();
+    //     managed_crates.add_from(self.managed_dir().rel())?;
+    //     let legacy_crates = self.legacy_crates()?;
 
+    //     for krate in managed_crates.map_field().values() {
+    //         let krate = self.managed_crate_for(krate.name())?;
+    //         println!("Analyzing updates to {} v{}", krate.name(), krate.android_version());
+    //         let cio_crate = self.crates_io.get_crate(krate.name())?;
+
+    //         let base_version = cio_crate.get_version(krate.android_version()).ok_or(anyhow!(
+    //             "{} v{} not found in crates.io",
+    //             krate.name(),
+    //             krate.android_version()
+    //         ))?;
+    //         println!("{}", serde_json::to_string_pretty(base_version)?);
+
+    //         let cargo_embargo_config =
+    //             cargo_embargo::config::Config::from_file(krate.cargo_embargo_json().abs())?;
+    //         let used_features = cargo_embargo_config.android_features();
+    //         let base_features = base_version
+    //             .features()
+    //             .iter()
+    //             .map(|(feature_name, _)| feature_name.as_str())
+    //             .collect::<BTreeSet<_>>();
+    //         let base_deps =
+    //             base_version.dependencies().iter().map(|d| d.name()).collect::<BTreeSet<_>>();
+
+    //         for f in used_features
+    //             .difference(&base_features)
+    //             .filter(|f| **f != "default" && !base_deps.contains(**f))
+    //         {
+    //             // The only thing this finds is "_libz-sys" for grpcio-sys, which is something we added in patch to Cargo.toml.
+    //             println!("  Missing feature {}", f);
+    //         }
+
+    //         // let mut base_optional_deps = BTreeSet::new();
+    //         println!("  Base features: {}", used_features.iter().join(", "));
+    //         // for f in &used_features {
+    //         //     // println!("  Feature {} resolves to {}", f, base_version.resolve(f).iter().join(", "));
+    //         //     for bf in base_version.resolve(f) {
+    //         //         base_optional_deps.insert(bf);
+    //         //     }
+    //         // }
+    //         // println!("  Base optional deps: {}", base_optional_deps.iter().join(", "));
+
+    //         for version in cio_crate.versions_gt(krate.android_version()) {
+    //             println!("  Version {}", version.version());
+    //             let deleted_features = version.deleted_features(&used_features);
+    //             for deleted in &deleted_features {
+    //                 println!("    Deleted feature: {}", deleted)
+    //             }
+    //             for new in version.new_features(&base_features) {
+    //                 println!("    New feature: {}", new)
+    //             }
+
+    //             // let chosen_features = used_features
+    //             //     .clone()
+    //             //     .into_iter()
+    //             //     .filter(|f| !deleted_features.contains(*f))
+    //             //     .collect::<BTreeSet<_>>();
+    //             // let mut optional_deps = BTreeSet::new();
+    //             // for f in chosen_features {
+    //             //     for rf in version.resolve(f) {
+    //             //         optional_deps.insert(rf);
+    //             //     }
+    //             // }
+    //             // println!("    Optional deps: {}", optional_deps.iter().join(", "));
+    //         }
+    //     }
+
+    //     Ok(())
+    // }
+    pub fn analyze_updates(&self, crate_name: impl AsRef<str>, verbose: bool) -> Result<()> {
+        // let mut managed_crates = self.new_cc();
+        // managed_crates.add_from(self.managed_dir().rel())?;
+        // let legacy_crates = self.legacy_crates()?;
+        // let mut all_crates = self.legacy_crates()?;
+        // all_crates
+        //     .map_field_mut()
+        //     .remove(&NameAndVersion::new("quiche".to_string(), semver::Version::parse("0.17.1")?));
+        let mut all_crates = self.new_cc();
+        all_crates.add_from(self.managed_dir().rel())?;
+
+        // for krate in managed_crates.map_field().values() {
+        // let krate = self.managed_crate_for(krate.name())?;
         let krate = self.managed_crate_for(crate_name.as_ref())?;
         println!("Analyzing updates to {} v{}", krate.name(), krate.android_version());
         let patches = krate.patches()?;
@@ -738,22 +824,41 @@ impl ManagedRepo {
             }
         }
 
-        let cio_crate = self.crates_io.get_crate(crate_name)?;
-
+        let cio_crate = self.crates_io.get_crate(krate.name())?;
         let base_version = cio_crate.get_version(krate.android_version()).ok_or(anyhow!(
             "{} v{} not found in crates.io",
             krate.name(),
             krate.android_version()
         ))?;
-        let base_deps = base_version.android_version_reqs_by_name();
 
         let mut newer_versions = cio_crate.versions_gt(krate.android_version()).peekable();
         if newer_versions.peek().is_none() {
             println!("There are no newer versions of this crate.");
+            // continue;
         }
+
+        // println!("{}", serde_json::to_string_pretty(base_version)?);
+        let feature_differ = FeatureDiffer::new(base_version);
+        let dep_differ = DependencyDiffer::new(base_version);
+
+        let android_bp = BluePrint::from_file(krate.android_bp().abs())
+            .map_err(|e| anyhow!("Blueprint parse error: {e}"))?;
+        let tests_enabled = !android_bp.rust_tests()?.is_empty();
+        let base_features_and_optional_deps = base_version.features_and_optional_deps();
+        for features in android_bp.crate_features(&crate_name).flatten() {
+            for f in features {
+                if !base_features_and_optional_deps.contains(f) {
+                    // The only thing this finds is "_libz-sys" for grpcio-sys, which is something we added in patch to Cargo.toml.
+                    println!("cargo_embargo.json refers to feature {f}, but this feature doesn't exist in the crates.io metadata. We have probably patched Cargo.toml");
+                }
+            }
+        }
+
         for version in newer_versions {
             println!("Version {}", version.version());
+
             let mut found_problems = false;
+
             let parsed_version = semver::Version::parse(version.version())?;
             if !krate
                 .android_version()
@@ -769,45 +874,136 @@ impl ManagedRepo {
                     println!("  Semver-compatible, but only by relaxed standards since major version is 0");
                 }
             }
-            // Check to see if the update has any missing dependencies.
-            // We try to be a little clever about this in the following ways:
-            // * Only consider deps that are likely to be relevant to Android. For example, ignore Windows-only deps.
-            // * If a dep is missing, but the same dep exists for the current version of the crate, it's probably not actually necessary.
-            // * Use relaxed version requirements, treating 0.x and 0.y as compatible, even though they aren't according to semver rules.
-            for (dep, req) in version.android_deps_with_version_reqs() {
-                let cc = if managed_crates.contains_crate(dep.crate_name()) {
-                    &managed_crates
-                } else {
-                    &legacy_crates
-                };
-                if !cc.contains_crate(dep.crate_name()) {
+
+            let feature_diff = feature_differ.diff(version);
+            if verbose {
+                println!(
+                    "  New features: {}",
+                    feature_diff.added.iter().map(|f| f.name()).join(", ")
+                );
+                println!(
+                    "  Deleted features: {}",
+                    feature_diff.deleted.iter().map(|f| f.name()).join(", ")
+                );
+            }
+            if feature_diff.deleted.iter().any(|f| android_bp.is_enabled(&crate_name, f.name())) {
+                found_problems = true;
+                println!(
+                    "  Deleted features that are enabled in Android.bp: {}",
+                    feature_diff
+                        .deleted
+                        .iter()
+                        .filter_map(|f| if android_bp.is_enabled(&crate_name, f.name()) {
+                            Some(f.name())
+                        } else {
+                            None
+                        })
+                        .join(", ")
+                );
+            }
+
+            let features_and_optional_deps = version.features_and_optional_deps();
+            let resolver = FeatureResolver::new(version);
+
+            let mut enabled_deps = BTreeMap::new(); // Every enabled optional dep for every variant.
+            for v in android_bp.crate_features(&crate_name) {
+                enabled_deps.append(
+                    &mut resolver.resolve(v.as_ref().map(|fs| {
+                        fs.iter().filter(|f| features_and_optional_deps.contains(**f))
+                    }))?,
+                );
+            }
+
+            // let mut deps_to_check = BTreeMap::new();
+            let dep_diff = dep_differ.diff(version);
+            for (_, dep) in dep_diff.added {
+                // Skip dev deps unless tests are enabled in cargo_embargo.json.
+                if matches!(dep.kind(), DependencyKind::Dev) && !tests_enabled {
+                    continue;
+                }
+                // Skip optional deps unless they are enabled for some variant in cargo_embargo.json.
+                // if dep.is_optional() && !enabled_deps.contains_key(dep.name()) {
+                if dep.is_optional() {
+                    continue;
+                }
+                // Skip deps that have a target cfg expression that is not relevant to android.
+                if !dep.is_android_target() {
+                    continue;
+                }
+
+                let req = dep.parsed_version_req()?;
+                if !all_crates.contains_crate(dep.crate_name()) {
                     found_problems = true;
                     println!(
-                        "  Dep {} {} has not been imported to Android",
+                        "  New dependency on {} {} not found",
                         dep.crate_name(),
                         dep.requirement()
                     );
-                    if !dep.is_new_dep(&base_deps) {
-                        println!("    But the current version has the same dependency, and it seems to work");
-                    } else {
-                        continue;
+                } else if !all_crates.get_versions(dep.crate_name()).any(|(nv, _)| {
+                    req.matches_with_compatibility_rule(
+                        nv.version(),
+                        SemverCompatibilityRule::Loose,
+                    )
+                }) {
+                    found_problems = true;
+                    for (_, dep_crate) in all_crates.get_versions(dep.crate_name()) {
+                        if !req.matches_with_compatibility_rule(
+                            dep_crate.version(),
+                            SemverCompatibilityRule::Loose,
+                        ) {
+                            println!(
+                                "  New dependency on {} {} is not satisfied by v{} at {}",
+                                dep.crate_name(),
+                                dep.requirement(),
+                                dep_crate.version(),
+                                dep_crate.path()
+                            );
+                        }
                     }
                 }
-                for (_, dep_crate) in cc.get_versions(dep.crate_name()) {
-                    if !req.matches_with_compatibility_rule(
-                        dep_crate.version(),
+            }
+            for (_, dep) in dep_diff.changed {
+                // Skip dev deps unless tests are enabled in cargo_embargo.json.
+                if matches!(dep.other.kind(), DependencyKind::Dev) && !tests_enabled {
+                    continue;
+                }
+                // Skip optional deps unless they are enabled for some variant in cargo_embargo.json.
+                // if dep.other.is_optional() && !enabled_deps.contains_key(dep.other.name()) {
+                if dep.other.is_optional() {
+                    continue;
+                }
+                // Skip deps that have a target cfg expression that is not relevant to android.
+                if !dep.other.is_android_target() {
+                    continue;
+                }
+
+                let req = dep.other.parsed_version_req()?;
+                if !all_crates.contains_crate(dep.other.crate_name()) {
+                    println!(
+                        "  Dependency on {} {} not found",
+                        dep.other.crate_name(),
+                        dep.other.requirement()
+                    );
+                } else if !all_crates.get_versions(dep.other.crate_name()).any(|(nv, _)| {
+                    req.matches_with_compatibility_rule(
+                        nv.version(),
                         SemverCompatibilityRule::Loose,
-                    ) {
-                        found_problems = true;
-                        println!(
-                            "  Dep {} {} is not satisfied by v{} at {}",
-                            dep.crate_name(),
-                            dep.requirement(),
+                    )
+                }) {
+                    found_problems = true;
+                    for (_, dep_crate) in all_crates.get_versions(dep.other.crate_name()) {
+                        if !req.matches_with_compatibility_rule(
                             dep_crate.version(),
-                            dep_crate.path()
-                        );
-                        if !dep.is_changed_dep(&base_deps) {
-                            println!("    But the current version has the same dependency and it seems to work.")
+                            SemverCompatibilityRule::Loose,
+                        ) {
+                            println!(
+                                "  Dependency on {} {} is not satisfied by v{} at {}. Previous requirement was {}",
+                                dep.other.crate_name(),
+                                dep.other.requirement(),
+                                dep_crate.version(),
+                                dep_crate.path(),
+                                dep.base.requirement()
+                            );
                         }
                     }
                 }
@@ -816,6 +1012,7 @@ impl ManagedRepo {
                 println!("  No problems found with this version.")
             }
         }
+        // }
 
         Ok(())
     }
