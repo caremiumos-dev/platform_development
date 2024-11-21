@@ -249,7 +249,10 @@ fn main() -> Result<()> {
             managed_repo.recontextualize_patches(crates.to_list(&managed_repo)?.into_iter())
         }
         Cmd::UpdatableCrates {} => managed_repo.updatable_crates(),
-        Cmd::AnalyzeUpdates { crate_name } => managed_repo.analyze_updates(crate_name),
+        // DO NOT SUBMIT.
+        Cmd::AnalyzeUpdates { crate_name } => {
+            managed_repo.analyze_updates(crate_name, args.verbose)
+        }
         Cmd::SuggestUpdates { patches, semver_compatibility, json } => {
             managed_repo.suggest_updates(patches, semver_compatibility, json)
         }
