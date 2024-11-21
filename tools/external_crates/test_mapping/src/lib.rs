@@ -14,7 +14,6 @@
 
 //! Read, update, and write TEST_MAPPING files.
 
-mod blueprint;
 mod json;
 mod rdeps;
 
@@ -27,7 +26,7 @@ use std::{
 };
 
 use android_bp::BluePrint;
-use blueprint::RustTests;
+use bp_util::{RustLibs, RustTests};
 use json::{TestMappingJson, TestMappingPath};
 use rdeps::ReverseDeps;
 use rooted_path::RootedPath;
@@ -41,7 +40,7 @@ pub enum TestMappingError {
     #[error("Blueprint parse error: {0}")]
     BlueprintParseError(String),
     #[error("Blueprint rule has no name")]
-    RuleWithoutName(String),
+    RuleWithoutName(#[from] bp_util::Error),
 
     #[error("Error stripping JSON comments")]
     StripJsonCommentsError(io::Error),
@@ -143,7 +142,7 @@ impl TestMapping {
     pub fn update_imports(&mut self) -> Result<(), TestMappingError> {
         let all_rdeps = ReverseDeps::for_repo(self.path.root());
         let mut rdeps = BTreeSet::new();
-        for lib in self.libs()? {
+        for lib in self.bp.rustlibs()? {
             if let Some(paths) = all_rdeps.get(lib.as_str()) {
                 rdeps.append(&mut paths.clone());
             }
@@ -158,22 +157,5 @@ impl TestMapping {
     }
     fn test_mapping(&self) -> RootedPath {
         self.path.join("TEST_MAPPING").unwrap()
-    }
-    fn libs(&self) -> Result<Vec<String>, TestMappingError> {
-        let mut libs = Vec::new();
-        for module in &self.bp.modules {
-            if matches!(
-                module.typ.as_str(),
-                "rust_library" | "rust_library_rlib" | "rust_library_host" | "rust_proc_macro"
-            ) {
-                libs.push(
-                    module
-                        .get_string("name")
-                        .ok_or(TestMappingError::RuleWithoutName(module.typ.clone()))?
-                        .clone(),
-                );
-            }
-        }
-        Ok(libs)
     }
 }

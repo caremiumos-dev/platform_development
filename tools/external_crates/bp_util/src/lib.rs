@@ -21,22 +21,28 @@ use std::{
 
 use android_bp::{BluePrint, Value};
 
-use crate::TestMappingError;
+/// Error types for the 'bp_util' crate.
+#[derive(thiserror::Error, Debug)]
+pub enum Error {
+    /// Blueprint rule has no name
+    #[error("Blueprint rule has no name")]
+    RuleWithoutName(String),
+}
 
 /// Extract rust test rules from a blueprint file.
-pub(crate) trait RustTests {
+pub trait RustTests {
     /// Returns the names of all rust_test and rust_test_host rules.
-    fn rust_tests(&self) -> Result<BTreeSet<String>, TestMappingError>;
+    fn rust_tests(&self) -> Result<BTreeSet<String>, Error>;
 }
 
 impl RustTests for BluePrint {
-    fn rust_tests(&self) -> Result<BTreeSet<String>, TestMappingError> {
+    fn rust_tests(&self) -> Result<BTreeSet<String>, Error> {
         let mut tests = BTreeSet::new();
         for module in &self.modules {
             if matches!(module.typ.as_str(), "rust_test" | "rust_test_host") {
                 let name = module
                     .get_string("name")
-                    .ok_or(TestMappingError::RuleWithoutName(module.typ.clone()))?
+                    .ok_or(Error::RuleWithoutName(module.typ.clone()))?
                     .clone();
                 if !EXCLUDED_TESTS.contains(name.as_str()) {
                     tests.insert(name);
@@ -48,7 +54,7 @@ impl RustTests for BluePrint {
 }
 
 /// Finds all the rustlib dependencies mentioned in a blueprint file.
-pub(crate) trait RustDeps {
+pub trait RustDeps {
     // Finds all the rustlibs mentioned in a blueprint file.
     // This does a limited amount of evaluation, by doing concatenation and resolving
     // identifiers. So you can have `common_rustlibs = ["foo", "bar"] and do
@@ -132,6 +138,54 @@ impl EvalConcat for Value {
     }
 }
 
+pub trait RustLibs {
+    fn rustlibs(&self) -> Result<Vec<String>, Error>;
+}
+
+impl RustLibs for BluePrint {
+    fn rustlibs(&self) -> Result<Vec<String>, Error> {
+        let mut libs = Vec::new();
+        for module in &self.modules {
+            if matches!(
+                module.typ.as_str(),
+                "rust_library" | "rust_library_rlib" | "rust_library_host" | "rust_proc_macro"
+            ) {
+                libs.push(
+                    module
+                        .get_string("name")
+                        .ok_or(Error::RuleWithoutName(module.typ.clone()))?
+                        .clone(),
+                );
+            }
+        }
+        Ok(libs)
+    }
+}
+
+pub trait CrateFeatures {
+    fn crate_features(&self, crate_name: impl AsRef<str>) -> BTreeSet<String>;
+}
+
+impl CrateFeatures for BluePrint {
+    fn crate_features(&self, crate_name: impl AsRef<str>) -> BTreeSet<String> {
+        let mut features = BTreeSet::new();
+        for module in self.modules.iter().filter(|m| {
+            m.get_string("crate_name").is_some_and(|c| c.as_str() == crate_name.as_ref())
+        }) {
+            features.extend(
+                module.get_array("features").unwrap_or(&Vec::default()).iter().filter_map(|f| {
+                    if let Value::String(feature) = f {
+                        Some(feature.clone())
+                    } else {
+                        None
+                    }
+                }),
+            );
+        }
+        features
+    }
+}
+
 // Taken from update_crate_tests.py
 static EXCLUDED_TESTS: LazyLock<HashSet<&'static str>> = LazyLock::new(|| {
     HashSet::from([
@@ -161,7 +215,7 @@ mod tests {
     use super::*;
 
     #[test]
-    fn rust_tests() -> Result<(), TestMappingError> {
+    fn rust_tests() -> Result<(), Error> {
         let bp = BluePrint::parse(
             r###"
 rust_test { name: "foo" }
