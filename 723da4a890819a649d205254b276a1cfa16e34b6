@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "306c9617_1acf9d12",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 3749961
+      },
+      "writtenOn": "2024-12-03T16:59:35Z",
+      "side": 1,
+      "message": "I think that\u0027s sorted.  I\u0027ve been using the web interface rather than a full checkout for just a couple one-line comment/doc fixes... not sure why it ate those characters.",
+      "revId": "723da4a890819a649d205254b276a1cfa16e34b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
