@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6f8210b9_d44fec71",
+        "filename": "sdk/sdk_files_NOTICE.txt",
+        "patchSetId": 3
+      },
+      "lineNbr": 4683,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2024-12-03T13:08:20Z",
+      "side": 1,
+      "message": "this got mangled in your edit",
+      "revId": "7ce08ada2843cb02aff21ff8c05ffb68021d08a2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "efc8dc95_92e296e1",
+        "filename": "sdk/sdk_files_NOTICE.txt",
+        "patchSetId": 3
+      },
+      "lineNbr": 13557,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2024-12-03T13:08:20Z",
+      "side": 1,
+      "message": "here too",
+      "revId": "7ce08ada2843cb02aff21ff8c05ffb68021d08a2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
