@@ -16,6 +16,24 @@
       "message": "I think that\u0027s sorted.  I\u0027ve been using the web interface rather than a full checkout for just a couple one-line comment/doc fixes... not sure why it ate those characters.",
       "revId": "723da4a890819a649d205254b276a1cfa16e34b6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eb85bf36_1a27ba82",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2024-12-03T18:58:46Z",
+      "side": 1,
+      "message": "looking at the diff in xxd, i think it\u0027s because the _original_ was ISO-Latin-1 and you\u0027ve now fixed it to be UTF-8 (which is why the two lines are showing up as edited). seems like an improvement to me!",
+      "parentUuid": "306c9617_1acf9d12",
+      "revId": "723da4a890819a649d205254b276a1cfa16e34b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
