@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a559ff06_5b005199",
+        "filename": "tools/external_crates/crates_io_util/Cargo.toml",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2024-12-03T17:55:15Z",
+      "side": 1,
+      "message": "Either change to a TODO or delete the comment.",
+      "revId": "ff12b5804779651b5524e45a6855c5ac829b5ba3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
