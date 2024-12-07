@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5e760324_82669993",
+        "filename": "sdk/build_tools_runtime.properties",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 3781235
+      },
+      "writtenOn": "2024-12-07T07:29:09Z",
+      "side": 1,
+      "message": "```suggestion\nRuntime.Jvm\u003d1.6\n```",
+      "range": {
+        "startLine": 1,
+        "startChar": 12,
+        "endLine": 1,
+        "endChar": 15
+      },
+      "revId": "37433ac223c1298ea359a5e72b6d17837106c89f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
