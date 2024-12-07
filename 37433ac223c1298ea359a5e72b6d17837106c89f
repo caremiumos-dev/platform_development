@@ -22,6 +22,30 @@
       },
       "revId": "37433ac223c1298ea359a5e72b6d17837106c89f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d96a87cb_f4a35c63",
+        "filename": "sdk/build_tools_runtime.properties",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 3781235
+      },
+      "writtenOn": "2024-12-07T07:36:46Z",
+      "side": 1,
+      "message": "\u003e ```suggestion\n\u003e Runtime.Jvm\u003d1.6\n\u003e ```",
+      "parentUuid": "5e760324_82669993",
+      "range": {
+        "startLine": 1,
+        "startChar": 12,
+        "endLine": 1,
+        "endChar": 15
+      },
+      "revId": "37433ac223c1298ea359a5e72b6d17837106c89f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
