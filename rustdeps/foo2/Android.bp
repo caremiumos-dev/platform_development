@@ -1,0 +1,7 @@
+rust_library {
+    name: "libfoo2",
+    host_supported: true,
+    crate_name: "foo",
+    srcs: ["foo2.rs"],
+    edition: "2021",
+}

@@ -1,0 +1,43 @@
+// Minimal reproduction of weird "crate not found" errors.
+
+rust_library {
+    name: "libfoo1",
+    host_supported: true,
+    crate_name: "foo",
+    srcs: ["foo.rs"],
+    edition: "2021",
+}
+
+rust_library {
+    name: "libbar",
+    host_supported: true,
+    crate_name: "bar",
+    srcs: ["bar.rs"],
+    edition: "2021",
+    rustlibs: [
+        "libfoo1",
+    ],
+}
+
+rust_library {
+    name: "libbaz",
+    host_supported: true,
+    crate_name: "baz",
+    srcs: ["baz.rs"],
+    edition: "2021",
+    rustlibs: [
+        "libfoo2",
+    ],
+}
+
+rust_binary {
+    name: "both",
+    host_supported: true,
+    crate_name: "both",
+    srcs: ["both.rs"],
+    edition: "2021",
+    rustlibs: [
+        "libbar",
+        "libbaz",
+    ],
+}
