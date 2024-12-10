@@ -326,22 +326,11 @@ bool HeaderAbiDiff::DumpLoneElements(
   std::regex source_file_regex(" at ");
 
   for (auto &&element : elements) {
-    if (IgnoreSymbol<T>(element, ignored_symbols_,
-                        [](const T *e) {return e->GetLinkerSetKey();}) ||
-        ignored_linker_set_keys_.find(element->GetLinkerSetKey()) !=
-            ignored_linker_set_keys_.end()) {
-      continue;
-    }
-
-    // If an element (FunctionIR or GlobalVarIR) is missing from the new ABI
-    // dump but a corresponding ELF symbol (ElfFunctionIR or ElfObjectIR) can
-    // be found in the new ABI dump file, don't emit error on this element.
-    // This may happen when the standard reference target implements the
-    // function (or the global variable) in C/C++ and the target-under-test
-    // implements the function (or the global variable) in assembly.
     const std::string &element_linker_set_key = element->GetLinkerSetKey();
-    if (new_elf_map &&
-        new_elf_map->find(element_linker_set_key) != new_elf_map->end()) {
+    if (ignored_symbols_.find(element_linker_set_key) !=
+            ignored_symbols_.end() ||
+        ignored_linker_set_keys_.find(element_linker_set_key) !=
+            ignored_linker_set_keys_.end()) {
       continue;
     }
 

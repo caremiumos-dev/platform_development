@@ -210,11 +210,6 @@ class HeaderCheckerTest(unittest.TestCase):
             "libgolden_cpp", "libgolden_cpp_add_function_and_unexported_elf",
             6)
 
-    def test_libgolden_cpp_fabricated_function_ast_removed_diff(self):
-        self.prepare_and_run_abi_diff_all_archs(
-            "libgolden_cpp_add_function_sybmol_only",
-            "libgolden_cpp_add_function", 0, [], False, False)
-
     def test_libgolden_cpp_change_function_access(self):
         self.prepare_and_run_abi_diff_all_archs(
             "libgolden_cpp", "libgolden_cpp_change_function_access", 8)

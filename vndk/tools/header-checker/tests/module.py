@@ -247,17 +247,6 @@ TEST_MODULES = [
         api='current',
     ),
     LsdumpModule(
-        name='libgolden_cpp_add_function_sybmol_only',
-        srcs=[
-            'integration/cpp/gold/golden_1.cpp',
-            'integration/cpp/gold/high_volume_speaker.cpp',
-            'integration/cpp/gold/low_volume_speaker.cpp',
-        ],
-        version_script='integration/cpp/gold/map_add_function.txt',
-        export_include_dirs=['integration/cpp/gold/include'],
-        has_reference_dump=True,
-    ),
-    LsdumpModule(
         name='libgolden_cpp_change_function_access',
         srcs=[
             'integration/cpp/gold/golden_1.cpp',
