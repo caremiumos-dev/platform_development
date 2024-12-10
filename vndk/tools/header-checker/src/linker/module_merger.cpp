@@ -61,7 +61,7 @@ MergeStatus ModuleMerger::LookupUserDefinedType(
   // Initialize type comparator (which will compare the referenced types
   // recursively).
   std::set<std::string> type_cache;
-  repr::DiffPolicyOptions diff_policy_options(false);
+  repr::DiffPolicyOptions diff_policy_options(false, false);
   repr::AbiDiffHelper diff_helper(module_->type_graph_, addend.type_graph_,
                                   diff_policy_options, &type_cache, {}, nullptr);
 

@@ -85,10 +85,14 @@ class TypeStackGuard {
 };
 
 struct DiffPolicyOptions {
-  DiffPolicyOptions(bool consider_opaque_types_different)
-      : consider_opaque_types_different_(consider_opaque_types_different) {}
+  DiffPolicyOptions(bool consider_opaque_types_different,
+                    bool allow_adding_removing_referenced_apis)
+      : consider_opaque_types_different_(consider_opaque_types_different),
+        allow_adding_removing_referenced_apis_(
+            allow_adding_removing_referenced_apis) {}
 
   bool consider_opaque_types_different_;
+  bool allow_adding_removing_referenced_apis_;
 };
 
 class AbiDiffHelper {
