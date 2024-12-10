@@ -16,6 +16,24 @@
       "message": "This is not correct, because both license apply.\n\ncargo_embargo does not currently support this case; I have raised the issue with Andrew and am waiting to hear back from him.",
       "revId": "0d6a1cd2fd20ec37d5af2b18c6cc207c31cb502a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7fa852d4_ac6c837f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1110304
+      },
+      "writtenOn": "2024-12-10T23:33:46Z",
+      "side": 1,
+      "message": "Any updates on this?\nThis applies in particular to the virtio-queue crate (https://crates.io/crates/virtio-queue), but that *AND* is only in the metadata, the License section of the project description actually says \"either or\", just as in the project\u0027s repository in github (https://github.com/rust-vmm/vm-virtio?tab\u003dreadme-ov-file#license).",
+      "parentUuid": "4aa1b3f1_8dcdf31c",
+      "revId": "0d6a1cd2fd20ec37d5af2b18c6cc207c31cb502a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
