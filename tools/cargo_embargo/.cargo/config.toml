@@ -1,0 +1,19 @@
+[source.crates-io]
+replace-with = "android-crates-io"
+
+[source.android-crates-io]
+directory = "../../../external/rust/android-crates-io/crates"
+
+[patch.crates-io]
+anyhow = { path = "../../../external/rust/android-crates-io/crates/anyhow" }
+bitflags = { path = "../../../external/rust/android-crates-io/crates/bitflags" }
+cfg-if = { path = "../../../external/rust/android-crates-io/crates/cfg-if" }
+itoa = { path = "../../../external/rust/android-crates-io/crates/itoa" }
+libc = { path = "../../../external/rust/android-crates-io/crates/libc" }
+log = { path = "../../../external/rust/android-crates-io/crates/log" }
+nix = { path = "../../../external/rust/android-crates-io/crates/nix" }
+once_cell = { path = "../../../external/rust/android-crates-io/crates/once_cell" }
+rustix = { path = "../../../external/rust/android-crates-io/crates/rustix" }
+ryu = { path = "../../../external/rust/android-crates-io/crates/ryu" }
+tempfile = { path = "../../../external/rust/android-crates-io/crates/tempfile" }
+unicode-ident = { path = "../../../external/rust/android-crates-io/crates/unicode-ident" }
