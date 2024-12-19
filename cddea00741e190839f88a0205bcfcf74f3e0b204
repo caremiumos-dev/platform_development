@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7495ffb8_ea1b4094",
+        "filename": "tools/external_crates/crate_tool/src/pseudo_crate.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2024-12-19T21:13:09Z",
+      "side": 1,
+      "message": "Android allows people to specify a different `OUT_DIR` as an environment variable. Should we handle that case?",
+      "range": {
+        "startLine": 108,
+        "startChar": 33,
+        "endLine": 108,
+        "endChar": 36
+      },
+      "revId": "cddea00741e190839f88a0205bcfcf74f3e0b204",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
