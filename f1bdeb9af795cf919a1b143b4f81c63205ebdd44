@@ -186,6 +186,30 @@
       },
       "revId": "f1bdeb9af795cf919a1b143b4f81c63205ebdd44",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7922de47_13e0ef41",
+        "filename": "scripts/stack_core.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1268571
+      },
+      "writtenOn": "2024-12-19T08:00:39Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "4d74bcc0_6da0c9bc",
+      "range": {
+        "startLine": 213,
+        "startChar": 0,
+        "endLine": 213,
+        "endChar": 78
+      },
+      "revId": "f1bdeb9af795cf919a1b143b4f81c63205ebdd44",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
