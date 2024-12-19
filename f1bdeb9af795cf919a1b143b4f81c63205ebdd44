@@ -117,6 +117,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bf122fbb_672365ad",
+        "filename": "scripts/stack_core.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2024-12-19T00:22:59Z",
+      "side": 1,
+      "message": "Ack.",
+      "parentUuid": "e420a787_e1ab44c6",
+      "range": {
+        "startLine": 174,
+        "startChar": 8,
+        "endLine": 174,
+        "endChar": 10
+      },
+      "revId": "f1bdeb9af795cf919a1b143b4f81c63205ebdd44",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d75c13d4_f3dc4db2",
