@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4855fc65_7e6f0f1f",
+        "filename": "vndk/tools/header-checker/src/linker/module_merger.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1130827
+      },
+      "writtenOn": "2025-01-03T09:52:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5e6ca2db_992ebc98",
+      "revId": "8c63dd486d5885b8a0f71e09444d2ceb1f534262",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "31353924_b3f90961",
@@ -31,6 +49,30 @@
       "writtenOn": "2025-01-03T06:49:55Z",
       "side": 1,
       "message": "public fields should not have underscore suffix.",
+      "range": {
+        "startLine": 95,
+        "startChar": 44,
+        "endLine": 95,
+        "endChar": 45
+      },
+      "revId": "8c63dd486d5885b8a0f71e09444d2ceb1f534262",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "08e04246_ddc9070e",
+        "filename": "vndk/tools/header-checker/src/repr/abi_diff_helpers.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1130827
+      },
+      "writtenOn": "2025-01-03T09:52:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "31353924_b3f90961",
       "range": {
         "startLine": 95,
         "startChar": 44,
