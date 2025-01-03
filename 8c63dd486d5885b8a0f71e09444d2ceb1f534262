@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5e6ca2db_992ebc98",
+        "filename": "vndk/tools/header-checker/src/linker/module_merger.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1337669
+      },
+      "writtenOn": "2025-01-03T06:49:55Z",
+      "side": 1,
+      "message": "How about using designated init to make the meaning of each parameter explcit https://en.cppreference.com/w/cpp/language/aggregate_initialization#Designated_initializers\n\n```suggestion\n  repr::DiffPolicyOptions diff_policy_options {\n    .consider_opaque_types_different_ \u003d true,\n    .allow_adding_removing_referenced_apis_ \u003d true,\n  };\n```",
+      "revId": "8c63dd486d5885b8a0f71e09444d2ceb1f534262",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "31353924_b3f90961",
+        "filename": "vndk/tools/header-checker/src/repr/abi_diff_helpers.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1337669
+      },
+      "writtenOn": "2025-01-03T06:49:55Z",
+      "side": 1,
+      "message": "public fields should not have underscore suffix.",
+      "range": {
+        "startLine": 95,
+        "startChar": 44,
+        "endLine": 95,
+        "endChar": 45
+      },
+      "revId": "8c63dd486d5885b8a0f71e09444d2ceb1f534262",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
