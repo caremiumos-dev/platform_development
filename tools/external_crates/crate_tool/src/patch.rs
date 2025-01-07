@@ -14,7 +14,6 @@
 
 /// A parser to extract the header and footer for patch files we are going
 /// to recontextualize.
-
 pub struct Patch<'a> {
     // The header of the patch, not including the diff stats and the immediately preceding "---", if present.
     pub header: &'a str,
