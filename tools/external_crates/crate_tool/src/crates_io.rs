@@ -105,22 +105,20 @@ pub trait SafeVersions {
     fn safe_versions(&self) -> impl DoubleEndedIterator<Item = &Version>;
     // Versions of the crate greater than 'version'.
     fn versions_gt(&self, version: &semver::Version) -> impl DoubleEndedIterator<Item = &Version> {
-        self.safe_versions().filter(|v| {
-            semver::Version::parse(v.version()).map_or(false, |parsed| parsed.gt(version))
-        })
+        self.safe_versions()
+            .filter(|v| semver::Version::parse(v.version()).is_ok_and(|parsed| parsed.gt(version)))
     }
     // Get a specific version of a crate.
     fn get_version(&self, version: &semver::Version) -> Option<&Version> {
-        self.safe_versions().find(|v| {
-            semver::Version::parse(v.version()).map_or(false, |parsed| parsed.eq(version))
-        })
+        self.safe_versions()
+            .find(|v| semver::Version::parse(v.version()).is_ok_and(|parsed| parsed.eq(version)))
     }
 }
 impl SafeVersions for Crate {
     fn safe_versions(&self) -> impl DoubleEndedIterator<Item = &Version> {
         self.versions().iter().filter(|v| {
             !v.is_yanked()
-                && semver::Version::parse(v.version()).map_or(false, |parsed| parsed.pre.is_empty())
+                && semver::Version::parse(v.version()).is_ok_and(|parsed| parsed.pre.is_empty())
         })
     }
 }
@@ -156,7 +154,7 @@ pub trait IsAndroid {
 }
 impl IsAndroid for Dependency {
     fn is_android(&self) -> bool {
-        self.target().map_or(true, is_android)
+        self.target().is_none_or(is_android)
     }
 }
 fn is_android(target: &str) -> bool {
