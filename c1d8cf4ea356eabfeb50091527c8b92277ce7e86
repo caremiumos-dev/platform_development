@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bfbc46a8_26fe4cb4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 3506846
+      },
+      "writtenOn": "2025-01-09T11:13:25Z",
+      "side": 1,
+      "message": "lgtm, thx for the fix!",
+      "revId": "c1d8cf4ea356eabfeb50091527c8b92277ce7e86",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
