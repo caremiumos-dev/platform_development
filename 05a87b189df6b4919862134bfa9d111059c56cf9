@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "af3f52ce_f12aaec2",
+        "filename": "tools/crate-updater/src/main.rs",
+        "patchSetId": 19
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1903830
+      },
+      "writtenOn": "2025-01-15T21:41:01Z",
+      "side": 1,
+      "message": "I\u0027m not sure I want to do this automatically, because you really ought to have a separate source tree just for running the updater and be intentional about running it. The script is pretty aggressive about syncing, \"git restore\", \"git clean\", etc., and I don\u0027t want to accidentally blow away someone\u0027s work.",
+      "parentUuid": "07b6f008_fd6f6657",
+      "revId": "05a87b189df6b4919862134bfa9d111059c56cf9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5f9c5578_619c8ad0",
@@ -31,6 +49,24 @@
       "writtenOn": "2025-01-15T21:17:11Z",
       "side": 1,
       "message": "I didn\u0027t see the implementation of `suggest-updates`, but maybe this would be a little cleaner if you added a `--format-json` argument or similar to `crate_tool` which causes it to output machine readable data rather than needing to parse it?",
+      "revId": "05a87b189df6b4919862134bfa9d111059c56cf9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "05ab0eb6_a7707af2",
+        "filename": "tools/crate-updater/src/main.rs",
+        "patchSetId": 19
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1903830
+      },
+      "writtenOn": "2025-01-15T21:41:01Z",
+      "side": 1,
+      "message": "Yes, definitely. The suggestion algorithm is also pretty dumb right now, and needs improvement. I\u0027m going to leave this as a TODO for now.",
+      "parentUuid": "5f9c5578_619c8ad0",
       "revId": "05a87b189df6b4919862134bfa9d111059c56cf9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -52,6 +88,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "03c8bf75_9a9012e6",
+        "filename": "tools/crate-updater/src/main.rs",
+        "patchSetId": 19
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1903830
+      },
+      "writtenOn": "2025-01-15T21:41:01Z",
+      "side": 1,
+      "message": "Yes, maybe. My workflow right now rarely has me using lunch and Soong. I\u0027m going to defer this for awhile and revisit it once I have the crate tool building with Soong (currently importing some crates to make this possible)",
+      "parentUuid": "e115bc69_967c7ab0",
+      "revId": "05a87b189df6b4919862134bfa9d111059c56cf9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a37cda7e_8331526e",
@@ -69,6 +123,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3a5541c2_27a30a41",
+        "filename": "tools/crate-updater/src/main.rs",
+        "patchSetId": 19
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1903830
+      },
+      "writtenOn": "2025-01-15T21:41:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a37cda7e_8331526e",
+      "revId": "05a87b189df6b4919862134bfa9d111059c56cf9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dd28762b_45e9b265",
@@ -82,6 +154,24 @@
       "writtenOn": "2025-01-15T21:17:11Z",
       "side": 1,
       "message": "Why is OUT_DIR removed? This is done in another place too, and it\u0027s not clear why.",
+      "revId": "05a87b189df6b4919862134bfa9d111059c56cf9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7163aa8a_efa7e4ef",
+        "filename": "tools/crate-updater/src/main.rs",
+        "patchSetId": 19
+      },
+      "lineNbr": 321,
+      "author": {
+        "id": 1903830
+      },
+      "writtenOn": "2025-01-15T21:41:01Z",
+      "side": 1,
+      "message": "Unfortunately, OUT_DIR is also set and used by cargo.",
+      "parentUuid": "dd28762b_45e9b265",
       "revId": "05a87b189df6b4919862134bfa9d111059c56cf9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }

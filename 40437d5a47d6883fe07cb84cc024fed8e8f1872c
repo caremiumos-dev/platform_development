@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "00cf360c_e442c72a",
+        "filename": "tools/crate-updater/src/main.rs",
+        "patchSetId": 16
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1903830
+      },
+      "writtenOn": "2025-01-15T21:41:01Z",
+      "side": 1,
+      "message": "Yes. What I actually want to do is allow the crate tool to update multiple crates at the same time. Right now, you have to do it by manually editing pseudo_crate/Cargo.toml and running regenerate on both crates.",
+      "parentUuid": "73ec3200_256f4ad6",
+      "revId": "40437d5a47d6883fe07cb84cc024fed8e8f1872c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c2f0983a_ed9047b7",
@@ -31,6 +49,24 @@
       "writtenOn": "2025-01-15T21:17:11Z",
       "side": 1,
       "message": "This seems like it should be a separate category that we still try to update but just don\u0027t run the tests?",
+      "revId": "40437d5a47d6883fe07cb84cc024fed8e8f1872c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b93b6f23_c9f9b1d0",
+        "filename": "tools/crate-updater/src/main.rs",
+        "patchSetId": 16
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 1903830
+      },
+      "writtenOn": "2025-01-15T21:41:01Z",
+      "side": 1,
+      "message": "That\u0027s basically what you get when you run `crate_tool`. The whole point here is to run the tests and upload changes, which crate_tool intentionally does not do.",
+      "parentUuid": "c2f0983a_ed9047b7",
       "revId": "40437d5a47d6883fe07cb84cc024fed8e8f1872c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
