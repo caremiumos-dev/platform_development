@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "73ec3200_256f4ad6",
+        "filename": "tools/crate-updater/src/main.rs",
+        "patchSetId": 16
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2025-01-15T21:17:11Z",
+      "side": 1,
+      "message": "Maybe the plan is to do this in the future, but would it mybe make more sense for these to be grouped crates rather than a denylist? e.g. a BTreeMap from crate onto other crates that must be updated at the same time?",
+      "revId": "40437d5a47d6883fe07cb84cc024fed8e8f1872c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c2f0983a_ed9047b7",
+        "filename": "tools/crate-updater/src/main.rs",
+        "patchSetId": 16
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2025-01-15T21:17:11Z",
+      "side": 1,
+      "message": "This seems like it should be a separate category that we still try to update but just don\u0027t run the tests?",
+      "revId": "40437d5a47d6883fe07cb84cc024fed8e8f1872c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
