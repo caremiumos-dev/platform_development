@@ -16,6 +16,24 @@
       "message": "Should this maybe live in a data file in the repository instead? That way if another part of the org uses your tool, they can have their own denylist that may not agree with ours?",
       "revId": "a8afd8901fee341b1c4203193265a226b9d8b659",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1daf641c_b4541067",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1903830
+      },
+      "writtenOn": "2025-01-16T22:01:56Z",
+      "side": 1,
+      "message": "Yes, that is the eventual plan. Added a TODO.",
+      "parentUuid": "e513546f_3b95867f",
+      "revId": "a8afd8901fee341b1c4203193265a226b9d8b659",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
