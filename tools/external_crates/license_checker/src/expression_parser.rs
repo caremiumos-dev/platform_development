@@ -138,6 +138,11 @@ mod tests {
             "Apache preferred to MIT"
         );
         assert_eq!(
+            get_chosen_licenses("foo", Some("MIT AND (MIT OR Apache-2.0)"))?,
+            BTreeSet::from([Licensee::parse("MIT").unwrap().into_req()]),
+            "Complex expression from num-derive 0.4.2"
+        );
+        assert_eq!(
             get_chosen_licenses("webpki", None)?,
             BTreeSet::from([
                 Licensee::parse("ISC").unwrap().into_req(),
