@@ -23,6 +23,7 @@ use std::{
 use anyhow::{bail, Result};
 use chrono::Datelike;
 use clap::Parser;
+use crate_updater::UpdatesTried;
 use rand::seq::SliceRandom;
 use rand::thread_rng;
 
@@ -332,17 +333,21 @@ fn main() -> Result<()> {
         .current_dir(&args.android_root)
         .run_and_stream_output()?;
 
+    let mut updates_tried = UpdatesTried::read()?;
     for (crate_name, version) in get_suggestions(&monorepo_path)?.iter() {
         if DENYLIST.contains(crate_name.as_str()) {
             println!("Skipping {crate_name} (on deny list)");
             continue;
         }
+        if updates_tried.contains(crate_name, version) {
+            println!("Skipping {crate_name} (already attempted recently)");
+            continue;
+        }
         cleanup_and_sync_monorepo(&monorepo_path)?;
-        let _res =
+        let res =
             try_update(&args.android_root, &monorepo_path, crate_name.as_str(), version.as_str())
                 .inspect_err(|e| println!("Update failed: {}", e));
-        // TODO: Record updates we've tried in a file, so we can avoid
-        // repeating them too often.
+        updates_tried.record(crate_name.clone(), version.clone(), res.is_ok())?;
     }
     cleanup_and_sync_monorepo(&monorepo_path)?;
 
