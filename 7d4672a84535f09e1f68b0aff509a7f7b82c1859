@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "62179fcc_9fab1207",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1903830
+      },
+      "writtenOn": "2025-01-16T21:04:12Z",
+      "side": 1,
+      "message": "Yes, LOOSE is very valuable, and in fact the default. A LOT of crates are at version 0.x, and upgrading to 0.y is very often OK, even though the strict rules of semver compatibility say otherwise.\n\nWhat I have found in practice is:\n* 0.x and 0.y are probably compatible,\n* 1.x and 1.y are probably compatible,\n* 1.x and 2.y are probably incompatible\n* But all 3 statements are far from certain.",
+      "parentUuid": "114513fb_0d2872a8",
+      "revId": "7d4672a84535f09e1f68b0aff509a7f7b82c1859",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c052c8a8_db5fc122",
@@ -31,6 +49,24 @@
       "writtenOn": "2025-01-16T20:47:37Z",
       "side": 1,
       "message": "Style Nit: Normally, enum variants are TitleCase in Rust unless you\u0027re binding a remote enum.",
+      "revId": "7d4672a84535f09e1f68b0aff509a7f7b82c1859",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "876a1cee_3ee8e644",
+        "filename": "tools/external_crates/crate_tool/src/upgradable.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1903830
+      },
+      "writtenOn": "2025-01-16T21:04:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c052c8a8_db5fc122",
       "revId": "7d4672a84535f09e1f68b0aff509a7f7b82c1859",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
