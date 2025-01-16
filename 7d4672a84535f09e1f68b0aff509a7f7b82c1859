@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "114513fb_0d2872a8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2025-01-16T20:47:37Z",
+      "side": 1,
+      "message": "On it\u0027s face, this CL seems fine. My big question is whether `LOOSE` has value, but I suppose if it doesn\u0027t, we just won\u0027t use it and can back it out.",
+      "revId": "7d4672a84535f09e1f68b0aff509a7f7b82c1859",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c052c8a8_db5fc122",
+        "filename": "tools/external_crates/crate_tool/src/upgradable.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2025-01-16T20:47:37Z",
+      "side": 1,
+      "message": "Style Nit: Normally, enum variants are TitleCase in Rust unless you\u0027re binding a remote enum.",
+      "revId": "7d4672a84535f09e1f68b0aff509a7f7b82c1859",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
