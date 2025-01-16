@@ -31,6 +31,7 @@ use license_checker::find_licenses;
 use name_and_version::{NameAndVersionMap, NameAndVersionRef, NamedAndVersioned};
 use rooted_path::RootedPath;
 use semver::Version;
+use serde::Serialize;
 use spdx::Licensee;
 
 use crate::{
@@ -45,6 +46,19 @@ use crate::{
     upgradable::{IsUpgradableTo, MatchesRelaxed},
     SuccessOrError,
 };
+
+#[derive(Serialize, Default, Debug)]
+struct UpdateSuggestions {
+    updates: Vec<UpdateSuggestion>,
+}
+
+#[derive(Serialize, Default, Debug)]
+struct UpdateSuggestion {
+    name: String,
+    #[serde(skip)]
+    old_version: String,
+    version: String,
+}
 
 pub struct ManagedRepo {
     path: RootedPath,
@@ -753,8 +767,8 @@ impl ManagedRepo {
 
         Ok(())
     }
-    pub fn suggest_updates(&self, consider_patched_crates: bool) -> Result<Vec<(String, String)>> {
-        let mut suggestions = Vec::new();
+    pub fn suggest_updates(&self, consider_patched_crates: bool, json: bool) -> Result<()> {
+        let mut suggestions = UpdateSuggestions::default();
         let mut managed_crates = self.new_cc();
         managed_crates.add_from(self.managed_dir().rel())?;
         let legacy_crates = self.legacy_crates()?;
@@ -764,11 +778,13 @@ impl ManagedRepo {
 
             let base_version = cio_crate.get_version(krate.version());
             if base_version.is_none() {
-                println!(
-                    "Skipping crate {} v{} because it was not found in crates.io",
-                    krate.name(),
-                    krate.version()
-                );
+                if !json {
+                    println!(
+                        "Skipping crate {} v{} because it was not found in crates.io",
+                        krate.name(),
+                        krate.version()
+                    );
+                }
                 continue;
             }
             let base_version = base_version.unwrap();
@@ -776,11 +792,13 @@ impl ManagedRepo {
 
             let patch_dir = krate.path().join("patches").unwrap();
             if patch_dir.abs().exists() && !consider_patched_crates {
-                println!(
-                    "Skipping crate {} v{} because it has patches",
-                    krate.name(),
-                    krate.version()
-                );
+                if !json {
+                    println!(
+                        "Skipping crate {} v{} because it has patches",
+                        krate.name(),
+                        krate.version()
+                    );
+                }
                 continue;
             }
 
@@ -805,18 +823,28 @@ impl ManagedRepo {
                     }
                     true
                 }) {
-                    println!(
-                        "Upgrade crate {} v{} to {}",
-                        krate.name(),
-                        krate.version(),
-                        version.version()
-                    );
-                    suggestions.push((krate.name().to_string(), version.version().to_string()));
+                    suggestions.updates.push(UpdateSuggestion {
+                        name: krate.name().to_string(),
+                        old_version: krate.version().to_string(),
+                        version: version.version().to_string(),
+                    });
                     break;
                 }
             }
         }
-        Ok(suggestions)
+
+        if json {
+            println!("{}", serde_json::to_string_pretty(&suggestions)?)
+        } else {
+            for suggestion in suggestions.updates {
+                println!(
+                    "Upgrade crate {} v{} to {}",
+                    suggestion.name, suggestion.old_version, suggestion.version,
+                );
+            }
+        }
+
+        Ok(())
     }
     pub fn update(&self, crate_name: impl AsRef<str>, version: impl AsRef<str>) -> Result<()> {
         let pseudo_crate = self.pseudo_crate();

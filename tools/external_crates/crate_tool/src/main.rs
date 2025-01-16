@@ -114,6 +114,9 @@ enum Cmd {
         /// Don't exclude crates that have patches.
         #[arg(long, default_value_t = false)]
         patches: bool,
+
+        #[arg(long, default_value_t = false)]
+        json: bool,
     },
     /// Update a crate to the specified version.
     Update {
@@ -238,7 +241,7 @@ fn main() -> Result<()> {
         }
         Cmd::UpdatableCrates {} => managed_repo.updatable_crates(),
         Cmd::AnalyzeUpdates { crate_name } => managed_repo.analyze_updates(crate_name),
-        Cmd::SuggestUpdates { patches } => managed_repo.suggest_updates(patches).map(|_x| ()),
+        Cmd::SuggestUpdates { patches, json } => managed_repo.suggest_updates(patches, json),
         Cmd::Update { crate_name, version } => managed_repo.update(crate_name, version),
         Cmd::Init {} => managed_repo.init(),
         Cmd::TestMapping { crates } => {
