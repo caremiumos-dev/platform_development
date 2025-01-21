@@ -179,6 +179,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "cbd8b1f2_5af535d2",
+        "filename": "tools/external_crates/crate_tool/src/managed_crate.rs",
+        "patchSetId": 2
+      },
+      "lineNbr": 334,
+      "author": {
+        "id": 1903830
+      },
+      "writtenOn": "2025-01-21T19:16:56Z",
+      "side": 1,
+      "message": "One thing we would lose with just using boilerplate text is copyright notices.\n\nFor example, https://github.com/stepancheg/rust-protobuf/blob/master/LICENSE.txt for crates/protobuf-json-mapping is an MIT license file. Per https://opensource.org/license/mit, it\u0027s supposed to start with Copyright \u003cYEAR\u003e \u003cCOPYRIGHT HOLDER\u003e\n\nhttps://opensource.org/license/apache-2-0 states that Apache-2.0 license are also supposed to mention the copyright holder.\n\nAll else being equal (which is never the case), it seems better to have the *actual* license file.",
+      "parentUuid": "9b52e131_a00e9e50",
+      "revId": "e65dc45f4de31540a2fc826d93a418cefec86fc3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "21e301ae_1e16f693",
         "filename": "tools/external_crates/crate_tool/src/managed_repo.rs",
         "patchSetId": 2
