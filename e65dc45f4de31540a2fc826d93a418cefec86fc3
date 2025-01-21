@@ -197,6 +197,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8acf5fb3_69ad7b28",
+        "filename": "tools/external_crates/crate_tool/src/managed_crate.rs",
+        "patchSetId": 2
+      },
+      "lineNbr": 334,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2025-01-21T19:17:38Z",
+      "side": 1,
+      "message": "I\u0027m only getting back to the office now, but I generally prefer more patches with independent things, rather than a few things rolled into a single CL. This part seems a bit contentious and I don\u0027t think I\u0027m fully understanding the implications of the network aspect yet, so maybe splitting is the best option.",
+      "parentUuid": "18a4da72_00a0fe1b",
+      "revId": "e65dc45f4de31540a2fc826d93a418cefec86fc3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "21e301ae_1e16f693",
         "filename": "tools/external_crates/crate_tool/src/managed_repo.rs",
         "patchSetId": 2
