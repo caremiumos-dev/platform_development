@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "73a5a688_c03f7af5",
+        "filename": "tools/external_crates/crate_config/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1903830
+      },
+      "writtenOn": "2025-01-21T18:48:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "13c76991_b6b5078d",
+      "revId": "e65dc45f4de31540a2fc826d93a418cefec86fc3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fa83802d_da352e49",
@@ -71,6 +89,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fbf3213c_9ca3ea32",
+        "filename": "tools/external_crates/crate_tool/src/managed_crate.rs",
+        "patchSetId": 2
+      },
+      "lineNbr": 334,
+      "author": {
+        "id": 1903830
+      },
+      "writtenOn": "2025-01-21T18:48:38Z",
+      "side": 1,
+      "message": "That\u0027s basically what we\u0027re already doing with patch files.\n\nWe are already fetching crates from the internet; this doesn\u0027t seem significantly different or worse. It also gives us the provenance of the license file.\n\nI\u0027d really like to reduce the number of patch files we are keeping around.\n\nI guess another way to do this would be to add a \"preserve\" block to the config file, indicating \"this file is not present in the crate, but keep it around when regenerating/upgrading\".",
+      "parentUuid": "39e8f720_4059c55f",
+      "revId": "e65dc45f4de31540a2fc826d93a418cefec86fc3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "21e301ae_1e16f693",
         "filename": "tools/external_crates/crate_tool/src/managed_repo.rs",
         "patchSetId": 2
@@ -82,6 +118,24 @@
       "writtenOn": "2025-01-21T18:41:00Z",
       "side": 1,
       "message": "Don\u0027t commit commented code.",
+      "revId": "e65dc45f4de31540a2fc826d93a418cefec86fc3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1bd42336_10cdaf22",
+        "filename": "tools/external_crates/crate_tool/src/managed_repo.rs",
+        "patchSetId": 2
+      },
+      "lineNbr": 423,
+      "author": {
+        "id": 1903830
+      },
+      "writtenOn": "2025-01-21T18:48:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "21e301ae_1e16f693",
       "revId": "e65dc45f4de31540a2fc826d93a418cefec86fc3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -99,6 +153,24 @@
       "writtenOn": "2025-01-21T18:41:00Z",
       "side": 1,
       "message": "..",
+      "revId": "e65dc45f4de31540a2fc826d93a418cefec86fc3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "149c18bc_89c59823",
+        "filename": "tools/external_crates/crate_tool/src/managed_repo.rs",
+        "patchSetId": 2
+      },
+      "lineNbr": 513,
+      "author": {
+        "id": 1903830
+      },
+      "writtenOn": "2025-01-21T18:48:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0c825bb6_72ad1fa2",
       "revId": "e65dc45f4de31540a2fc826d93a418cefec86fc3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
