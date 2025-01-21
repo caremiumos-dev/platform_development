@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "984f6c8e_a28dd483",
+        "filename": "tools/crate-updater/src/main.rs",
+        "patchSetId": 4
+      },
+      "lineNbr": 319,
+      "author": {
+        "id": 1903830
+      },
+      "writtenOn": "2025-01-21T20:41:40Z",
+      "side": 1,
+      "message": "We prune the list of updates when reading from disk. Added a comment about this.",
+      "parentUuid": "8d3c4d56_08d272e0",
+      "revId": "9ce5a136fb978674f6573dda16b9a6541355d78d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9e13bbe9_9a5b0c59",
@@ -31,6 +49,24 @@
       "writtenOn": "2025-01-21T19:01:17Z",
       "side": 1,
       "message": "While I agree this file shouldn\u0027t live in the crates tree, should it really just be rendered to and loaded from CWD? Would XDG_DATA_HOME/android_crate_tool or something be better for this?",
+      "revId": "9ce5a136fb978674f6573dda16b9a6541355d78d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9c027987_e67d6c1a",
+        "filename": "tools/crate-updater/src/updates_tried.rs",
+        "patchSetId": 4
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1903830
+      },
+      "writtenOn": "2025-01-21T20:41:40Z",
+      "side": 1,
+      "message": "Yeah, getting it from CWD is not great, but I couldn\u0027t come up with a better option that didn\u0027t seem unnecessarily complicated. Didn\u0027t know about $XDG_DATA_HOME, but it isn\u0027t set for my shell.\n\nCan\u0027t use $OUT_DIR because it gets set by cargo, overwriting what\u0027s set by lunch.\n\nI\u0027m going to add a TODO for now.",
+      "parentUuid": "9e13bbe9_9a5b0c59",
       "revId": "9ce5a136fb978674f6573dda16b9a6541355d78d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
