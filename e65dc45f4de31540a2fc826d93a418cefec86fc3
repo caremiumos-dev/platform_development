@@ -107,6 +107,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9b52e131_a00e9e50",
+        "filename": "tools/external_crates/crate_tool/src/managed_crate.rs",
+        "patchSetId": 2
+      },
+      "lineNbr": 334,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2025-01-21T18:59:42Z",
+      "side": 1,
+      "message": "In theory, all the license files should be one of a small number of enumerated licenses. IIRC add3prf.py used to be able to generate those for you based on the Cargo license. Could we do something similar here?\n\nI understand wanting to decrease the patchfile count, I was suggesting having \"APACHE2.0\" and \"MIT\", etc. packaged somewhere in the development tools, and just fetching from there rather than the internet.",
+      "parentUuid": "fbf3213c_9ca3ea32",
+      "revId": "e65dc45f4de31540a2fc826d93a418cefec86fc3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "21e301ae_1e16f693",
         "filename": "tools/external_crates/crate_tool/src/managed_repo.rs",
         "patchSetId": 2
