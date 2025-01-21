@@ -161,6 +161,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "18a4da72_00a0fe1b",
+        "filename": "tools/external_crates/crate_tool/src/managed_crate.rs",
+        "patchSetId": 2
+      },
+      "lineNbr": 334,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2025-01-21T19:07:56Z",
+      "side": 1,
+      "message": "Maybe it makes sense to split this into a separate patch unles Stephen wants to step in and say that he thinks this isn\u0027t scary? The rest of the change LGTM.",
+      "parentUuid": "9b52e131_a00e9e50",
+      "revId": "e65dc45f4de31540a2fc826d93a418cefec86fc3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "21e301ae_1e16f693",
         "filename": "tools/external_crates/crate_tool/src/managed_repo.rs",
         "patchSetId": 2
