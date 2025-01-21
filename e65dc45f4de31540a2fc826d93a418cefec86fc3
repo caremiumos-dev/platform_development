@@ -53,6 +53,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "79d20507_45c44819",
+        "filename": "tools/external_crates/crate_config/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1903830
+      },
+      "writtenOn": "2025-01-21T19:06:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fa83802d_da352e49",
+      "revId": "e65dc45f4de31540a2fc826d93a418cefec86fc3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "72608b30_5ced6fc4",
@@ -66,6 +84,24 @@
       "writtenOn": "2025-01-21T18:41:00Z",
       "side": 1,
       "message": "...you know what would recognize them though? ;)",
+      "revId": "e65dc45f4de31540a2fc826d93a418cefec86fc3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e3c8630f_8db1fbf3",
+        "filename": "tools/external_crates/crate_config/src/lib.rs",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1903830
+      },
+      "writtenOn": "2025-01-21T19:06:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "72608b30_5ced6fc4",
       "revId": "e65dc45f4de31540a2fc826d93a418cefec86fc3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
