@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4c5be89e_0b8a94de",
+        "filename": "tools/crate-updater/src/main.rs",
+        "patchSetId": 4
+      },
+      "lineNbr": 285,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2025-01-21T19:01:17Z",
+      "side": 0,
+      "message": "Are these being removed *because* you intend to try them, and then have them on a long-poll check, or are they being removed because you\u0027ve fixed them / prevented tests from running, or was this a separate change?",
+      "revId": "b76603f5e39cf7c9d2db53956e24bf8fdf7d1508",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
