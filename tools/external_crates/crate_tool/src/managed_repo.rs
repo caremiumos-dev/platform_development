@@ -420,11 +420,11 @@ impl ManagedRepo {
             println!("Crate already imported at {}", self.managed_dir_for(crate_name));
             return Ok(());
         }
-        let legacy_dir = self.legacy_dir_for(crate_name, None)?;
-        if legacy_dir.abs().exists() {
-            println!("Legacy crate already imported at {}", legacy_dir);
-            return Ok(());
-        }
+        // let legacy_dir = self.legacy_dir_for(crate_name, None)?;
+        // if legacy_dir.abs().exists() {
+        //     println!("Legacy crate already imported at {}", legacy_dir);
+        //     return Ok(());
+        // }
 
         if IMPORT_DENYLIST.contains(crate_name) {
             println!("Crate {crate_name} is on the import denylist");
@@ -510,10 +510,10 @@ impl ManagedRepo {
         if self.contains(crate_name) {
             bail!("Crate already imported at {}", self.managed_dir_for(crate_name));
         }
-        let legacy_dir = self.legacy_dir_for(crate_name, None)?;
-        if legacy_dir.abs().exists() {
-            bail!("Legacy crate already imported at {}", legacy_dir);
-        }
+        // let legacy_dir = self.legacy_dir_for(crate_name, None)?;
+        // if legacy_dir.abs().exists() {
+        //     bail!("Legacy crate already imported at {}", legacy_dir);
+        // }
         if IMPORT_DENYLIST.contains(crate_name) {
             bail!("Crate {crate_name} is on the import denylist");
         }
