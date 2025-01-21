@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "96da7cff_33ad90b3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1885365
+      },
+      "writtenOn": "2025-01-21T03:39:43Z",
+      "side": 1,
+      "message": "I\u0027ll need a +2 on opensource-licensing, unfortunately",
+      "revId": "3a161664a6c80512cb254396c17aaf2aa417c253",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
