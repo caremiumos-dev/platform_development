@@ -1,0 +1,106 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "13c76991_b6b5078d",
+        "filename": "tools/external_crates/crate_config/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2025-01-21T18:41:00Z",
+      "side": 1,
+      "message": "Guessing you\u0027ll find this in a moment, but just marking it.",
+      "revId": "e65dc45f4de31540a2fc826d93a418cefec86fc3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fa83802d_da352e49",
+        "filename": "tools/external_crates/crate_config/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2025-01-21T18:41:00Z",
+      "side": 1,
+      "message": "Just raising a design point - the lack of comment support and fairly strict structure of json (e.g. no trailing commas) can be annoying in config files. They were used for `cargo_embargo` originally because it was a python script, and packages were unavailable, so json was one of the few things we could default parse.\n\nIn the Rust world, are you sure you wouldn\u0027t prefer toml?\n\nIt should also support the `serde`-based config structure you\u0027re using, so it would be a minimal code change at this point.",
+      "revId": "e65dc45f4de31540a2fc826d93a418cefec86fc3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "72608b30_5ced6fc4",
+        "filename": "tools/external_crates/crate_config/src/lib.rs",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2025-01-21T18:41:00Z",
+      "side": 1,
+      "message": "...you know what would recognize them though? ;)",
+      "revId": "e65dc45f4de31540a2fc826d93a418cefec86fc3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "39e8f720_4059c55f",
+        "filename": "tools/external_crates/crate_tool/src/managed_crate.rs",
+        "patchSetId": 2
+      },
+      "lineNbr": 334,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2025-01-21T18:41:00Z",
+      "side": 1,
+      "message": "!!! Danger\n\nThis potentially fetches licenses from the internet. If we need to paste license text into crates for some reason, this should be done from a static resource committed to the android repo.",
+      "revId": "e65dc45f4de31540a2fc826d93a418cefec86fc3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "21e301ae_1e16f693",
+        "filename": "tools/external_crates/crate_tool/src/managed_repo.rs",
+        "patchSetId": 2
+      },
+      "lineNbr": 423,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2025-01-21T18:41:00Z",
+      "side": 1,
+      "message": "Don\u0027t commit commented code.",
+      "revId": "e65dc45f4de31540a2fc826d93a418cefec86fc3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0c825bb6_72ad1fa2",
+        "filename": "tools/external_crates/crate_tool/src/managed_repo.rs",
+        "patchSetId": 2
+      },
+      "lineNbr": 513,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2025-01-21T18:41:00Z",
+      "side": 1,
+      "message": "..",
+      "revId": "e65dc45f4de31540a2fc826d93a418cefec86fc3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
