@@ -809,7 +809,7 @@ export class Canvas {
 
   private clearLabels(labels: RectLabel[]) {
     if (this.canvasLabels) {
-      this.canvasLabels.textContent = '';
+      this.canvasLabels.innerHTML = '';
     }
     for (const [rectId, graphics] of this.lastScene.rectIdToLabelGraphics) {
       if (!labels.some((label) => label.rectId === rectId)) {
