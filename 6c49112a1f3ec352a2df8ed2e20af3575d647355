@@ -16,6 +16,24 @@
       "message": "say _why_, since it\u0027s non-obvious?",
       "revId": "6c49112a1f3ec352a2df8ed2e20af3575d647355",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b39bd1f5_2bf2e40c",
+        "filename": "scripts/stack_core.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 310,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2025-01-22T22:18:39Z",
+      "side": 1,
+      "message": "I updated the comment, see if it makes sense.",
+      "parentUuid": "eca50d21_8bb5d114",
+      "revId": "6c49112a1f3ec352a2df8ed2e20af3575d647355",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
