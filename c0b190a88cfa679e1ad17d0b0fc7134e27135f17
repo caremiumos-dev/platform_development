@@ -16,6 +16,142 @@
       "message": "@ivanlozano@google.com and @mmaurer@google.com do you know who would be a good reviewer with Code-Owners?",
       "revId": "c0b190a88cfa679e1ad17d0b0fc7134e27135f17",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "99021f7d_b76f0fe1",
+        "filename": "scripts/check_rust.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2025-01-22T20:23:23Z",
+      "side": 1,
+      "message": "Mild warning - mac platform builds are no longer supported. Mac Soong builds are supported pretty much just to produce the NDK, adb, etc.",
+      "revId": "c0b190a88cfa679e1ad17d0b0fc7134e27135f17",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d725414f_77e492b4",
+        "filename": "scripts/check_rust.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2025-01-22T20:23:23Z",
+      "side": 1,
+      "message": "To run literally any other command in this repo (including the `m` that needed to be run at some point to build `check_rust`), you\u0027ll need to be lunched, in which case `check_rust` should be on PATH.\n\nWhy are we assuming that the user will be able to trigger builds through their IDE, but that their IDE won\u0027t be lunched?",
+      "revId": "c0b190a88cfa679e1ad17d0b0fc7134e27135f17",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c71a2e56_cf12fe98",
+        "filename": "scripts/check_rust/src/main.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2025-01-22T20:23:23Z",
+      "side": 1,
+      "message": "May make more sense to cite https://doc.rust-lang.org/rustc/json.html - I almost objected to this because you were putting an unstable structure in, which we don\u0027t want to manually keep in sync.\n\nThe JSON format is stable, those structs aren\u0027t.",
+      "revId": "c0b190a88cfa679e1ad17d0b0fc7134e27135f17",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0aeb54bd_2e8b3fdc",
+        "filename": "scripts/check_rust/src/main.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2025-01-22T20:23:23Z",
+      "side": 1,
+      "message": "Why not just get this from ANDROID_BUILD_TOP?",
+      "revId": "c0b190a88cfa679e1ad17d0b0fc7134e27135f17",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5c61ff6e_24524363",
+        "filename": "scripts/check_rust/src/main.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2025-01-22T20:23:23Z",
+      "side": 1,
+      "message": "Should be on PATH if we\u0027re lunched...",
+      "revId": "c0b190a88cfa679e1ad17d0b0fc7134e27135f17",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "42428eaa_a43e67fa",
+        "filename": "scripts/check_rust/src/main.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2025-01-22T20:23:23Z",
+      "side": 1,
+      "message": "Consider using `aninja` for this rather than directly invoking `ninja` on the `.ninja` files, whose existence/location are subject to change.",
+      "revId": "c0b190a88cfa679e1ad17d0b0fc7134e27135f17",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f3230c0d_c54da5f5",
+        "filename": "scripts/check_rust/src/main.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2025-01-22T20:23:23Z",
+      "side": 1,
+      "message": "If they don\u0027t set TMPDIR, wouldn\u0027t they have failed earlier in the `m nothing` step?",
+      "revId": "c0b190a88cfa679e1ad17d0b0fc7134e27135f17",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1decb1ba_94659dc6",
+        "filename": "scripts/check_rust/src/main.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2025-01-22T20:23:23Z",
+      "side": 1,
+      "message": "This is built in out/soong, but normally symlinked to the root of your repository - does that not work for keeping paths relative?",
+      "revId": "c0b190a88cfa679e1ad17d0b0fc7134e27135f17",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
