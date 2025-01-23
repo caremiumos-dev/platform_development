@@ -332,6 +332,24 @@
       "parentUuid": "6c9b9d31_4d12c0c7",
       "revId": "c0b190a88cfa679e1ad17d0b0fc7134e27135f17",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "65865a6c_b8917509",
+        "filename": "scripts/check_rust/src/main.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 3815749
+      },
+      "writtenOn": "2025-01-23T18:30:05Z",
+      "side": 1,
+      "message": "Agreed, let me add a `SOONG_LINK_RUST_PROJECT_TO` env var to soong and then we remove this parsing.",
+      "parentUuid": "5e213df3_8d3be821",
+      "revId": "c0b190a88cfa679e1ad17d0b0fc7134e27135f17",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
