@@ -16,6 +16,24 @@
       "message": "Nit: You could avoid `to_string()`s here by removing `.iter()` above (causing it to use the implicit `.into_iter()` on Vec), and then using `suggestion.name` and `suggestion.version` here.",
       "revId": "b7bebfd8ad3f63d3bcbe766d59b3eaea6c8ae142",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "886440c6_f316db60",
+        "filename": "tools/crate-updater/src/main.rs",
+        "patchSetId": 2
+      },
+      "lineNbr": 339,
+      "author": {
+        "id": 1903830
+      },
+      "writtenOn": "2025-01-23T18:54:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cb5ea8a6_d9e9f0cf",
+      "revId": "b7bebfd8ad3f63d3bcbe766d59b3eaea6c8ae142",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
