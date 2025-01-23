@@ -37,6 +37,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d3384375_f61209b6",
+        "filename": "scripts/check_rust.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 3815749
+      },
+      "writtenOn": "2025-01-23T15:26:26Z",
+      "side": 1,
+      "message": "Ok I updated it to match the structure found in other AOSP scripts that use the `HOST_ARCH` folder",
+      "parentUuid": "99021f7d_b76f0fe1",
+      "revId": "c0b190a88cfa679e1ad17d0b0fc7134e27135f17",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d725414f_77e492b4",
         "filename": "scripts/check_rust.sh",
         "patchSetId": 1
@@ -72,6 +90,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6abc01d7_ac438b00",
+        "filename": "scripts/check_rust.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 3815749
+      },
+      "writtenOn": "2025-01-23T15:26:26Z",
+      "side": 1,
+      "message": "This falls under the IDE lunched vs un-lunched discussion [here](https://android-review.googlesource.com/c/platform/development/+/3459925/comment/0aeb54bd_2e8b3fdc/).",
+      "parentUuid": "d725414f_77e492b4",
+      "revId": "c0b190a88cfa679e1ad17d0b0fc7134e27135f17",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c71a2e56_cf12fe98",
         "filename": "scripts/check_rust/src/main.rs",
         "patchSetId": 1
@@ -83,6 +119,24 @@
       "writtenOn": "2025-01-22T20:23:23Z",
       "side": 1,
       "message": "May make more sense to cite https://doc.rust-lang.org/rustc/json.html - I almost objected to this because you were putting an unstable structure in, which we don\u0027t want to manually keep in sync.\n\nThe JSON format is stable, those structs aren\u0027t.",
+      "revId": "c0b190a88cfa679e1ad17d0b0fc7134e27135f17",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "05f84d83_ec7fbc1d",
+        "filename": "scripts/check_rust/src/main.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 3815749
+      },
+      "writtenOn": "2025-01-23T15:26:26Z",
+      "side": 1,
+      "message": "Agreed, if we can resolve [this discussion](https://android-review.googlesource.com/c/platform/development/+/3459925/comment/1decb1ba_94659dc6/) to ensure that `rust-project.json` is syslinked than we do not need to parse the output stream and don\u0027t need to be dependent on the schema.",
+      "parentUuid": "c71a2e56_cf12fe98",
       "revId": "c0b190a88cfa679e1ad17d0b0fc7134e27135f17",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -106,6 +160,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f8459fea_1d7c6785",
+        "filename": "scripts/check_rust/src/main.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 3815749
+      },
+      "writtenOn": "2025-01-23T15:26:26Z",
+      "side": 1,
+      "message": "This script will be called via the IDE hook (VsCode, vim, etc) and won\u0027t be lunched. You could lunch and then launch vscode-server (the remote endpoint for VsCode) but then if you wanted to switch lunch targets you would have to close out of the IDE and kill vscode-server. This allows us to read in the env variables of the currently set lunch target. Since each invocation of the script will read from this file, any lunch updates will be handled on the next invocation of `check_rust`.\n\nNot sure what your workflow is but generally mine is the following\n1. Launch VsCode on connected to a remote target\n2. Open a terminal in VsCode\n3. lunch target\n3. Start hacking on a file\n4. Build module via `m module_name`\n5. Discover issues, goto step 3\n\nSometimes I will switch lunch targets mid development if I am testing a change out on multiple devices. I do not close my IDE when I switch lunch targets.",
+      "parentUuid": "0aeb54bd_2e8b3fdc",
+      "revId": "c0b190a88cfa679e1ad17d0b0fc7134e27135f17",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5c61ff6e_24524363",
         "filename": "scripts/check_rust/src/main.rs",
         "patchSetId": 1
@@ -117,6 +189,24 @@
       "writtenOn": "2025-01-22T20:23:23Z",
       "side": 1,
       "message": "Should be on PATH if we\u0027re lunched...",
+      "revId": "c0b190a88cfa679e1ad17d0b0fc7134e27135f17",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "157e0e27_009138c9",
+        "filename": "scripts/check_rust/src/main.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 3815749
+      },
+      "writtenOn": "2025-01-23T15:26:26Z",
+      "side": 1,
+      "message": "See [comment](https://android-review.googlesource.com/c/platform/development/+/3459925/comment/0aeb54bd_2e8b3fdc/)",
+      "parentUuid": "5c61ff6e_24524363",
       "revId": "c0b190a88cfa679e1ad17d0b0fc7134e27135f17",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -140,6 +230,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "bbf9f94e_25672b48",
+        "filename": "scripts/check_rust/src/main.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 3815749
+      },
+      "writtenOn": "2025-01-23T15:26:26Z",
+      "side": 1,
+      "message": "`aninja` requires [lunch](https://cs.android.com/android/platform/superproject/main/+/main:build/soong/bin/aninja;l\u003d21?q\u003daninja) which we will not have access to.",
+      "parentUuid": "42428eaa_a43e67fa",
+      "revId": "c0b190a88cfa679e1ad17d0b0fc7134e27135f17",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f3230c0d_c54da5f5",
         "filename": "scripts/check_rust/src/main.rs",
         "patchSetId": 1
@@ -157,6 +265,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4ba6ad7d_5ebbe336",
+        "filename": "scripts/check_rust/src/main.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 3815749
+      },
+      "writtenOn": "2025-01-23T15:26:26Z",
+      "side": 1,
+      "message": "I removed it. It looks like the Rust linking completely changed from A14 -\u003e now. `mkcratersp.py` is no longer a script and therefore is is not needed.",
+      "parentUuid": "f3230c0d_c54da5f5",
+      "revId": "c0b190a88cfa679e1ad17d0b0fc7134e27135f17",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1decb1ba_94659dc6",
         "filename": "scripts/check_rust/src/main.rs",
         "patchSetId": 1
@@ -168,6 +294,24 @@
       "writtenOn": "2025-01-22T20:23:23Z",
       "side": 1,
       "message": "This is built in out/soong, but normally symlinked to the root of your repository - does that not work for keeping paths relative?",
+      "revId": "c0b190a88cfa679e1ad17d0b0fc7134e27135f17",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6c9b9d31_4d12c0c7",
+        "filename": "scripts/check_rust/src/main.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 3815749
+      },
+      "writtenOn": "2025-01-23T15:26:26Z",
+      "side": 1,
+      "message": "It does but I didn\u0027t want to have that dependency. Figured it is best to provide as much flexibility with path locations as possible given that developers might want to syslink or might opt not to. If it is a standard and built into soong (like we do with C++\u0027s `compile_commands.json` via [`SOONG_LINK_COMPDB_TO`](https://cs.android.com/android/platform/superproject/main/+/main:build/soong/cc/compdb.go;l\u003d51?q\u003denvVariableCompdbLink)) then we can remove it.",
+      "parentUuid": "1decb1ba_94659dc6",
       "revId": "c0b190a88cfa679e1ad17d0b0fc7134e27135f17",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
