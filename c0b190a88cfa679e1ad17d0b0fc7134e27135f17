@@ -54,6 +54,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5f60546f_a5249a40",
+        "filename": "scripts/check_rust.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1891965
+      },
+      "writtenOn": "2025-01-23T06:37:53Z",
+      "side": 1,
+      "message": "At Meta folks usually use remote development workflows where launching the remote daemon happens automagically; it is usually not lunched.",
+      "parentUuid": "d725414f_77e492b4",
+      "revId": "c0b190a88cfa679e1ad17d0b0fc7134e27135f17",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c71a2e56_cf12fe98",
         "filename": "scripts/check_rust/src/main.rs",
         "patchSetId": 1
