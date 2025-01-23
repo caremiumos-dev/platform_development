@@ -250,6 +250,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "34b558ba_f901d7ce",
+        "filename": "scripts/check_rust/src/main.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 3815749
+      },
+      "writtenOn": "2025-01-23T20:43:52Z",
+      "side": 1,
+      "message": "Is that possible? Looking at `soong_ui.bash --build-mode` gives me the following:\n\n```\nsoong_ui --build-mode --dir\u003d\u003cpath\u003e \u003cbuild action\u003e [\u003cbuild arg 1\u003e \u003cbuild arg 2\u003e ...]\n\nIn build mode, build the set of modules based on the specified build\naction. The --dir flag is required to determine what is needed to\nbuild in the source tree based on the build action. See below for\nthe list of acceptable build action flags.\n```\n\nThe script seems to operate at the module level, where we want to operate at the ninja action node level. For example an entry in the `rust-target-mapping.json`:\n\n```\n{\n  \"name\": \"check_rust\",\n  \"build_target\": \"out/soong/.intermediates/build/soong/scripts/check_rust/check_rust/linux_glibc_x86_64/check_rust\",\n  \"check_target\": \"out/soong/.intermediates/build/soong/scripts/check_rust/check_rust/linux_glibc_x86_64/check_rust.checkJson\",\n  \"source_dir\": \"build/soong/scripts/check_rust\"\n}\n```\n\nCurrently we invoke `out/soong/.intermediates/build/soong/scripts/check_rust/check_rust/linux_glibc_x86_64/check_rust.checkJson` in ninja, I don\u0027t think I can do that in `soong_ui.bash` (at least from what I can see).",
+      "parentUuid": "c925078e_60fe6e86",
+      "revId": "c0b190a88cfa679e1ad17d0b0fc7134e27135f17",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5c61ff6e_24524363",
         "filename": "scripts/check_rust/src/main.rs",
         "patchSetId": 1
