@@ -350,6 +350,24 @@
       "parentUuid": "5e213df3_8d3be821",
       "revId": "c0b190a88cfa679e1ad17d0b0fc7134e27135f17",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "645a9151_8ee843a0",
+        "filename": "scripts/check_rust/src/main.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 3815749
+      },
+      "writtenOn": "2025-01-23T20:04:01Z",
+      "side": 1,
+      "message": "Added `SOONG_LINK_RUST_PROJECT_TO` to soong and removed parsing and file_name renaming in check_rust",
+      "parentUuid": "65865a6c_b8917509",
+      "revId": "c0b190a88cfa679e1ad17d0b0fc7134e27135f17",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
