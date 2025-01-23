@@ -53,6 +53,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2638ab73_674a01ab",
+        "filename": "scripts/check_rust.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2025-01-23T20:14:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d3384375_f61209b6",
+      "revId": "c0b190a88cfa679e1ad17d0b0fc7134e27135f17",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d725414f_77e492b4",
@@ -106,6 +124,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bb6df4db_8d59585d",
+        "filename": "scripts/check_rust.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2025-01-23T20:14:57Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "6abc01d7_ac438b00",
+      "revId": "c0b190a88cfa679e1ad17d0b0fc7134e27135f17",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c71a2e56_cf12fe98",
@@ -137,6 +173,24 @@
       "side": 1,
       "message": "Agreed, if we can resolve [this discussion](https://android-review.googlesource.com/c/platform/development/+/3459925/comment/1decb1ba_94659dc6/) to ensure that `rust-project.json` is syslinked than we do not need to parse the output stream and don\u0027t need to be dependent on the schema.",
       "parentUuid": "c71a2e56_cf12fe98",
+      "revId": "c0b190a88cfa679e1ad17d0b0fc7134e27135f17",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "69b8d8ec_98f7051e",
+        "filename": "scripts/check_rust/src/main.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2025-01-23T20:14:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "05f84d83_ec7fbc1d",
       "revId": "c0b190a88cfa679e1ad17d0b0fc7134e27135f17",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -178,6 +232,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c925078e_60fe6e86",
+        "filename": "scripts/check_rust/src/main.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2025-01-23T20:14:57Z",
+      "side": 1,
+      "message": "If you don\u0027t run lunch, please instead use `soong_ui.bash` and set the relevant target information there - invoking `ninja` directly is not guaranteed to work as there is additional setup that may not be done.",
+      "parentUuid": "f8459fea_1d7c6785",
+      "revId": "c0b190a88cfa679e1ad17d0b0fc7134e27135f17",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5c61ff6e_24524363",
         "filename": "scripts/check_rust/src/main.rs",
         "patchSetId": 1
@@ -207,6 +279,24 @@
       "side": 1,
       "message": "See [comment](https://android-review.googlesource.com/c/platform/development/+/3459925/comment/0aeb54bd_2e8b3fdc/)",
       "parentUuid": "5c61ff6e_24524363",
+      "revId": "c0b190a88cfa679e1ad17d0b0fc7134e27135f17",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ad64c141_2b4600a1",
+        "filename": "scripts/check_rust/src/main.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2025-01-23T20:14:57Z",
+      "side": 1,
+      "message": "Replace with `soong_ui.bash`",
+      "parentUuid": "157e0e27_009138c9",
       "revId": "c0b190a88cfa679e1ad17d0b0fc7134e27135f17",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -246,6 +336,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ee51bf6a_0709bc92",
+        "filename": "scripts/check_rust/src/main.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2025-01-23T20:14:57Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "bbf9f94e_25672b48",
+      "revId": "c0b190a88cfa679e1ad17d0b0fc7134e27135f17",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f3230c0d_c54da5f5",
@@ -277,6 +385,24 @@
       "side": 1,
       "message": "I removed it. It looks like the Rust linking completely changed from A14 -\u003e now. `mkcratersp.py` is no longer a script and therefore is is not needed.",
       "parentUuid": "f3230c0d_c54da5f5",
+      "revId": "c0b190a88cfa679e1ad17d0b0fc7134e27135f17",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c7f7da3c_b7b7e673",
+        "filename": "scripts/check_rust/src/main.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2025-01-23T20:14:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4ba6ad7d_5ebbe336",
       "revId": "c0b190a88cfa679e1ad17d0b0fc7134e27135f17",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -366,6 +492,24 @@
       "side": 1,
       "message": "Added `SOONG_LINK_RUST_PROJECT_TO` to soong and removed parsing and file_name renaming in check_rust",
       "parentUuid": "65865a6c_b8917509",
+      "revId": "c0b190a88cfa679e1ad17d0b0fc7134e27135f17",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8361060e_b015a25d",
+        "filename": "scripts/check_rust/src/main.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2025-01-23T20:14:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "645a9151_8ee843a0",
       "revId": "c0b190a88cfa679e1ad17d0b0fc7134e27135f17",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
