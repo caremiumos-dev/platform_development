@@ -286,6 +286,42 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6c1c5c13_326fd641",
+        "filename": "scripts/check_rust/src/main.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 3815749
+      },
+      "writtenOn": "2025-01-24T14:34:22Z",
+      "side": 1,
+      "message": "OK let me give that a shot. I just want to clarify that we do require the developer to have ran lunch, just not in our shell.",
+      "parentUuid": "9f0bf179_2cd4bd43",
+      "revId": "c0b190a88cfa679e1ad17d0b0fc7134e27135f17",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d8db00d1_4e704504",
+        "filename": "scripts/check_rust/src/main.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 3815749
+      },
+      "writtenOn": "2025-01-24T14:34:22Z",
+      "side": 1,
+      "message": "Ok, running with `--make-mode` is working, but it can trigger a regeneration of the `build.ninja` file and parsing of make modules. Even if it doesn’t we are still checking Android.bp files to see if we need a regeneration of `build.ninja`. This adds an unacceptable overhead to what will be called in a onsave and onload IDE hook. We want this to be analogous to `compile_commands.json` where we give a snapshot of the build parameters at a point in time. `clangd` simply processes the `compile_commands.json` and does not attempt to see if there are any build parameter modifications. If you add files, or change compile flags, etc the developer will need to manually trigger a regeneration of the `build.ninja`/`compile_commands.json` with a `m nothing`.",
+      "parentUuid": "9f0bf179_2cd4bd43",
+      "revId": "c0b190a88cfa679e1ad17d0b0fc7134e27135f17",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5c61ff6e_24524363",
         "filename": "scripts/check_rust/src/main.rs",
         "patchSetId": 1
