@@ -322,6 +322,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "81f500e9_f8fae094",
+        "filename": "scripts/check_rust/src/main.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2025-01-24T19:45:55Z",
+      "side": 1,
+      "message": "cc @ccross@android.com\n\nThe problem is that invoking `ninja` directly is not guaranteed to keep working, or reven to work for all targets today, since Soong may be doing setup before `ninja` is invoked.\n\nI did find a potential workaround, but I\u0027m ccing Colin in case this is unsupported or a bad plan - if you run:\n\n```\nBOARD_KERNEL_VERSION\u003d6.6 TARGET_PRODUCT\u003daosp_x86_64 TARGET_RELEASE\u003dtrunk_staging TARGET_BUILD_VARIANT\u003duserdebug TARGET_ARCH\u003dx86_64 ./build/soong/soong_ui.bash --make-mode --song-only nothing\n```\n\nyou\u0027ll produce an additional ninja file that can be accessed with `--config-only`, which will not re-evaluate Make or Blueprint files:\n\n```\nmmaurer@anyblade:~/pore/android/platform$ rm -rf out/soong/.intermediates/hardware/interfaces/security/authgraph/aidl/vts/functional/\nmmaurer@anyblade:~/pore/android/platform$ time BOARD_KERNEL_VERSION\u003d6.6 TARGET_PRODUCT\u003daosp_x86_64 TARGET_RELEASE\u003dtrunk_staging TARGET_BUILD_VARIANT\u003duserdebug TARGET_ARCH\u003dx86_64 ./build/soong/soong_ui.bash --make-mode out/soong/.intermediates/hardware/interfaces/security/authgraph/aidl/vts/functional/VtsAidlAuthGraphRoleTest/android_x86_64/VtsAidlAuthGraphRoleTest.clippy --config-only\n\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\nPLATFORM_VERSION_CODENAME\u003dBaklava\nPLATFORM_VERSION\u003dBaklava\nTARGET_PRODUCT\u003daosp_x86_64\nTARGET_BUILD_VARIANT\u003duserdebug\nTARGET_ARCH\u003dx86_64\nTARGET_ARCH_VARIANT\u003dx86_64\nTARGET_2ND_ARCH\u003dx86\nTARGET_2ND_ARCH_VARIANT\u003dx86_64\nHOST_OS\u003dlinux\nHOST_OS_EXTRA\u003dLinux-6.10.11-1rodete2-amd64-x86_64-Debian-GNU/Linux-rodete\nHOST_CROSS_OS\u003dwindows\nBUILD_ID\u003dMAIN\nOUT_DIR\u003dout\n\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\n[100% 3/3 0s remaining] //hardware/interfaces/security/authgraph/aidl/vts/functional:VtsAid\n\nreal\t0m4.234s\nuser\t0m32.788s\nsys\t0m11.092s\nmmaurer@anyblade:~/pore/android/platform$ \n```\n\nThis still does have a 3.5s \"config\" step, but that config step is the potentially load bearing step.",
+      "parentUuid": "d8db00d1_4e704504",
+      "revId": "c0b190a88cfa679e1ad17d0b0fc7134e27135f17",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5c61ff6e_24524363",
         "filename": "scripts/check_rust/src/main.rs",
         "patchSetId": 1
