@@ -31,6 +31,7 @@ static LICENSE_GLOBS: &[&str] = &[
     "COPYING",
     "license",
     "license.*",
+    "COPYRIGHT-RUST.txt",
 ];
 
 pub(crate) fn find_license_files(
