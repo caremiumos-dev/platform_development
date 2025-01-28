@@ -340,6 +340,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "05583d8d_8e0651cd",
+        "filename": "scripts/check_rust/src/main.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2025-01-28T18:44:12Z",
+      "side": 1,
+      "message": "Running `ninja` directly is incorrect, and results in running the rules with a different environment configuration than the normal build.  That can cause all sorts of problems, including corrupting the out directory if any rules run that change their behavior based on environment variables.",
+      "parentUuid": "81f500e9_f8fae094",
+      "revId": "c0b190a88cfa679e1ad17d0b0fc7134e27135f17",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5c61ff6e_24524363",
         "filename": "scripts/check_rust/src/main.rs",
         "patchSetId": 1
