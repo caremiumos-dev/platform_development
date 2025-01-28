@@ -358,6 +358,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f704817c_3c7718ef",
+        "filename": "scripts/check_rust/src/main.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2025-01-28T19:02:46Z",
+      "side": 1,
+      "message": "I think the best compromise we can give you here is to run with `--make-mode` in the version checked into AOSP, and at Meta, you can have a modified form of this tool which either does the `config-only` hack or the `ninja` hack, with the knowledge that when that breaks you get to keep both pieces.",
+      "parentUuid": "05583d8d_8e0651cd",
+      "revId": "c0b190a88cfa679e1ad17d0b0fc7134e27135f17",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5c61ff6e_24524363",
         "filename": "scripts/check_rust/src/main.rs",
         "patchSetId": 1
