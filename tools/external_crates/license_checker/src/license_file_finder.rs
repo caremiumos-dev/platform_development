@@ -31,6 +31,7 @@ static LICENSE_GLOBS: &[&str] = &[
     "COPYING",
     "license",
     "license.*",
+    "docs/LICENSE*",
 ];
 
 pub(crate) fn find_license_files(
