@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "882c9708_03fb3656",
+        "filename": "tools/external_crates/license_checker/src/lib.rs",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1380243
+      },
+      "writtenOn": "2025-01-29T11:01:21Z",
+      "side": 1,
+      "message": "How about just adding docs?",
+      "revId": "b3a27b4f82ba91453251d561fc94cc916591b70b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "072d7a6d_c9edffc1",
+        "filename": "tools/external_crates/license_checker/src/license_file_finder.rs",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1380243
+      },
+      "writtenOn": "2025-01-29T11:01:21Z",
+      "side": 1,
+      "message": "This change looks unrelated, should it be a separate CL?",
+      "revId": "b3a27b4f82ba91453251d561fc94cc916591b70b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a6bbf55b_007a5415",
+        "filename": "tools/external_crates/test_mapping/src/lib.rs",
+        "patchSetId": 3
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1380243
+      },
+      "writtenOn": "2025-01-29T11:01:21Z",
+      "side": 1,
+      "message": "Ditto, just add docs.",
+      "revId": "b3a27b4f82ba91453251d561fc94cc916591b70b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
