@@ -232,11 +232,11 @@ impl<State: ManagedCrateState> ManagedCrate<State> {
     }
     pub fn fix_test_mapping(&self) -> Result<()> {
         let mut tm = TestMapping::read(self.android_crate_path().clone())?;
-        println!("{}", self.name());
         let mut changed = tm.fix_import_paths();
         changed |= tm.add_new_tests_to_postsubmit()?;
         changed |= tm.remove_unknown_tests()?;
         if changed {
+            println!("Updating TEST_MAPPING for {}", self.name());
             tm.write()?;
         }
         Ok(())
@@ -438,6 +438,7 @@ impl ManagedCrate<Vendored> {
                 writeback |= true;
             }
             if writeback {
+                println!("Updating METADATA for {}", staged.name());
                 metadata.write()?;
             }
         }
