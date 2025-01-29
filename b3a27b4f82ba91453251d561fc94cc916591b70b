@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1107d93b_7727bb4d",
+        "filename": "tools/external_crates/license_checker/src/lib.rs",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1903830
+      },
+      "writtenOn": "2025-01-29T18:36:22Z",
+      "side": 1,
+      "message": "For ThisError enums, the documentation is in the #[error(...)] declarations. Additional doc comments would be redundant.",
+      "parentUuid": "882c9708_03fb3656",
+      "revId": "b3a27b4f82ba91453251d561fc94cc916591b70b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "072d7a6d_c9edffc1",
@@ -35,6 +53,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "94817042_1d6fc4b1",
+        "filename": "tools/external_crates/license_checker/src/license_file_finder.rs",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1903830
+      },
+      "writtenOn": "2025-01-29T18:36:22Z",
+      "side": 1,
+      "message": "Sorry, this was a mistake.",
+      "parentUuid": "072d7a6d_c9edffc1",
+      "revId": "b3a27b4f82ba91453251d561fc94cc916591b70b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a6bbf55b_007a5415",
@@ -48,6 +84,24 @@
       "writtenOn": "2025-01-29T11:01:21Z",
       "side": 1,
       "message": "Ditto, just add docs.",
+      "revId": "b3a27b4f82ba91453251d561fc94cc916591b70b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bef8eaa2_adb51592",
+        "filename": "tools/external_crates/test_mapping/src/lib.rs",
+        "patchSetId": 3
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1903830
+      },
+      "writtenOn": "2025-01-29T18:36:22Z",
+      "side": 1,
+      "message": "Ditto",
+      "parentUuid": "a6bbf55b_007a5415",
       "revId": "b3a27b4f82ba91453251d561fc94cc916591b70b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
