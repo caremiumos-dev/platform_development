@@ -56,6 +56,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4a9771d3_9aee4b9e",
+        "filename": "tools/external_crates/license_checker/src/lib.rs",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1903830
+      },
+      "writtenOn": "2025-01-30T14:55:00Z",
+      "side": 1,
+      "message": "It looks like https://crates.io/crates/displaydoc is the solution.",
+      "parentUuid": "ea62361a_cdb19ae2",
+      "revId": "b3a27b4f82ba91453251d561fc94cc916591b70b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "072d7a6d_c9edffc1",
         "filename": "tools/external_crates/license_checker/src/license_file_finder.rs",
         "patchSetId": 3
