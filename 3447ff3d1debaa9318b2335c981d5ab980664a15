@@ -16,6 +16,24 @@
       "message": "Should this be symmetric? Right now, you have `foo` marking an `update_with` for `foo-derive`. Should `foo-derive` also pick up an implicit `update_with` for `foo`?",
       "revId": "3447ff3d1debaa9318b2335c981d5ab980664a15",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fd8e9a69_a99d2be7",
+        "filename": "tools/external_crates/crate_config/src/lib.rs",
+        "patchSetId": 4
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1903830
+      },
+      "writtenOn": "2025-01-30T03:01:46Z",
+      "side": 1,
+      "message": "No. Or, at least, probably not.\n\nYou are correct that the notion of \"should update together\" is sort of bidirectional, but the dependency only exists in a single direction.\n\nThe case this code handles, which is the simplest one, is foo depending on foo_derive, where the versions are matched. That is, foo depends on foo_derive\u003dx.y.z, not ^x.y.z. It makes the choice easy, because there is exactly one version that satisfies the requirement.\n\nThe logic could be improved, but it would get more complicated and ambiguous. If the dep is ^x.y.z, do you pick the smallest version, the biggest, or something in between? What if that causes problems for other crates?\n\nIn general, dependency resolution is hard, and I\u0027m pretty sure optimal resolution is intractable. Cargo does a sort of quick and dirty version, that is still a lot more sophisticated than what we\u0027re doing here. There\u0027s a feature request for cargo to do a better job minimizing duplicate versions, and it\u0027s been open for awhile.",
+      "parentUuid": "eec94a02_b5e50232",
+      "revId": "3447ff3d1debaa9318b2335c981d5ab980664a15",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
