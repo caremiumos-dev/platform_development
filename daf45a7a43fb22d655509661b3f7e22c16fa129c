@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b5c11475_eaadafba",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2025-01-30T21:26:45Z",
+      "side": 1,
+      "message": "Can you run `./crate_tool regenerate --all` with this change and either verify that nothing changes, or add the changes to the topic?",
+      "revId": "daf45a7a43fb22d655509661b3f7e22c16fa129c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
