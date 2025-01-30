@@ -16,6 +16,24 @@
       "message": "How does displaydoc interact with `#[error(transparent)]`? Do you actually get the contained error message as expected or do you get the displaydoc error message?",
       "revId": "4a41b75cd31d8312c55f7a4e39a174970e017060",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0f13c4cd_aca8ae1f",
+        "filename": "tools/external_crates/checksum/src/lib.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1903830
+      },
+      "writtenOn": "2025-01-30T18:38:19Z",
+      "side": 1,
+      "message": "You get the displaydoc error message. I got rid of displaydoc.",
+      "parentUuid": "cba122ac_5db6cb86",
+      "revId": "4a41b75cd31d8312c55f7a4e39a174970e017060",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
