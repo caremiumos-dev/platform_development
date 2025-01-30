@@ -376,6 +376,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e269c0a2_b1c7f8b6",
+        "filename": "scripts/check_rust/src/main.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 3815749
+      },
+      "writtenOn": "2025-01-30T16:42:17Z",
+      "side": 1,
+      "message": "Replaced with `soong_ui.bash`. Added env var processing to ensure that we do not cause a rebuild of the build.ninja file if the developer has already built a target.",
+      "parentUuid": "f704817c_3c7718ef",
+      "revId": "c0b190a88cfa679e1ad17d0b0fc7134e27135f17",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5c61ff6e_24524363",
         "filename": "scripts/check_rust/src/main.rs",
         "patchSetId": 1
@@ -423,6 +441,24 @@
       "side": 1,
       "message": "Replace with `soong_ui.bash`",
       "parentUuid": "157e0e27_009138c9",
+      "revId": "c0b190a88cfa679e1ad17d0b0fc7134e27135f17",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "889bb855_45fa9445",
+        "filename": "scripts/check_rust/src/main.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 3815749
+      },
+      "writtenOn": "2025-01-30T16:42:17Z",
+      "side": 1,
+      "message": "See [comment](https://android-review.googlesource.com/c/platform/development/+/3459925/comment/0aeb54bd_2e8b3fdc/).",
+      "parentUuid": "ad64c141_2b4600a1",
       "revId": "c0b190a88cfa679e1ad17d0b0fc7134e27135f17",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
