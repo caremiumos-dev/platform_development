@@ -90,6 +90,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0f64ac54_9bfaf237",
+        "filename": "tools/external_crates/license_checker/src/lib.rs",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1903830
+      },
+      "writtenOn": "2025-01-30T15:22:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a15502ba_79081088",
+      "revId": "b3a27b4f82ba91453251d561fc94cc916591b70b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "072d7a6d_c9edffc1",
