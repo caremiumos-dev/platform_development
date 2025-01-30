@@ -5,6 +5,7 @@ edition = "2021"
 
 [dependencies]
 chrono = "0.4"
+displaydoc = "0.2"
 protobuf = "3"
 thiserror = "1.0"
 

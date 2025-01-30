@@ -4,6 +4,7 @@ version = "0.1.0"
 edition = "2021"
 
 [dependencies]
+displaydoc = "0.2"
 itertools = "0.13"
 semver = "1"
 thiserror = "1"

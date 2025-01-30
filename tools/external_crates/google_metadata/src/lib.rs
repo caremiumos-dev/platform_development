@@ -39,18 +39,20 @@ mod metadata_proto {
 
 pub use metadata_proto::*;
 
-#[allow(missing_docs)]
-#[derive(thiserror::Error, Debug)]
+/// Error types for the 'google_metadata' crate.
+#[derive(displaydoc::Display, thiserror::Error, Debug)]
 pub enum Error {
-    #[error("File exists: {}", .0.display())]
+    /// File exists: {0}
     FileExists(PathBuf),
-    #[error("Crate name not set")]
-    CrateNameMissing(),
-    #[error("Crate names don't match: {} in METADATA vs {}", .0, .1)]
+    /// Crate name not set
+    CrateNameMissing,
+    /// Crate names don't match: {0} in METADATA vs {1}
     CrateNameMismatch(String, String),
-    #[error("Glob pattern error")]
+    /// Protobuf parse error
+    #[error(transparent)]
     ParseError(#[from] ParseError),
-    #[error("Write error")]
+    /// Error writing METADATA file.
+    #[error(transparent)]
     WriteError(#[from] std::io::Error),
 }
 
@@ -120,7 +122,7 @@ impl GoogleMetadata {
         name: impl AsRef<str>,
         version: Q,
     ) -> Result<(), Error> {
-        let name_in_metadata = self.metadata.name.as_ref().ok_or(Error::CrateNameMissing())?;
+        let name_in_metadata = self.metadata.name.as_ref().ok_or(Error::CrateNameMissing)?;
         if name_in_metadata != name.as_ref() {
             return Err(Error::CrateNameMismatch(
                 name_in_metadata.clone(),

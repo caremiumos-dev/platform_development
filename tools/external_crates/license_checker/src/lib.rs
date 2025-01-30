@@ -21,37 +21,41 @@ use std::{
 };
 
 use spdx::LicenseReq;
-use thiserror::Error;
 
 mod content_checker;
 mod expression_parser;
 mod file_name_checker;
 mod license_file_finder;
 
-#[allow(missing_docs)]
-#[derive(Error, Debug)]
-pub enum LicenseCheckerError {
-    #[error("Couldn't convert filesystem path {} (lossy) to a string for globbing.", .0.to_string_lossy())]
+/// Error types for the 'license_checker' crate.
+#[derive(displaydoc::Display, thiserror::Error, Debug)]
+pub enum Error {
+    /// Couldn't convert filesystem path {0} to a string for globbing.
     PathToString(PathBuf),
-    #[error("Glob error")]
+    /// Glob error
+    #[error(transparent)]
     GlobError(#[from] glob::GlobError),
-    #[error("Glob pattern error")]
+    /// Glob pattern error
+    #[error(transparent)]
     PatternError(#[from] glob::PatternError),
-    #[error("Strip prefix error")]
+    /// Strip prefix error
+    #[error(transparent)]
     StripPrefixError(#[from] std::path::StripPrefixError),
-    #[error("Found a license expression special case for crate {crate_name} but the Cargo.toml license field doesn't match. Expected '{expected_license}', found '{cargo_toml_license}'")]
+    /// Found a license expression special case for crate {crate_name} but the Cargo.toml license field doesn't match. Expected '{expected_license}', found '{cargo_toml_license}'
     LicenseExpressionSpecialCase {
         crate_name: String,
         expected_license: String,
         cargo_toml_license: String,
     },
-    #[error("Crate {0} doesn't have a license field in Cargo.toml, and no special case was found for this crate")]
+    /// Crate {0} doesn't have a license field in Cargo.toml, and no special case was found for this crate
     MissingLicenseField(String),
-    #[error("SPDX expression parse error")]
+    /// SPDX expression parse error
+    #[error(transparent)]
     ParseError(#[from] spdx::ParseError),
-    #[error("SPDX expression minimize error")]
+    /// SPDX expression minimize error
+    #[error(transparent)]
     MinimizeError(#[from] spdx::expression::MinimizeError),
-    #[error("Unknown license checker error")]
+    /// Unknown license checker error
     Unknown,
 }
 
@@ -74,7 +78,7 @@ pub fn find_licenses(
     crate_path: impl AsRef<Path>,
     crate_name: &str,
     cargo_toml_license: Option<&str>,
-) -> Result<LicenseState, LicenseCheckerError> {
+) -> Result<LicenseState, Error> {
     let crate_path = crate_path.as_ref();
     let mut state = LicenseState { unsatisfied: BTreeSet::new(), satisfied: BTreeMap::new() };
 
