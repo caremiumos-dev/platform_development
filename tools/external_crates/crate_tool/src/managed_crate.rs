@@ -77,10 +77,9 @@ static CUSTOMIZATIONS: &[&str] = &[
     "patches",
     "METADATA",
     "TEST_MAPPING",
-    "MODULE_LICENSE_*",
 ];
 
-static SYMLINKS: &[&str] = &["LICENSE", "NOTICE"];
+static SYMLINKS: &[&str] = &["NOTICE"];
 
 impl<State: ManagedCrateState> ManagedCrate<State> {
     pub fn name(&self) -> &str {
@@ -214,7 +213,7 @@ impl<State: ManagedCrateState> ManagedCrate<State> {
         Ok(())
     }
     pub fn fix_licenses(&self) -> Result<()> {
-        println!("{} = \"={}\"", self.name(), self.android_version());
+        println!("Updating MODULE_LICENSE files for {}", self.name());
         let state =
             find_licenses(self.android_crate_path(), self.name(), self.android_crate.license())?;
         if !state.unsatisfied.is_empty() {
@@ -453,6 +452,7 @@ impl ManagedCrate<Vendored> {
         rename(staged.staging_path(), android_crate_dir)?;
         if update_metadata {
             staged.fix_test_mapping()?;
+            staged.fix_licenses()?;
             checksum::generate(android_crate_dir.abs())?;
         }
 
