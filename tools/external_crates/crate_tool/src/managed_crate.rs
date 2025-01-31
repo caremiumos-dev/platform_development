@@ -77,10 +77,9 @@ static CUSTOMIZATIONS: &[&str] = &[
     "patches",
     "METADATA",
     "TEST_MAPPING",
-    "MODULE_LICENSE_*",
 ];
 
-static SYMLINKS: &[&str] = &["LICENSE", "NOTICE"];
+static SYMLINKS: &[&str] = &["NOTICE"];
 
 impl<State: ManagedCrateState> ManagedCrate<State> {
     pub fn name(&self) -> &str {
@@ -214,11 +213,11 @@ impl<State: ManagedCrateState> ManagedCrate<State> {
         Ok(())
     }
     pub fn fix_licenses(&self) -> Result<()> {
-        println!("{} = \"={}\"", self.name(), self.android_version());
+        println!("Updating MODULE_LICENSE files for {}", self.name());
         let state =
             find_licenses(self.android_crate_path(), self.name(), self.android_crate.license())?;
         if !state.unsatisfied.is_empty() {
-            println!("{:?}", state);
+            println!("Could not find license files for some licenses: {:?}", state);
         } else {
             // For now, just update MODULE_LICENSE_*
             update_module_license_files(self.android_crate_path(), &state)?;
@@ -303,6 +302,8 @@ impl ManagedCrate<Vendored> {
         } else {
             Vec::new()
         };
+
+        // TODO: Regenerate license files, from scratch.
 
         let cargo_embargo_output = run_cargo_embargo(&self.staging_path())?;
         let android_bp_diff = self.diff_android_bp()?;
@@ -453,6 +454,7 @@ impl ManagedCrate<Vendored> {
         rename(staged.staging_path(), android_crate_dir)?;
         if update_metadata {
             staged.fix_test_mapping()?;
+            staged.fix_licenses()?;
             checksum::generate(android_crate_dir.abs())?;
         }
 
