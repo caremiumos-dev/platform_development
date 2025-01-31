@@ -16,6 +16,24 @@
       "message": "Can you run `./crate_tool regenerate --all` with this change and either verify that nothing changes, or add the changes to the topic?",
       "revId": "daf45a7a43fb22d655509661b3f7e22c16fa129c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3b285e2d_704e6d88",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1885365
+      },
+      "writtenOn": "2025-01-31T02:00:36Z",
+      "side": 1,
+      "message": "No changes of note: https://android-review.git.corp.google.com/c/platform/external/rust/android-crates-io/+/3470270",
+      "parentUuid": "b5c11475_eaadafba",
+      "revId": "daf45a7a43fb22d655509661b3f7e22c16fa129c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

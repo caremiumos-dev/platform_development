@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ca7290d4_5cfb3f7d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1885365
+      },
+      "writtenOn": "2025-01-31T02:00:36Z",
+      "side": 1,
+      "message": "Reran crate_tool. no changes of note, but here\u0027s a CL to clean up the lingering diffs: https://android-review.git.corp.google.com/c/platform/external/rust/android-crates-io/+/3470270",
+      "revId": "0ec10ed693c1dc880988eba22a3f99a7c3a90ce0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
