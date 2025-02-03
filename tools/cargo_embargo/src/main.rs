@@ -654,10 +654,9 @@ fn write_build_files(
             )?;
         }
     }
-    let main_module_name_overrides = &cfg.variants.first().unwrap().module_name_overrides;
     if !mk_contents.is_empty() {
         // If rules.mk is generated, then make it accessible via dirgroup.
-        bp_contents += &generate_android_bp_for_rules_mk(package_name, main_module_name_overrides)?;
+        bp_contents += &generate_android_bp_for_rules_mk(package_name)?;
     }
 
     let def = PackageConfig::default();
@@ -674,7 +673,7 @@ fn write_build_files(
             package_cfg,
             read_license_header(&output_path, true)?.trim(),
             crates,
-            main_module_name_overrides,
+            &cfg.variants.first().unwrap().module_name_overrides,
         )?;
         let bp_contents = package_header + &bp_contents;
         write_format_android_bp(&output_path, &bp_contents, package_cfg.patch.as_deref())?;
@@ -929,19 +928,11 @@ fn generate_rules_mk(
 }
 
 /// Generates and returns a Soong Blueprint for a Trusty rules.mk
-fn generate_android_bp_for_rules_mk(
-    package_name: &str,
-    module_name_overrides: &BTreeMap<String, String>,
-) -> Result<String> {
+fn generate_android_bp_for_rules_mk(package_name: &str) -> Result<String> {
     let mut bp_contents = String::new();
 
     let mut m = BpModule::new("dirgroup".to_string());
-
-    let default_dirgroup_name = format!("trusty_dirgroup_external_rust_crates_{}", package_name);
-    let dirgroup_name =
-        override_module_name(&default_dirgroup_name, &[], module_name_overrides, &RENAME_MAP)
-            .unwrap_or(default_dirgroup_name);
-    m.props.set("name", dirgroup_name);
+    m.props.set("name", format!("trusty_dirgroup_external_rust_crates_{}", package_name));
     m.props.set("dirs", vec!["."]);
     m.props.set("visibility", vec!["//trusty/vendor/google/aosp/scripts"]);
 
