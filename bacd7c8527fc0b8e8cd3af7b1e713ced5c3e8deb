@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7d2a43ad_07886875",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2025-02-04T17:32:12Z",
+      "side": 1,
+      "message": "Looks good for now, but I almost wonder if we can refactor both uses into a function that returns an optional `resolved_path` and do the \"points outside, so skip it or error\" part separately.",
+      "revId": "bacd7c8527fc0b8e8cd3af7b1e713ced5c3e8deb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
