@@ -331,6 +331,9 @@ pub struct VariantConfig {
     /// Generate Trusty build rules at rules.mk and Android.bp if true.
     #[serde(default, skip_serializing_if = "is_false")]
     pub generate_rulesmk: bool,
+    /// Extra platforms supported by the tool
+    #[serde(default, skip_serializing_if = "Vec::is_empty")]
+    pub extra_targets: Vec<String>,
 }
 
 impl Default for VariantConfig {
@@ -358,6 +361,7 @@ impl Default for VariantConfig {
             run_cargo: true,
             generate_androidbp: true,
             generate_rulesmk: false,
+            extra_targets: Default::default(),
         }
     }
 }

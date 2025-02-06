@@ -1224,6 +1224,11 @@ fn crate_to_bp_modules(
                 }
             }
         }
+        if !cfg.extra_targets.is_empty() && !crate_type.is_test() {
+            for target in &cfg.extra_targets {
+                m.props.object("target").object(target).set("enabled", true);
+            }
+        }
         if crate_type.is_test() {
             if let Some(data) =
                 package_cfg.test_data.get(crate_.main_src.to_string_lossy().as_ref())
