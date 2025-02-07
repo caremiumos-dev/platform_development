@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "83ac9773_2a52e3a9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1380243
+      },
+      "writtenOn": "2025-02-07T19:30:33Z",
+      "side": 1,
+      "message": "Soong Blueprints are not JSON, but you can add arbitrary extra attributes with `add_module_block`.",
+      "revId": "173b0243fede2b295ba1dc0d92a64db72ebb14ee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
