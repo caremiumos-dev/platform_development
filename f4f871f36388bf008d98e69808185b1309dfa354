@@ -22,6 +22,30 @@
       },
       "revId": "f4f871f36388bf008d98e69808185b1309dfa354",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "04c06441_b59023c0",
+        "filename": "tools/external_crates/crate_tool/src/managed_repo.rs",
+        "patchSetId": 2
+      },
+      "lineNbr": 309,
+      "author": {
+        "id": 1903830
+      },
+      "writtenOn": "2025-02-10T21:36:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c7f9fde7_506a9793",
+      "range": {
+        "startLine": 309,
+        "startChar": 23,
+        "endLine": 309,
+        "endChar": 84
+      },
+      "revId": "f4f871f36388bf008d98e69808185b1309dfa354",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
