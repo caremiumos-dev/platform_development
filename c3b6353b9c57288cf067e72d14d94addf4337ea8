@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b17b5a5e_b63b93f1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1996085
+      },
+      "writtenOn": "2025-02-13T22:39:48Z",
+      "side": 1,
+      "message": "Voting Open-Source-Licensing +2 to override.\n\nThis CL is not introducing a license file which governs any code; the file is used to classify other license files.\n\nThis change continues to be licensed under the standard Android Apache license terms.",
+      "revId": "c3b6353b9c57288cf067e72d14d94addf4337ea8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
