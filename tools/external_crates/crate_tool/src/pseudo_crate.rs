@@ -126,12 +126,12 @@ impl PseudoCrate<CargoVendorClean> {
                 .unwrap()
                 .join(self.get_path().rel())
                 .unwrap();
-            Command::new("cargo")
-                .args(["vendor", "--versioned-dirs"])
-                .arg(vendor_dir.abs())
-                .current_dir(&self.path)
-                .run_quiet_and_expect_success()
-                .unwrap();
+            // Command::new("cargo")
+            //     .args(["vendor", "--versioned-dirs"])
+            //     .arg(vendor_dir.abs())
+            //     .current_dir(&self.path)
+            //     .run_quiet_and_expect_success()
+            //     .unwrap();
             let mut crates = CrateCollection::new(self.path.root());
             crates.add_from(vendor_dir).unwrap();
             crates

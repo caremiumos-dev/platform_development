@@ -20,6 +20,7 @@ use std::{
     path::{Path, PathBuf},
 };
 
+use file_name_checker::InexactLicenseType;
 use spdx::LicenseReq;
 
 mod content_checker;
@@ -86,8 +87,28 @@ pub fn find_licenses(
     let crate_path = crate_path.as_ref();
     let mut state = LicenseState { unsatisfied: BTreeSet::new(), satisfied: BTreeMap::new() };
 
-    state.unsatisfied = expression_parser::get_chosen_licenses(crate_name, cargo_toml_license)?;
+    state.unsatisfied =
+        expression_parser::evaluate_license_expr(crate_name, cargo_toml_license)?.required;
     let mut possible_license_files = license_file_finder::find_license_files(crate_path)?;
+
+    for file in &possible_license_files {
+        let contents = read_to_string(crate_path.join(file)).unwrap();
+        let classification = classify_license_file(file, contents.as_str());
+        let prefix = if classification.is_mismatch() {
+            "mismatch"
+        } else if classification.is_failure() {
+            "failure"
+        } else if classification.matches_by_name_and_content() {
+            "name-and-content"
+        } else if classification.matches_by_name_only() {
+            "name-only"
+        } else if classification.matches_by_content_only() {
+            "content-only"
+        } else {
+            "error"
+        };
+        println!("{prefix} crates/{crate_name}/{} {:?}", file.display(), classification);
+    }
 
     possible_license_files.retain(|file| {
         if let Some(req) = file_name_checker::classify_license_file_name(file) {
@@ -113,4 +134,41 @@ pub fn find_licenses(
     }
 
     Ok(state)
+}
+
+#[derive(Debug)]
+struct Classification {
+    by_name: Option<LicenseReq>,
+    by_name_inexact: Option<InexactLicenseType>,
+    by_content: Vec<LicenseReq>,
+}
+
+impl Classification {
+    fn is_mismatch(&self) -> bool {
+        if let Some(req) = &self.by_name {
+            self.by_content.iter().any(|content_req| req != content_req)
+        } else {
+            false
+        }
+    }
+    fn is_failure(&self) -> bool {
+        self.by_name.is_none() && self.by_content.is_empty()
+    }
+    fn matches_by_name_and_content(&self) -> bool {
+        !self.is_mismatch() && self.by_name.is_some() && !self.by_content.is_empty()
+    }
+    fn matches_by_name_only(&self) -> bool {
+        self.by_name.is_some() && self.by_content.is_empty()
+    }
+    fn matches_by_content_only(&self) -> bool {
+        self.by_name.is_none() && !self.by_content.is_empty()
+    }
+}
+
+fn classify_license_file(path: impl AsRef<Path>, contents: &str) -> Classification {
+    Classification {
+        by_name: file_name_checker::classify_license_file_name(&path),
+        by_name_inexact: file_name_checker::classify_inexact_license_file_name(&path),
+        by_content: content_checker::classify_license_file_contents(contents),
+    }
 }
