@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a082f135_f3b1fd51",
+        "filename": "tools/external_crates/crate_tool/src/managed_crate.rs",
+        "patchSetId": 2
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2025-02-20T01:55:05Z",
+      "side": 1,
+      "message": "minor nit: `New` and `Vendored` both derive `Debug`, but this does not. Obviously this isn\u0027t a big deal, but my internal consistency alarm was going off. LOL",
+      "revId": "416447c1a533ee3677a4d3ed7a319d87fffbf425",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "87864e50_80b84db0",
+        "filename": "tools/external_crates/crate_tool/src/managed_crate.rs",
+        "patchSetId": 2
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2025-02-20T01:55:05Z",
+      "side": 1,
+      "message": "Other Android build rules support `$OUT_DIR` as an env var, and I feel like we\u0027re not respecting that. That might be ok, but it does seem weird to pollute `out/`.",
+      "revId": "416447c1a533ee3677a4d3ed7a319d87fffbf425",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
