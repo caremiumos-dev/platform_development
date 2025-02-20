@@ -69,6 +69,24 @@
       "parentUuid": "87864e50_80b84db0",
       "revId": "416447c1a533ee3677a4d3ed7a319d87fffbf425",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a566c4ce_cc503d87",
+        "filename": "tools/external_crates/crate_tool/src/managed_crate.rs",
+        "patchSetId": 2
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2025-02-20T23:10:14Z",
+      "side": 1,
+      "message": "Could still be using `$OUT_DIR/crate_tool/\u003cspecific_task\u003e/` and defaulting `$OUT_DIR` to `out/` if its unset, but I am not going to insist on it. Just something to think about for future updates.",
+      "parentUuid": "211c4434_2fd4c2ab",
+      "revId": "416447c1a533ee3677a4d3ed7a319d87fffbf425",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
