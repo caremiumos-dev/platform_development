@@ -18,7 +18,6 @@ use cfg_expr::{
     Predicate, TargetPredicate,
 };
 use crates_index::{http, Crate, Dependency, DependencyKind, SparseIndex, Version};
-use reqwest::blocking::Client;
 use semver::VersionReq;
 use std::{
     cell::RefCell,
@@ -34,7 +33,7 @@ impl CratesIoIndex {
         Ok(CratesIoIndex {
             fetcher: Box::new(OnlineFetcher {
                 index: crates_index::SparseIndex::new_cargo_default()?,
-                client: reqwest::blocking::ClientBuilder::new().gzip(true).build()?,
+                agent: ureq::Agent::new_with_defaults(),
                 fetched: RefCell::new(HashSet::new()),
             }),
         })
@@ -57,7 +56,7 @@ pub trait CratesIoFetcher {
 
 pub struct OnlineFetcher {
     index: SparseIndex,
-    client: Client,
+    agent: ureq::Agent,
     // Keep track of crates we have fetched, to avoid fetching them multiple times.
     fetched: RefCell<HashSet<String>>,
 }
@@ -68,27 +67,28 @@ pub struct OfflineFetcher {
 
 impl CratesIoFetcher for OnlineFetcher {
     fn fetch(&self, crate_name: &str) -> Result<Crate> {
-        // Adapted from https://github.com/frewsxcv/rust-crates-index/blob/master/examples/sparse_http_reqwest.rs
-
         let mut fetched = self.fetched.borrow_mut();
         if fetched.contains(crate_name) {
             return Ok(self.index.crate_from_cache(crate_name.as_ref())?);
         }
-        let req = self.index.make_cache_request(crate_name)?.body(())?;
-        let req = http::Request::from_parts(req.into_parts().0, vec![]);
-        let req: reqwest::blocking::Request = req.try_into()?;
-        let res = self.client.execute(req)?;
+
+        let res = self.agent.run(
+            self.index
+                .make_cache_request(crate_name)?
+                .version(ureq::http::Version::HTTP_11)
+                .body(())?,
+        )?;
         let mut builder = http::Response::builder().status(res.status()).version(res.version());
         builder
             .headers_mut()
             .ok_or(anyhow!("Failed to get headers"))?
             .extend(res.headers().iter().map(|(k, v)| (k.clone(), v.clone())));
-        let body = res.bytes()?;
-        let res = builder.body(body.to_vec())?;
+        let res = builder.body(res.into_body().read_to_vec()?)?;
         let res = self
             .index
             .parse_cache_response(crate_name, res, true)?
             .ok_or(anyhow!("Crate not found"))?;
+
         fetched.insert(crate_name.to_string());
         Ok(res)
     }
