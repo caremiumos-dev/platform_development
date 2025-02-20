@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5670e508_7aba325c",
+        "filename": "tools/external_crates/license_checker/src/file_classifier/mod.rs",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2025-02-20T02:03:30Z",
+      "side": 1,
+      "message": "Are both of these actally still flagged as `\"dead\"?",
+      "revId": "57630b9a302ee2c29f2428b81b1f2d8316d9ceb0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
