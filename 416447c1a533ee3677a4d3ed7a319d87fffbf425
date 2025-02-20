@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "79b3d69f_0c66bd8e",
+        "filename": "tools/external_crates/crate_tool/src/managed_crate.rs",
+        "patchSetId": 2
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1903830
+      },
+      "writtenOn": "2025-02-20T15:56:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a082f135_f3b1fd51",
+      "revId": "416447c1a533ee3677a4d3ed7a319d87fffbf425",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "87864e50_80b84db0",
@@ -31,6 +49,24 @@
       "writtenOn": "2025-02-20T01:55:05Z",
       "side": 1,
       "message": "Other Android build rules support `$OUT_DIR` as an env var, and I feel like we\u0027re not respecting that. That might be ok, but it does seem weird to pollute `out/`.",
+      "revId": "416447c1a533ee3677a4d3ed7a319d87fffbf425",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "211c4434_2fd4c2ab",
+        "filename": "tools/external_crates/crate_tool/src/managed_crate.rs",
+        "patchSetId": 2
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1903830
+      },
+      "writtenOn": "2025-02-20T15:56:44Z",
+      "side": 1,
+      "message": "Unfortunately, Rust also uses OUT_DIR. Or, to be precise, Cargo does. If we get the tool building with Soong then maybe we can consider using OUT_DIR.",
+      "parentUuid": "87864e50_80b84db0",
       "revId": "416447c1a533ee3677a4d3ed7a319d87fffbf425",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
