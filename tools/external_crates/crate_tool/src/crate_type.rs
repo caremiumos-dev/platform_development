@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-use anyhow::{anyhow, Result};
+use anyhow::{anyhow, bail, Result};
 use cargo::{
     core::{Manifest, SourceId},
     util::toml::read_manifest,
@@ -47,14 +47,55 @@ impl Crate {
         Crate { manifest, path }
     }
     pub fn from(manifest_dir: RootedPath) -> Result<Crate> {
+        let manifest_path = manifest_dir.abs().join("Cargo.toml");
         let source_id = SourceId::for_path(manifest_dir.abs())?;
         let (manifest, _nested) = read_manifest(
-            manifest_dir.join("Cargo.toml").unwrap().as_ref(),
+            manifest_dir.join("Cargo.toml")?.as_ref(),
             source_id,
             &Config::default()?,
         )?;
         match manifest {
-            cargo::core::EitherManifest::Real(r) => Ok(Crate::new(r, manifest_dir)),
+            cargo::core::EitherManifest::Real(r) => {
+                let krate = Crate::new(r, manifest_dir);
+                let metadata = cargo_metadata::MetadataCommand::new()
+                    .manifest_path(manifest_path)
+                    .no_deps()
+                    .other_options(["--frozen".to_string()])
+                    .exec()?;
+
+                println!("got here");
+                if metadata.packages.len() != 1 {
+                    bail!("Expected one package, got {}", metadata.packages.len());
+                }
+
+                let package = &metadata.packages[0];
+                if package.name != krate.name() {
+                    println!("name: {} vs {}", krate.name(), package.name);
+                }
+                if &package.version != krate.version() {
+                    println!("version: {} vs {}", krate.version(), package.version);
+                }
+                let description = package.description.as_deref().unwrap_or("");
+                if description != krate.description() {
+                    println!("description: {} vs {}", krate.description(), description);
+                }
+                if package.license.as_deref() != krate.license() {
+                    println!(
+                        "license: {} vs {}",
+                        krate.license().unwrap_or("<none>"),
+                        package.license.as_deref().unwrap_or("<none>")
+                    );
+                }
+                if package.repository.as_deref() != krate.repository() {
+                    println!(
+                        "repository: {} vs {}",
+                        krate.repository().unwrap_or("<none>"),
+                        package.repository.as_deref().unwrap_or("<none>")
+                    );
+                }
+
+                Ok(krate)
+            }
             cargo::core::EitherManifest::Virtual(_) => {
                 Err(anyhow!(CrateError::VirtualCrate(manifest_dir.as_ref().to_path_buf())))
             }

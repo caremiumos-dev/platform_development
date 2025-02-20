@@ -436,7 +436,7 @@ impl ManagedCrate<Vendored> {
         // because cargo_embargo needs to put license information in the Android.bp.
         self.update_license_files()?;
 
-        self.run_cargo_embargo()?;
+        // self.run_cargo_embargo()?;
 
         self.update_metadata()?;
         self.fix_test_mapping()?;
