@@ -16,6 +16,24 @@
       "message": "Are both of these actally still flagged as `\"dead\"?",
       "revId": "57630b9a302ee2c29f2428b81b1f2d8316d9ceb0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "74503ba5_b1983370",
+        "filename": "tools/external_crates/license_checker/src/file_classifier/mod.rs",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1903830
+      },
+      "writtenOn": "2025-02-20T15:59:16Z",
+      "side": 1,
+      "message": "Yes. I\u0027m going to use them in a follow-up to delete unused license files.",
+      "parentUuid": "5670e508_7aba325c",
+      "revId": "57630b9a302ee2c29f2428b81b1f2d8316d9ceb0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
