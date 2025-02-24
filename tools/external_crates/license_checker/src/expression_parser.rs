@@ -18,23 +18,26 @@ use std::{
     sync::LazyLock,
 };
 
-use crate::Error;
+use crate::LicenseCheckerError;
 
 pub(crate) fn get_chosen_licenses(
     crate_name: &str,
     cargo_toml_license: Option<&str>,
-) -> Result<BTreeSet<LicenseReq>, Error> {
+) -> Result<BTreeSet<LicenseReq>, LicenseCheckerError> {
     Ok(BTreeSet::from_iter(
         Expression::parse(&get_spdx_expr(crate_name, cargo_toml_license)?)?
             .minimized_requirements(LICENSE_PREFERENCE.iter())?,
     ))
 }
 
-fn get_spdx_expr(crate_name: &str, cargo_toml_license: Option<&str>) -> Result<String, Error> {
+fn get_spdx_expr(
+    crate_name: &str,
+    cargo_toml_license: Option<&str>,
+) -> Result<String, LicenseCheckerError> {
     // Check special cases.
     if let Some((raw, expr)) = LICENSE_EXPR_SPECIAL_CASES.get(crate_name) {
         if *raw != cargo_toml_license {
-            return Err(Error::LicenseExpressionSpecialCase {
+            return Err(LicenseCheckerError::LicenseExpressionSpecialCase {
                 crate_name: crate_name.to_string(),
                 expected_license: raw.unwrap_or_default().to_string(),
                 cargo_toml_license: cargo_toml_license.unwrap_or_default().to_string(),
@@ -50,7 +53,7 @@ fn get_spdx_expr(crate_name: &str, cargo_toml_license: Option<&str>) -> Result<S
             Ok(lic.to_string())
         }
     } else {
-        Err(Error::MissingLicenseField(crate_name.to_string()))
+        Err(LicenseCheckerError::MissingLicenseField(crate_name.to_string()))
     }
 }
 
@@ -89,7 +92,7 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_get_spdx_expr() -> Result<(), Error> {
+    fn test_get_spdx_expr() -> Result<(), LicenseCheckerError> {
         assert_eq!(get_spdx_expr("foo", Some("MIT"))?, "MIT");
 
         // No license, no exception
@@ -114,7 +117,7 @@ mod tests {
     }
 
     #[test]
-    fn test_get_chosen_licenses() -> Result<(), Error> {
+    fn test_get_chosen_licenses() -> Result<(), LicenseCheckerError> {
         assert_eq!(
             get_chosen_licenses("foo", Some("MIT"))?,
             BTreeSet::from([Licensee::parse("MIT").unwrap().into_req()]),

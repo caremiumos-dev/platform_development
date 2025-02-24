@@ -17,14 +17,14 @@
 use core::fmt::Display;
 use std::path::{Path, PathBuf};
 
-/// Error types for the 'rooted_path' crate.
-#[derive(thiserror::Error, Debug)]
-pub enum Error {
-    /// Root path is not absolute
-    #[error("Root path is not absolute: {0}")]
+use thiserror::Error;
+
+#[allow(missing_docs)]
+#[derive(Error, Debug)]
+pub enum RootedPathError {
+    #[error("Root path is not absolute: {}", .0.display())]
     RootNotAbsolute(PathBuf),
-    /// Path is not relative
-    #[error("Path is not relative: {0}")]
+    #[error("Path is not relative: {}", .0.display())]
     PathNotRelative(PathBuf),
 }
 
@@ -37,14 +37,17 @@ pub struct RootedPath {
 
 impl RootedPath {
     /// Creates a new RootedPath from an absolute root and a path relative to the root.
-    pub fn new<P: Into<PathBuf>>(root: P, path: impl AsRef<Path>) -> Result<RootedPath, Error> {
+    pub fn new<P: Into<PathBuf>>(
+        root: P,
+        path: impl AsRef<Path>,
+    ) -> Result<RootedPath, RootedPathError> {
         let root: PathBuf = root.into();
         if !root.is_absolute() {
-            return Err(Error::RootNotAbsolute(root));
+            return Err(RootedPathError::RootNotAbsolute(root));
         }
         let path = path.as_ref();
         if !path.is_relative() {
-            return Err(Error::PathNotRelative(path.to_path_buf()));
+            return Err(RootedPathError::PathNotRelative(path.to_path_buf()));
         }
         let path = root.join(path);
         Ok(RootedPath { root, path })
@@ -62,15 +65,15 @@ impl RootedPath {
         self.path.as_path()
     }
     /// Creates a new RootedPath with path adjoined to self.
-    pub fn join(&self, path: impl AsRef<Path>) -> Result<RootedPath, Error> {
+    pub fn join(&self, path: impl AsRef<Path>) -> Result<RootedPath, RootedPathError> {
         let path = path.as_ref();
         if !path.is_relative() {
-            return Err(Error::PathNotRelative(path.to_path_buf()));
+            return Err(RootedPathError::PathNotRelative(path.to_path_buf()));
         }
         Ok(RootedPath { root: self.root.clone(), path: self.path.join(path) })
     }
     /// Creates a new RootedPath with the same root but a new relative directory.
-    pub fn with_same_root(&self, path: impl AsRef<Path>) -> Result<RootedPath, Error> {
+    pub fn with_same_root(&self, path: impl AsRef<Path>) -> Result<RootedPath, RootedPathError> {
         RootedPath::new(self.root.clone(), path)
     }
 }
@@ -98,7 +101,7 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_basic() -> Result<(), Error> {
+    fn test_basic() -> Result<(), RootedPathError> {
         let p = RootedPath::new("/foo", "bar")?;
         assert_eq!(p.root(), Path::new("/foo"));
         assert_eq!(p.rel(), Path::new("bar"));
@@ -109,7 +112,7 @@ mod tests {
     }
 
     #[test]
-    fn test_errors() -> Result<(), Error> {
+    fn test_errors() -> Result<(), RootedPathError> {
         assert!(RootedPath::new("foo", "bar").is_err());
         assert!(RootedPath::new("/foo", "/bar").is_err());
         let p = RootedPath::new("/foo", "bar")?;
@@ -119,7 +122,7 @@ mod tests {
     }
 
     #[test]
-    fn test_conversion() -> Result<(), Error> {
+    fn test_conversion() -> Result<(), RootedPathError> {
         let p = RootedPath::new("/foo", "bar")?;
 
         let path = p.as_ref();

@@ -15,7 +15,6 @@
 use std::collections::BTreeMap;
 
 use crates_index::Dependency;
-use semver::VersionReq;
 
 mod android_target;
 pub use android_target::AndroidTarget;
@@ -34,6 +33,8 @@ pub use feature_resolver::FeatureResolver;
 
 mod index;
 pub use index::CratesIoIndex;
+use semver::VersionReq;
+use thiserror::Error;
 
 type DepSet<'a> = BTreeMap<&'a str, &'a Dependency>;
 
@@ -47,28 +48,21 @@ impl ParsedVersionReq for Dependency {
     }
 }
 
-/// Error types for the 'crates_io_util' crate.
-#[derive(thiserror::Error, Debug)]
+#[allow(missing_docs)]
+#[derive(Error, Debug)]
 pub enum Error {
-    /// Crate not found in crates.io
     #[error("Crate {0} not found in crates.io")]
     CrateNotFound(String),
-    /// Feature not found for crate
     #[error("Feature {0} not found for crate {1}")]
     FeatureNotFound(String, String),
-    /// Dependency not found for crate
     #[error("Dependency {0} not found for crate {1}")]
     DepNotFound(String, String),
-    /// Failed to get HTTP headers
     #[error("Failed to get HTTP headers")]
     HttpHeader,
-    /// Error fetching HTTP data
-    #[error(transparent)]
+    #[error("reqwest::Error: {0}")]
     Reqwest(#[from] reqwest::Error),
-    /// Propagated crates_index::Error
-    #[error(transparent)]
+    #[error("crates_index::Error: {0}")]
     CratesIndex(#[from] crates_index::Error),
-    /// Propagated crates_index::http::Error
-    #[error(transparent)]
+    #[error("crates_index::http::Error: {0}")]
     CratesIndexHttp(#[from] crates_index::http::Error),
 }

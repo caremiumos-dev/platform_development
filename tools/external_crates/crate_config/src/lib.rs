@@ -28,14 +28,12 @@ pub struct CrateConfig {
     update_with: Vec<String>,
 }
 
-/// Error types for the 'crate_config' crate.
+#[allow(missing_docs)]
 #[derive(thiserror::Error, Debug)]
 pub enum Error {
-    /// Error parsing TOML.
-    #[error(transparent)]
+    #[error("TOML parse error")]
     TomlParseError(#[from] toml::de::Error),
-    /// Error reading TOML file.
-    #[error(transparent)]
+    #[error("IO error")]
     IoError(#[from] io::Error),
 }
 

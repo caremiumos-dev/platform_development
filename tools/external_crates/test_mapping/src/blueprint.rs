@@ -21,22 +21,22 @@ use std::{
 
 use android_bp::{BluePrint, Value};
 
-use crate::Error;
+use crate::TestMappingError;
 
 /// Extract rust test rules from a blueprint file.
 pub(crate) trait RustTests {
     /// Returns the names of all rust_test and rust_test_host rules.
-    fn rust_tests(&self) -> Result<BTreeSet<String>, Error>;
+    fn rust_tests(&self) -> Result<BTreeSet<String>, TestMappingError>;
 }
 
 impl RustTests for BluePrint {
-    fn rust_tests(&self) -> Result<BTreeSet<String>, Error> {
+    fn rust_tests(&self) -> Result<BTreeSet<String>, TestMappingError> {
         let mut tests = BTreeSet::new();
         for module in &self.modules {
             if matches!(module.typ.as_str(), "rust_test" | "rust_test_host") {
                 let name = module
                     .get_string("name")
-                    .ok_or(Error::RuleWithoutName(module.typ.clone()))?
+                    .ok_or(TestMappingError::RuleWithoutName(module.typ.clone()))?
                     .clone();
                 if !EXCLUDED_TESTS.contains(name.as_str()) {
                     tests.insert(name);
@@ -161,7 +161,7 @@ mod tests {
     use super::*;
 
     #[test]
-    fn rust_tests() -> Result<(), Error> {
+    fn rust_tests() -> Result<(), TestMappingError> {
         let bp = BluePrint::parse(
             r###"
 rust_test { name: "foo" }
