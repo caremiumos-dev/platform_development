@@ -1145,6 +1145,7 @@ fn crate_to_bp_modules(
                 .clone()
                 .into_iter()
                 .filter(|crate_cfg| !cfg.cfg_blocklist.contains(crate_cfg))
+                .map(|crate_cfg| crate_cfg.replace(r#"""#, r#"\""#))
                 .collect(),
         );
 
