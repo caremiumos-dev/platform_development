@@ -33,6 +33,23 @@
       "message": "Friendly ping for owners review",
       "revId": "252cb57d718d3ce5d49505816c6c96a02c061b70",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "020d58d9_6c4d5b89",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2025-02-26T17:36:06Z",
+      "side": 1,
+      "message": "i do wonder whether we should have an explicit place for VSCode stuff, but since we don\u0027t current ... \"not a regression\", OWNERS +1.",
+      "revId": "252cb57d718d3ce5d49505816c6c96a02c061b70",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
