@@ -19,6 +19,7 @@ use std::{
     path::{Path, PathBuf},
 };
 
+use expression_parser::LicenseTerms;
 use file_classifier::Classifier;
 use spdx::LicenseReq;
 
@@ -71,6 +72,24 @@ pub struct LicenseState {
     pub unsatisfied: BTreeSet<LicenseReq>,
     /// Licenses for which a license file file was found, and the path to that file.
     pub satisfied: BTreeMap<LicenseReq, PathBuf>,
+    /// License files which are unneeded. That is, they are for license terms we are not
+    /// required to follow, such as LICENSE-MIT in the case of "Apache-2.0 OR MIT".
+    pub unneeded: BTreeMap<LicenseReq, PathBuf>,
+    /// Unexpected license files. They don't correspond to any terms in Cargo.toml, and
+    /// indicate that the stated license terms may be correct.
+    pub unexpected: BTreeMap<LicenseReq, PathBuf>,
+}
+
+impl LicenseState {
+    fn from(terms: &LicenseTerms, files: &BTreeSet<PathBuf>) -> LicenseState {
+        let mut state = LicenseState {
+            unsatisfied: BTreeSet::new(),
+            satisfied: BTreeMap::new(),
+            unneeded: BTreeMap::new(),
+            unexpected: BTreeMap::new(),
+        };
+        state
+    }
 }
 
 /// Evaluates the license expression for a crate at a given path and returns a minimal set of
@@ -83,10 +102,16 @@ pub fn find_licenses(
     cargo_toml_license: Option<&str>,
 ) -> Result<LicenseState, Error> {
     let crate_path = crate_path.as_ref();
-    let mut state = LicenseState { unsatisfied: BTreeSet::new(), satisfied: BTreeMap::new() };
+    let mut state = LicenseState {
+        unsatisfied: BTreeSet::new(),
+        satisfied: BTreeMap::new(),
+        unneeded: BTreeMap::new(),
+        unexpected: BTreeMap::new(),
+    };
 
-    state.unsatisfied =
-        expression_parser::evaluate_license_expr(crate_name, cargo_toml_license)?.required;
+    let terms = expression_parser::evaluate_license_expr(crate_name, cargo_toml_license)?;
+    state.unsatisfied = terms.required;
+    let not_required = terms.not_required;
     let possible_license_files = license_file_finder::find_license_files(crate_path)?
         .into_iter()
         .map(|f| (f.clone(), Classifier::new(crate_path, f)))
@@ -96,11 +121,25 @@ pub fn find_licenses(
         if let Some(req) = classifier.by_name() {
             if state.unsatisfied.remove(req) {
                 state.satisfied.insert(req.clone(), file.clone());
+            } else if !state.satisfied.contains_key(req) {
+                if not_required.contains(req) {
+                    state.unneeded.insert(req.clone(), file.clone());
+                } else {
+                    state.unexpected.insert(req.clone(), file.clone());
+                }
             }
         } else {
             for req in classifier.by_content() {
                 if state.unsatisfied.remove(req) {
                     state.satisfied.insert(req.clone(), file.clone());
+                } else if !state.satisfied.contains_key(req) && !not_required.contains(req) {
+                    state.unexpected.insert(req.clone(), file.clone());
+                }
+            }
+            if classifier.by_content().len() == 1 {
+                let req = &classifier.by_content()[0];
+                if !state.satisfied.contains_key(req) && not_required.contains(req) {
+                    state.unneeded.insert(req.clone(), file.clone());
                 }
             }
         }
