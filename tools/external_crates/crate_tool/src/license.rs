@@ -59,6 +59,7 @@ fn discriminant(lt: LicenseType) -> u8 {
 }
 
 pub fn most_restrictive_type(licenses: &LicenseState) -> LicenseType {
+    println!("{:?}", licenses);
     licenses
         .satisfied
         .keys()
@@ -105,6 +106,7 @@ static LICENSE_TYPES: LazyLock<BTreeMap<LicenseReq, LicenseType>> = LazyLock::ne
         ("Unicode-DFS-2016", LicenseType::NOTICE),
         ("NCSA", LicenseType::NOTICE),
         ("OpenSSL", LicenseType::NOTICE),
+        ("CC0-1.0", LicenseType::UNENCUMBERED),
     ]
     .into_iter()
     .map(|l| (Licensee::parse(l.0).unwrap().into_req(), l.1))
