@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eddca73c_e89869a0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1384660
+      },
+      "writtenOn": "2025-02-27T23:27:13Z",
+      "side": 1,
+      "message": "Thanks for a new patch set with a missing license file. Confirm that this works for `dcv-color-primitives` crate.",
+      "revId": "3259459f93cb60e443a484691a563059204584cd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
