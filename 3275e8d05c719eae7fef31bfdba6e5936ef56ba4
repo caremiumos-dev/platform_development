@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3fb30426_bc54a40b",
+        "filename": "tools/external_crates/crate_tool/src/managed_crate.rs",
+        "patchSetId": 3
+      },
+      "lineNbr": 396,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2025-03-03T23:30:20Z",
+      "side": 1,
+      "message": "I\u0027d say this has an unneeded \u0027e\u0027. LOL",
+      "range": {
+        "startLine": 396,
+        "startChar": 15,
+        "endLine": 396,
+        "endChar": 18
+      },
+      "revId": "3275e8d05c719eae7fef31bfdba6e5936ef56ba4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
