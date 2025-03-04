@@ -22,6 +22,30 @@
       },
       "revId": "3275e8d05c719eae7fef31bfdba6e5936ef56ba4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7221bf31_265c43ec",
+        "filename": "tools/external_crates/crate_tool/src/managed_crate.rs",
+        "patchSetId": 3
+      },
+      "lineNbr": 396,
+      "author": {
+        "id": 1903830
+      },
+      "writtenOn": "2025-03-04T16:47:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3fb30426_bc54a40b",
+      "range": {
+        "startLine": 396,
+        "startChar": 15,
+        "endLine": 396,
+        "endChar": 18
+      },
+      "revId": "3275e8d05c719eae7fef31bfdba6e5936ef56ba4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
