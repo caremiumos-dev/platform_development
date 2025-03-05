@@ -28,6 +28,8 @@ use std::{
     sync::OnceLock,
 };
 
+pub(crate) use content_classifier::strip_punctuation;
+
 use crate::Error;
 
 fn normalize_filename(file: impl AsRef<Path>) -> OsString {

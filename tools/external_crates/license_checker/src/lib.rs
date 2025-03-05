@@ -21,11 +21,14 @@ use std::{
 
 use expression_parser::LicenseTerms;
 use file_classifier::Classifier;
+use license_data::{CrateLicenseSpecialCase, License};
 use spdx::LicenseReq;
 
 mod expression_parser;
 mod file_classifier;
+mod license_data;
 mod license_file_finder;
+mod licenses;
 
 /// Error types for the 'license_checker' crate.
 #[derive(thiserror::Error, Debug)]

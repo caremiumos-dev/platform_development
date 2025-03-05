@@ -70,6 +70,7 @@ fn get_corrected_license_expr(
     }
 }
 
+// TODO: Construct this automatically. We really only need to know that Apache, MIT, and BSD area preferred, and anything else is lower priority.
 static LICENSE_PREFERENCE: LazyLock<Vec<Licensee>> = LazyLock::new(|| {
     vec![
         "Apache-2.0",

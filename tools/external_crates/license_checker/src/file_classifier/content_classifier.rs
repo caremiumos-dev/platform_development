@@ -17,7 +17,7 @@ use spdx::{LicenseReq, Licensee};
 use std::sync::LazyLock;
 use textdistance::str::ratcliff_obershelp;
 
-fn strip_punctuation(text: &str) -> String {
+pub(crate) fn strip_punctuation(text: &str) -> String {
     let lowercase = text.to_lowercase();
     let mut processed = String::with_capacity(lowercase.len());
     for c in lowercase.chars() {
