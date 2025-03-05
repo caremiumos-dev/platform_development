@@ -14,13 +14,13 @@
 
 use std::{collections::BTreeMap, ffi::OsString, path::Path, sync::LazyLock};
 
-use super::normalize_filename;
+use crate::util::normalize_filename;
 
 #[derive(Debug, Clone, PartialEq)]
 pub(crate) enum InexactLicenseType {
-    BSD,
-    UNICODE,
-    LGPL,
+    Bsd,
+    Unicode,
+    Lgpl,
 }
 
 pub(super) fn classify_inexact_license_file_name(
@@ -35,10 +35,10 @@ pub(super) fn classify_inexact_license_file_name(
 static INEXACT_LICENSE_FILE_NAMES: LazyLock<BTreeMap<OsString, InexactLicenseType>> =
     LazyLock::new(|| {
         vec![
-            ("LICENSE-BSD", InexactLicenseType::BSD),
-            ("LICENSE-UNICODE", InexactLicenseType::UNICODE),
-            ("LICENSE-LGPL", InexactLicenseType::LGPL),
-            ("LICENSE.LGPL-2.1", InexactLicenseType::LGPL),
+            ("LICENSE-BSD", InexactLicenseType::Bsd),
+            ("LICENSE-UNICODE", InexactLicenseType::Unicode),
+            ("LICENSE-LGPL", InexactLicenseType::Lgpl),
+            ("LICENSE.LGPL-2.1", InexactLicenseType::Lgpl),
         ]
         .into_iter()
         .map(|(file, inexact_type)| (OsString::from(file.to_uppercase()), inexact_type))
@@ -57,7 +57,7 @@ mod tests {
         );
         assert_eq!(
             classify_inexact_license_file_name(Path::new("LICENSE-BSD")),
-            Some(InexactLicenseType::BSD),
+            Some(InexactLicenseType::Bsd),
             "Some kind of BSD license file"
         );
     }
