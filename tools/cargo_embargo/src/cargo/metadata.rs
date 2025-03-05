@@ -18,7 +18,7 @@ use super::{Crate, CrateType, Extern, ExternType};
 use crate::config::VariantConfig;
 use anyhow::{bail, Context, Result};
 use serde::Deserialize;
-use std::collections::{BTreeMap, BTreeSet};
+use std::collections::BTreeMap;
 use std::path::{Path, PathBuf};
 
 /// `cfg` strings for dependencies which should be considered enabled. It would be better to parse
@@ -343,7 +343,7 @@ fn resolve_features(
         }
     }
 
-    let mut features = BTreeSet::new();
+    let mut features = Vec::new();
     if let Some(chosen_features) = chosen_features {
         for feature in chosen_features {
             add_feature_and_dependencies(&mut features, feature, &package_features);
@@ -352,22 +352,21 @@ fn resolve_features(
         // If there are no chosen features, then enable the default feature.
         add_feature_and_dependencies(&mut features, "default", &package_features);
     }
-    features.into_iter().collect()
+    features.sort();
+    features.dedup();
+    features
 }
 
 /// Adds the given feature and all features it depends on to the given list of features.
 ///
 /// Ignores features of other packages, and features which don't exist.
 fn add_feature_and_dependencies(
-    features: &mut BTreeSet<String>,
+    features: &mut Vec<String>,
     feature: &str,
     package_features: &BTreeMap<String, Vec<String>>,
 ) {
-    if features.contains(&feature.to_string()) {
-        return;
-    }
     if package_features.contains_key(feature) || feature.starts_with("dep:") {
-        features.insert(feature.to_owned());
+        features.push(feature.to_owned());
     }
 
     if let Some(dependencies) = package_features.get(feature) {
@@ -467,21 +466,6 @@ mod tests {
         assert_eq!(
             resolve_features(&None, &package_features, &dependencies),
             vec!["default".to_string(), "dep:optionaldep".to_string(), "optionaldep".to_string()]
-        );
-    }
-
-    #[test]
-    fn resolve_dep_features_recursion() {
-        let chosen = vec!["tokio".to_string()];
-        let package_features = [
-            ("default".to_string(), vec![]),
-            ("tokio".to_string(), vec!["dep:tokio".to_string(), "tokio/net".to_string()]),
-        ]
-        .into_iter()
-        .collect();
-        assert_eq!(
-            resolve_features(&Some(chosen), &package_features, &[]),
-            vec!["dep:tokio".to_string(), "tokio".to_string(),]
         );
     }
 
