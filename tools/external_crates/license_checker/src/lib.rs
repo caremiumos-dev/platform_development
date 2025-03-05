@@ -19,13 +19,19 @@ use std::{
     path::{Path, PathBuf},
 };
 
-use expression_parser::LicenseTerms;
 use file_classifier::Classifier;
-use spdx::LicenseReq;
+use license_data::{CrateLicenseSpecialCase, License};
+use license_terms::LicenseTerms;
+use licenses::LICENSE_DATA;
+use parsed_license_data::{CrateLicenseSpecialCases, ParsedCrateLicenseSpecialCase, ParsedLicense};
+use spdx::{LicenseReq, Licensee};
 
-mod expression_parser;
 mod file_classifier;
+mod license_data;
 mod license_file_finder;
+mod license_terms;
+mod licenses;
+mod parsed_license_data;
 
 /// Error types for the 'license_checker' crate.
 #[derive(thiserror::Error, Debug)]
@@ -44,7 +50,7 @@ pub enum Error {
     StripPrefixError(#[from] std::path::StripPrefixError),
     /// License expression special case doesn't match what's in Cargo.toml
     #[error("Found a license expression special case for crate {crate_name} but the Cargo.toml license field doesn't match. Expected '{expected_license}', found '{cargo_toml_license}'")]
-    LicenseExpressionSpecialCase {
+    LicenseExpressionSpecialCaseMismatch {
         /// The name of the crate
         crate_name: String,
         /// The expected license expression in special case
@@ -57,13 +63,42 @@ pub enum Error {
     MissingLicenseField(String),
     /// Error parsing SPDX license expression
     #[error(transparent)]
-    ParseError(#[from] spdx::ParseError),
+    LicenseParseError(#[from] spdx::ParseError),
     /// Error minimizing SPDX expression
     #[error(transparent)]
     MinimizeError(#[from] spdx::expression::MinimizeError),
     /// Failed to read file
     #[error("Failed to read {0}: {1}")]
     FileReadError(PathBuf, std::io::Error),
+    /// The set of known licenses is empty.
+    #[error("The set of known licenses is empty")]
+    NoLicenses,
+    /// License with neither text nor file names.
+    #[error("License {0} has neither text nor file names")]
+    LicenseWithoutTextOrFileNames(String),
+    /// Duplicate license
+    #[error("Duplicate license {0}")]
+    DuplicateLicense(String),
+    /// Duplicate crate license special case
+    #[error("Duplicate license special case for crate {0}")]
+    DuplicateCrateLicenseSpecialCase(String),
+    /// The license text is empty.
+    #[error("The license text for {0} is empty")]
+    EmptyLicenseText(String),
+    /// License text is ambiguous because it is a substring of another license text.
+    #[error("The license text for {0} is a substring of the license text for {0}")]
+    AmbiguousLicenseText(String, String),
+    /// Duplicate license file name
+    #[error("The file name {0} matches multiple licenses: {1} and {2}")]
+    DuplicateLicenseFileName(String, String, String),
+    /// License file name not findable by any known license file glob patterns.
+    #[error(
+        "The license file name {0} for {1} is not findable by any known license file glob patterns"
+    )]
+    LicenseFileNotFindable(String, String),
+    /// The list of license preferences contains an unknown license
+    #[error("The license preference list contains unknown license {0}")]
+    LicensePreferenceForUnknownLicense(String),
 }
 
 /// The result of license file verification, containing a set of acceptable licenses, and the
@@ -156,7 +191,7 @@ pub fn find_licenses(
 ) -> Result<LicenseState, Error> {
     let crate_path = crate_path.as_ref();
 
-    let terms = expression_parser::evaluate_license_expr(crate_name, cargo_toml_license)?;
+    let terms = LICENSE_DATA.evaluate_crate_license(crate_name, cargo_toml_license)?;
     Ok(LicenseState::from(
         terms,
         &Classifier::new_vec(
@@ -182,16 +217,16 @@ mod tests {
     }
 
     mod license_terms {
-        use crate::{expression_parser::evaluate_license_expr, LicenseTerms};
+        use crate::{LicenseTerms, LICENSE_DATA};
 
         pub(super) fn apache() -> LicenseTerms {
-            evaluate_license_expr("foo", Some("Apache-2.0")).unwrap()
+            LICENSE_DATA.evaluate_crate_license("foo", Some("Apache-2.0")).unwrap()
         }
         pub(super) fn apache_or_mit() -> LicenseTerms {
-            evaluate_license_expr("foo", Some("Apache-2.0 OR MIT")).unwrap()
+            LICENSE_DATA.evaluate_crate_license("foo", Some("Apache-2.0 OR MIT")).unwrap()
         }
         pub(super) fn apache_or_bsd() -> LicenseTerms {
-            evaluate_license_expr("foo", Some("Apache-2.0 OR BSD-3-Clause")).unwrap()
+            LICENSE_DATA.evaluate_crate_license("foo", Some("Apache-2.0 OR BSD-3-Clause")).unwrap()
         }
     }
 

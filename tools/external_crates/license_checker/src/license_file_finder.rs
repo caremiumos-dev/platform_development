@@ -14,10 +14,12 @@
 
 use std::{
     collections::BTreeSet,
+    ffi::OsStr,
     path::{Path, PathBuf},
+    sync::LazyLock,
 };
 
-use glob::glob;
+use glob::{glob, glob_with, MatchOptions};
 
 use crate::Error;
 
@@ -29,14 +31,25 @@ static LICENSE_GLOBS: &[&str] = &[
     "LICENSES/*",
     "UNLICENSE",
     "COPYING",
-    "license",
-    "license.*",
     "third-party/chromium/LICENSE",
     "docs/LICENSE*",
 ];
 
 pub(crate) fn find_license_files(path: impl AsRef<Path>) -> Result<BTreeSet<PathBuf>, Error> {
     multiglob(path, LICENSE_GLOBS.iter())
+}
+
+static LICENSE_PATTERNS: LazyLock<Vec<glob::Pattern>> =
+    LazyLock::new(|| LICENSE_GLOBS.iter().map(|p| glob::Pattern::new(p).unwrap()).collect());
+
+static MATCH_OPTIONS: LazyLock<MatchOptions> = LazyLock::new(|| {
+    let mut options = MatchOptions::new();
+    options.case_sensitive = false;
+    options
+});
+
+pub(crate) fn is_findable(license_file: &OsStr) -> bool {
+    LICENSE_PATTERNS.iter().any(|p| p.matches_path_with(Path::new(license_file), *MATCH_OPTIONS))
 }
 
 fn multiglob<T: AsRef<str>>(
@@ -47,7 +60,10 @@ fn multiglob<T: AsRef<str>>(
     let mut matches = BTreeSet::new();
     for pattern in patterns {
         let pattern = path.join(pattern.as_ref());
-        for file in glob(pattern.to_str().ok_or(Error::PathToString(pattern.clone()))?)? {
+        for file in glob_with(
+            pattern.to_str().ok_or(Error::PathToString(pattern.clone()))?,
+            *MATCH_OPTIONS,
+        )? {
             let file = file?;
             if !file.is_symlink() {
                 matches.insert(file.strip_prefix(path)?.to_owned());
