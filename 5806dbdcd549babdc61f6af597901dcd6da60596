@@ -22,6 +22,30 @@
       },
       "revId": "5806dbdcd549babdc61f6af597901dcd6da60596",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "79be2549_234f1493",
+        "filename": "tools/external_crates/crate_tool/src/main.rs",
+        "patchSetId": 2
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1903830
+      },
+      "writtenOn": "2025-03-06T16:47:30Z",
+      "side": 1,
+      "message": "Yeah, I wasn\u0027t thrilled with that either. The flag seemed to make more sense as \"metadata_only\", because I think you generally want flags denoting changes to default behavior to be false by default. --do_this_thing_differently, not --default_behavior\u003dfalse. But internally I want the logic and variables to be positive. That is \"run_cargo_embargo\", not \"dont_run_cargo_embargo\".\n\nI took your suggestion.",
+      "parentUuid": "a901c82a_0b9a1ea1",
+      "range": {
+        "startLine": 166,
+        "startChar": 80,
+        "endLine": 166,
+        "endChar": 94
+      },
+      "revId": "5806dbdcd549babdc61f6af597901dcd6da60596",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
