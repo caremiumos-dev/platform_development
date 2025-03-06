@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a901c82a_0b9a1ea1",
+        "filename": "tools/external_crates/crate_tool/src/main.rs",
+        "patchSetId": 2
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2025-03-06T01:49:32Z",
+      "side": 1,
+      "message": "nit: From a readability standpoint, I often dislike the `!` on arguments that then don\u0027t correspond to a similarly named parameter (especially when traversing this command line arguments -\u003e function arguments boundary). Style-wise, I\u0027d probably do a `let run_cargo_embargo \u003d !metadata_only;` on the previous line so you can still just use the `run_cargo_embargo` name as the argument here. It also makes it clear that when asking for `metadata_only` implies that we\u0027re not going to run `cargo_embargo` later.\n\nFeel free to just resolve this comment and let this get submitted, but I wanted to point this out in case others (or you) feel differently when presented with this info.",
+      "range": {
+        "startLine": 166,
+        "startChar": 80,
+        "endLine": 166,
+        "endChar": 94
+      },
+      "revId": "5806dbdcd549babdc61f6af597901dcd6da60596",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
