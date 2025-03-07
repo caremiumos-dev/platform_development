@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "08371a03_9a067398",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1885365
+      },
+      "writtenOn": "2025-03-07T00:39:09Z",
+      "side": 1,
+      "message": "This is fine, but technically according to go/thirdpartylicenses you are supposed to pick the most permissive license in dual-licensed cases, which here is 0BSD (it is \"permissive\" instead of \"notice\")\n\nThere\u0027s an exception to that policy for Rust where MIT/Apache dual goes to Apache, and that kind of applies here, but it also doesn\u0027t really matter that much.",
+      "revId": "2b97648953cae3e54584ae6c914f6d2f759f47f6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
