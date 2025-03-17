@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a5f47659_cdc0cf02",
+        "filename": "tools/cargo_embargo/src/main.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 1147,
+      "author": {
+        "id": 1380243
+      },
+      "writtenOn": "2025-03-17T21:54:07Z",
+      "side": 1,
+      "message": "Nit: This can now be simplified to `let flags \u003d crate_.codegens.iter().map(...).collect();`.",
+      "revId": "2dd0fc3a6d876dde4aadb3bd7600ee7a182073d5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
