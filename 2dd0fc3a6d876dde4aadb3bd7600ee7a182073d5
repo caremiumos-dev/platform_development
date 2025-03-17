@@ -16,6 +16,24 @@
       "message": "Nit: This can now be simplified to `let flags \u003d crate_.codegens.iter().map(...).collect();`.",
       "revId": "2dd0fc3a6d876dde4aadb3bd7600ee7a182073d5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "316f3abd_8c67fba4",
+        "filename": "tools/cargo_embargo/src/main.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 1147,
+      "author": {
+        "id": 1903830
+      },
+      "writtenOn": "2025-03-17T22:20:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a5f47659_cdc0cf02",
+      "revId": "2dd0fc3a6d876dde4aadb3bd7600ee7a182073d5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
