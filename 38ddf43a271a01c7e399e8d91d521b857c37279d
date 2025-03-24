@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "51a56e4d_037c9306",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1275923
+      },
+      "writtenOn": "2025-03-24T16:35:09Z",
+      "side": 1,
+      "message": "git clone https://android.googlesource.com/platform/frameworks/support \u0026\u0026 (cd support \u0026\u0026 f\u003d`git rev-parse --git-dir`/hooks/commit-msg ; mkdir -p $(dirname $f) ; curl -Lo $f https://gerrit-review.googlesource.com/tools/hooks/commit-msg ; chmod +x $f)",
+      "revId": "38ddf43a271a01c7e399e8d91d521b857c37279d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
