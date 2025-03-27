@@ -756,8 +756,7 @@ repr::VTableComponentIR RecordDeclWrapper::SetupRecordVTableComponent(
             if (thunk_info.isEmpty()) {
               mangle_contextp_->mangleName(method_decl, ostream);
             } else {
-              mangle_contextp_->mangleThunk(
-                  method_decl, thunk_info, /*ElideOverrideInfo=*/true, ostream);
+              mangle_contextp_->mangleThunk(method_decl, thunk_info, ostream);
             }
             ostream.flush();
             break;
@@ -781,7 +780,7 @@ repr::VTableComponentIR RecordDeclWrapper::SetupRecordVTableComponent(
               } else {
                 mangle_contextp_->mangleCXXDtorThunk(
                     vtable_component.getDestructorDecl(), dtor_type,
-                    thunk_info, /*ElideOverrideInfo=*/true, ostream);
+                    thunk_info.This, ostream);
               }
               ostream.flush();
             }
