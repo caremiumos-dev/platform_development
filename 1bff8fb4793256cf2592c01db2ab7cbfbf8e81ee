@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "095c9406_a202797d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1229163
+      },
+      "writtenOn": "2025-04-04T19:19:03Z",
+      "side": 1,
+      "message": "used this to regenerate https://r.android.com/3531113 miniz_oxide with the correct licenses.",
+      "revId": "1bff8fb4793256cf2592c01db2ab7cbfbf8e81ee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
