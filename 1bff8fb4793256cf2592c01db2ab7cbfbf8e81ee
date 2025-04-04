@@ -33,6 +33,24 @@
       "message": "LGTM, but you need to send it to internal gerrit",
       "revId": "1bff8fb4793256cf2592c01db2ab7cbfbf8e81ee",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d7c6aae7_c205e853",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1229163
+      },
+      "writtenOn": "2025-04-04T21:37:55Z",
+      "side": 1,
+      "message": "ACK, i\u0027m on it. thanks!",
+      "parentUuid": "5db0d11f_852360f6",
+      "revId": "1bff8fb4793256cf2592c01db2ab7cbfbf8e81ee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
