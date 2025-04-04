@@ -16,6 +16,23 @@
       "message": "used this to regenerate https://r.android.com/3531113 miniz_oxide with the correct licenses.",
       "revId": "1bff8fb4793256cf2592c01db2ab7cbfbf8e81ee",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5db0d11f_852360f6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2025-04-04T20:41:58Z",
+      "side": 1,
+      "message": "LGTM, but you need to send it to internal gerrit",
+      "revId": "1bff8fb4793256cf2592c01db2ab7cbfbf8e81ee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
