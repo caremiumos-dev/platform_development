@@ -1,0 +1,65 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "87e713f4_0f0f1c80",
+        "filename": "tools/repo_pull/repo_pull.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1014807
+      },
+      "writtenOn": "2025-05-15T14:57:07Z",
+      "side": 1,
+      "message": "`shlex.split(merge_args)` will be better.\n\nFor example:\n\n```\n\u003e\u003e\u003e s \u003d \u0027--a\u003d\"word word\" --b\u003dword word\u0027\n\u003e\u003e\u003e shlex.split(s)\n[\u0027--a\u003dword word\u0027, \u0027--b\u003dword\u0027, \u0027word\u0027]\n\n\u003e\u003e\u003e s.split()\n[\u0027--a\u003d\"word\u0027, \u0027word\"\u0027, \u0027--b\u003dword\u0027, \u0027word\u0027]\n```\n\n`shlex.split` can handle quotations properly.",
+      "range": {
+        "startLine": 265,
+        "startChar": 21,
+        "endLine": 265,
+        "endChar": 39
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "9b10eebf_29ef1315",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "tools/repo_pull/repo_pull.py",
+              "range": {
+                "startLine": 31,
+                "startChar": 0,
+                "endLine": 31,
+                "endChar": 0
+              },
+              "replacement": "import shlex\n"
+            },
+            {
+              "path": "tools/repo_pull/repo_pull.py",
+              "range": {
+                "startLine": 265,
+                "startChar": 0,
+                "endLine": 266,
+                "endChar": 0
+              },
+              "replacement": "        merge_args \u003d shlex.split(merge_args)\n"
+            },
+            {
+              "path": "tools/repo_pull/repo_pull.py",
+              "range": {
+                "startLine": 268,
+                "startChar": 0,
+                "endLine": 269,
+                "endChar": 0
+              },
+              "replacement": "        pick_args \u003d shlex.split(pick_args)\n"
+            }
+          ]
+        }
+      ],
+      "revId": "d1e75040227a20f82cd680204beaf829ea9e36e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
