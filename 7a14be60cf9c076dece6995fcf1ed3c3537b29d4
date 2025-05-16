@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "403fbffc_d789ab18",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1130827
+      },
+      "writtenOn": "2025-05-16T03:21:33Z",
+      "side": 1,
+      "message": "I do not have the permission to +2.\n\nCould you upload to internal gerrit?",
+      "revId": "7a14be60cf9c076dece6995fcf1ed3c3537b29d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
