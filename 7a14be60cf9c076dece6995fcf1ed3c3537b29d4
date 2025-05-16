@@ -34,6 +34,24 @@
       "parentUuid": "403fbffc_d789ab18",
       "revId": "7a14be60cf9c076dece6995fcf1ed3c3537b29d4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4e360322_4e6b3a70",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1130827
+      },
+      "writtenOn": "2025-05-16T04:04:24Z",
+      "side": 1,
+      "message": "The change will be published in a quarterly release. This main branch will not be updated.",
+      "parentUuid": "6aa14dda_549f4d7f",
+      "revId": "7a14be60cf9c076dece6995fcf1ed3c3537b29d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
