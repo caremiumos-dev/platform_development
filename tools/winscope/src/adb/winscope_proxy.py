@@ -127,7 +127,7 @@ class FileMatcher:
             matchingFiles = call_adb(
                 f"shell su root find {self.path}", device_id)
 
-        files = matchingFiles.split('\n')[:-1]
+        files = matchingFiles.split(os.linesep)[:-1]
         log.debug("Found files %s", files)
         return files
 
@@ -1248,10 +1248,10 @@ class TraceThread(threading.Thread):
     def end_trace(self):
         if self._keep_alive_timer:
             self._keep_alive_timer.cancel()
-        log.info("Sending SIGINT to the {} process on {}".format(
+        log.info("Sending SIGTERM to the {} process on {}".format(
             self.trace_name,
             self._device_id))
-        self.process.send_signal(signal.SIGINT)
+        self.process.send_signal(signal.SIGTERM)
         try:
             log.debug("Waiting for {} trace shell to exit for {}".format(
                 self.trace_name,
@@ -1271,7 +1271,7 @@ class TraceThread(threading.Thread):
         log.info("Trace {} ended on {}, waiting for cleanup".format(self.trace_name, self._device_id))
         time.sleep(0.2)
         for i in range(int(COMMAND_TIMEOUT_S / retry_interval)):
-            if call_adb(f"shell su root cat {self.status_filename}", device=self._device_id) == 'TRACE_OK\n':
+            if call_adb(f"shell su root cat {self.status_filename}", device=self._device_id) == f'TRACE_OK{os.linesep}':
                 log.info("Trace {} finished on {}".format(
                     self.trace_name,
                     self._device_id))
