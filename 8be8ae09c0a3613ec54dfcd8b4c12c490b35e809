@@ -16,6 +16,23 @@
       "message": "Please.",
       "revId": "8be8ae09c0a3613ec54dfcd8b4c12c490b35e809",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "089b3914_773efb39",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1895271
+      },
+      "writtenOn": "2025-06-12T10:26:35Z",
+      "side": 1,
+      "message": "I can make the line separator change, but replacing `SIGINT` with `SIGTERM` causes other issues with the use of the proxy script.\n\nPlease note that we are working on alternative support for trace collection on Windows using Web Device Proxy (https://tools.google.com/dlpage/android_web_device_proxy). Once this is available in AOSP, you will no longer need to use the proxy script.",
+      "revId": "8be8ae09c0a3613ec54dfcd8b4c12c490b35e809",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
