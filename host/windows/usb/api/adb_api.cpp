@@ -215,6 +215,23 @@ bool __cdecl AdbGetInterfaceName(ADBAPIHANDLE adb_interface,
   }
 }
 
+bool __cdecl AdbSetInterfaceAltSetting(ADBAPIHANDLE adb_interface,
+                               unsigned char alt_setting) {
+  // Lookup interface object for the handle
+  AdbInterfaceObject* adb_object =
+    LookupObject<AdbInterfaceObject>(adb_interface);
+
+  if (NULL != adb_object) {
+    // Dispatch call to the found object
+    bool ret = adb_object->SetAlternateSetting(alt_setting);
+    adb_object->Release();
+    return ret;
+  } else {
+    SetLastError(ERROR_INVALID_HANDLE);
+    return false;
+  }
+}
+
 bool __cdecl AdbGetSerialNumber(ADBAPIHANDLE adb_interface,
                         void* buffer,
                         unsigned long* buffer_char_size,

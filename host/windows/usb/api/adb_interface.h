@@ -54,6 +54,15 @@ class ADBWIN_API_CLASS AdbInterfaceObject : public AdbObjectHandle {
   //
 
  public:
+  /** \brief Sets USB interface alternate setting. Endpoints are invalidated
+    and should be closed before calling this function
+
+    @param[in] alt_setting Alternate setting that should be set.
+    @return true on success, false on failure. If false is returned
+            GetLastError() provides extended error information.
+  */
+  virtual bool SetAlternateSetting(unsigned char alt_setting) = 0;
+
   /** \brief Gets serial number for interface's device.
 
     @param[out] buffer Buffer for the serail number string. Can be NULL in

@@ -95,6 +95,15 @@ class AdbWinUsbInterfaceObject : public AdbInterfaceObject {
   //
 
  public:
+  /** \brief Sets USB interface alternate setting. Endpoints are invalidated
+    and should be closed before calling this function
+
+    @param[in] alt_setting Alternate setting that should be set.
+    @return true on success, false on failure. If false is returned
+            GetLastError() provides extended error information.
+  */
+  virtual bool SetAlternateSetting(unsigned char alt_setting);
+
   /** \brief Gets serial number for interface's device.
 
     @param[out] buffer Buffer for the serail number string. Can be NULL in
@@ -160,6 +169,15 @@ class AdbWinUsbInterfaceObject : public AdbInterfaceObject {
             about the error that occurred.
   */
   ADBAPIHANDLE OpenEndpoint(UCHAR endpoint_id, UCHAR endpoint_index);
+
+  /** \brief Find endpoints IDs in cached USB interface descriptor
+
+    This should be called after USB interface descriptor is changed. It will
+    update def_read/write_endpoint_ and read/write_endpoint_id_.
+    @return true on success, false on failure. If false is returned
+            GetLastError() provides extended error information.
+  */
+  bool FindEndpoints();
 
  public:
   /// Gets handle to the USB device

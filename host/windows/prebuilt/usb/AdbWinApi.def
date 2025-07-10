@@ -23,5 +23,6 @@ AdbQueryInformationEndpoint
 AdbReadEndpointAsync
 AdbReadEndpointSync
 AdbResetInterfaceEnum
+AdbSetInterfaceAltSetting
 AdbWriteEndpointAsync
 AdbWriteEndpointSync
