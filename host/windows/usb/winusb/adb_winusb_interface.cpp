@@ -95,6 +95,14 @@ ADBAPIHANDLE AdbWinUsbInterfaceObject::CreateHandle() {
     return false;
   }
 
+  if (!FindEndpoints()) {
+    return false;
+  }
+
+  return AdbInterfaceObject::CreateHandle();
+}
+
+bool AdbWinUsbInterfaceObject::FindEndpoints() {
   // Save indexes and IDs for bulk read / write endpoints. We will use them to
   // convert ADB_QUERY_BULK_WRITE_ENDPOINT_INDEX and
   // ADB_QUERY_BULK_READ_ENDPOINT_INDEX into actual endpoint indexes and IDs.
@@ -123,7 +131,7 @@ ADBAPIHANDLE AdbWinUsbInterfaceObject::CreateHandle() {
     }
   }
 
-  return AdbInterfaceObject::CreateHandle();
+  return true;
 }
 
 bool AdbWinUsbInterfaceObject::CloseHandle() {
@@ -137,6 +145,31 @@ bool AdbWinUsbInterfaceObject::CloseHandle() {
   }
 
   return AdbInterfaceObject::CloseHandle();
+}
+
+bool AdbWinUsbInterfaceObject::SetAlternateSetting(unsigned char alt_setting) {
+  if (!IsOpened()) {
+    SetLastError(ERROR_INVALID_HANDLE);
+    return false;
+  }
+
+  // Cache USB interface descriptor
+  if (!WinUsb_QueryInterfaceSettings(winusb_handle(), alt_setting,
+                                     &usb_interface_descriptor_)) {
+    return false;
+  }
+
+  if (!WinUsb_SetCurrentAlternateSetting(winusb_handle(), alt_setting)) {
+    return false;
+  }
+
+  interface_number_ = alt_setting;
+
+  if (!FindEndpoints()) {
+    return false;
+  }
+
+  return true;
 }
 
 bool AdbWinUsbInterfaceObject::GetSerialNumber(void* buffer,

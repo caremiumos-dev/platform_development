@@ -100,6 +100,16 @@ ADBAPIHANDLE AdbLegacyInterfaceObject::CreateHandle() {
   return AdbObjectHandle::CreateHandle();
 }
 
+bool AdbLegacyInterfaceObject::SetAlternateSetting(unsigned char alt_setting) {
+  if (alt_setting != 0) {
+    // Don't support alternate setting in legacy API
+    SetLastError(ERROR_NO_MORE_ITEMS);
+    return false;
+  }
+
+  return true;
+}
+
 bool AdbLegacyInterfaceObject::GetSerialNumber(void* buffer,
                                                unsigned long* buffer_char_size,
                                                bool ansi) {

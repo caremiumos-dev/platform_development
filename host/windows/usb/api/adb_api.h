@@ -291,6 +291,16 @@ ADBWIN_API bool __cdecl AdbGetInterfaceName(ADBAPIHANDLE adb_interface,
                                     unsigned long* buffer_char_size,
                                     bool ansi);
 
+/** \brief Sets interface into alternate setting. Endpoints are invalidated and
+  should be released before this call.
+
+  @param[in] alt_setting Alternate setting that should be set.
+  @return true on success, false on failure. If false is returned
+          GetLastError() provides extended error information.
+*/
+ADBWIN_API bool __cdecl AdbSetInterfaceAltSetting(ADBAPIHANDLE adb_interface,
+                                          unsigned char alt_setting);
+
 /** \brief Gets serial number for interface's device.
 
   @param[in] adb_interface A handle to interface object created with 
