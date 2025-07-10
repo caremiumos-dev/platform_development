@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9b2952ed_37536f70",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1083168
+      },
+      "writtenOn": "2025-07-10T16:11:15Z",
+      "side": 1,
+      "message": "1. ADB changes are to be sent to internal git_main now.\n2. How were these dll built? It is a problem to check in executable directly in Gerrit since they cannot be audited (which is why we have on our roadmap to rewrite this windows usb back without the abstraction layer, see b/420952997).",
+      "revId": "9542c59280a366dac4824e29da32165d162b384d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
