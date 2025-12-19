@@ -115,7 +115,11 @@ public class InstallApkSessionApi extends Activity {
                 case PackageInstaller.STATUS_PENDING_USER_ACTION:
                     // This test app isn't privileged, so the user has to confirm the install.
                     Intent confirmIntent = (Intent) extras.get(Intent.EXTRA_INTENT);
-                    startActivity(confirmIntent);
+		            ComponentName targetPackageName = confirmIntent.resolveActivity(getPackageManager());
+                    // Prevent Intent Redirection by checking the target package name
+                    if (targetPackageName != null && targetPackageName.getPackageName().equals("com.google.android.packageinstaller")) {
+			            startActivity(confirmIntent);
+		            }
                     break;
 
                 case PackageInstaller.STATUS_SUCCESS:
