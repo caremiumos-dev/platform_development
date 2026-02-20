@@ -1,0 +1,10 @@
+android_app {
+    name: "WelcomeTV",
+    srcs: ["src/**/*.java"],
+    resource_dirs: ["res"],
+    platform_apis: true,
+    certificate: "platform",
+    optimize: {
+        enabled: false,
+    },
+}
