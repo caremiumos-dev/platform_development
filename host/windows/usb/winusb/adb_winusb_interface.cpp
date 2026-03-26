@@ -152,68 +152,43 @@ bool AdbWinUsbInterfaceObject::GetSerialNumber(void* buffer,
     return false;
   }
 
-  // Calculate serial number string size. Note that WinUsb_GetDescriptor
-  // API will not return number of bytes needed to store serial number
-  // string. So we will have to start with a reasonably large preallocated
-  // buffer and then loop through WinUsb_GetDescriptor calls, doubling up
-  // string buffer size every time ERROR_INSUFFICIENT_BUFFER is returned.
+  // USB string descriptors have a maximum size of 255 bytes (bLength is UCHAR),
+  // so a fixed 255-byte buffer is always sufficient.
   union {
     // Preallocate reasonably sized buffer on the stack.
-    char small_buffer[64];
-    USB_STRING_DESCRIPTOR initial_ser_num;
+    char ser_num_buffer[MAXIMUM_USB_STRING_LENGTH];
+    USB_STRING_DESCRIPTOR ser_num;
   };
-  USB_STRING_DESCRIPTOR* ser_num = &initial_ser_num;
   // Buffer byte size
-  unsigned long ser_num_size = sizeof(small_buffer);
+  unsigned long ser_num_size = sizeof(ser_num_buffer);
   // After successful call to WinUsb_GetDescriptor will contain serial
   // number descriptor size.
   unsigned long bytes_written;
-  while (!WinUsb_GetDescriptor(winusb_handle(), USB_STRING_DESCRIPTOR_TYPE,
-                               usb_device_descriptor_.iSerialNumber,
-                               0x0409, // English (US)
-                               reinterpret_cast<PUCHAR>(ser_num),
-                               ser_num_size, &bytes_written)) {
-    // Any error other than ERROR_INSUFFICIENT_BUFFER is terminal here.
-    if (ERROR_INSUFFICIENT_BUFFER != GetLastError()) {
-      if (ser_num != &initial_ser_num)
-        delete[] reinterpret_cast<char*>(ser_num);
+  if (!WinUsb_GetDescriptor(winusb_handle(), USB_STRING_DESCRIPTOR_TYPE,
+                            usb_device_descriptor_.iSerialNumber,
+                            0x0409, // English (US)
+                            reinterpret_cast<PUCHAR>(&ser_num),
+                            ser_num_size, &bytes_written)) {
       return false;
-    }
-
-    // Double up buffer size and reallocate string buffer
-    ser_num_size *= 2;
-    if (ser_num != &initial_ser_num)
-      delete[] reinterpret_cast<char*>(ser_num);
-    try {
-      ser_num =
-          reinterpret_cast<USB_STRING_DESCRIPTOR*>(new char[ser_num_size]);
-    } catch (...) {
-      SetLastError(ERROR_OUTOFMEMORY);
-      return false;
-    }
   }
 
   // USB string descriptors are variable-length: the minimum on-the-wire
   // size is 2 bytes (bLength + bDescriptorType), but
   // sizeof(USB_STRING_DESCRIPTOR) is larger due to the WCHAR bString[1] field.
-  if (2 > bytes_written || 2 > ser_num->bLength ||
-      bytes_written < ser_num->bLength) {
-    if (ser_num != &initial_ser_num)
-      delete[] reinterpret_cast<char*>(ser_num);
+  if (2 > bytes_written || 2 > ser_num.bLength ||
+      bytes_written < ser_num.bLength) {
     SetLastError(ERROR_GEN_FAILURE);
     return false;
   }
 
   // Serial number string length
-  unsigned long str_len = (ser_num->bLength -
+  unsigned long str_len = (ser_num.bLength -
                            FIELD_OFFSET(USB_STRING_DESCRIPTOR, bString)) /
                           sizeof(wchar_t);
 
   // Lets see if requested buffer is big enough to fit the string
   if ((NULL == buffer) || (*buffer_char_size < (str_len + 1))) {
     // Requested buffer is too small.
-    if (ser_num != &initial_ser_num)
-      delete[] reinterpret_cast<char*>(ser_num);
     *buffer_char_size = str_len + 1;
     SetLastError(ERROR_INSUFFICIENT_BUFFER);
     return false;
@@ -222,7 +197,7 @@ bool AdbWinUsbInterfaceObject::GetSerialNumber(void* buffer,
   bool ret = true;
   if (ansi) {
     // We need to convert name from wide char to ansi string
-    if (0 != WideCharToMultiByte(CP_ACP, 0, ser_num->bString,
+    if (0 != WideCharToMultiByte(CP_ACP, 0, ser_num.bString,
                                  static_cast<int>(str_len),
                                  reinterpret_cast<PSTR>(buffer),
                                  static_cast<int>(*buffer_char_size),
@@ -235,12 +210,10 @@ bool AdbWinUsbInterfaceObject::GetSerialNumber(void* buffer,
   } else {
     // For wide char output just copy string buffer,
     // and zero-terminate output string.
-    CopyMemory(buffer, ser_num->bString, str_len * sizeof(wchar_t));
+    CopyMemory(buffer, ser_num.bString, str_len * sizeof(wchar_t));
     reinterpret_cast<wchar_t*>(buffer)[str_len] = L'\0';
   }
 
-  if (ser_num != &initial_ser_num)
-    delete[] reinterpret_cast<char*>(ser_num);
 
   return ret;
 }
