@@ -193,6 +193,17 @@ bool AdbWinUsbInterfaceObject::GetSerialNumber(void* buffer,
     }
   }
 
+  // USB string descriptors are variable-length: the minimum on-the-wire
+  // size is 2 bytes (bLength + bDescriptorType), but
+  // sizeof(USB_STRING_DESCRIPTOR) is larger due to the WCHAR bString[1] field.
+  if (2 > bytes_written || 2 > ser_num->bLength ||
+      bytes_written < ser_num->bLength) {
+    if (ser_num != &initial_ser_num)
+      delete[] reinterpret_cast<char*>(ser_num);
+    SetLastError(ERROR_GEN_FAILURE);
+    return false;
+  }
+
   // Serial number string length
   unsigned long str_len = (ser_num->bLength -
                            FIELD_OFFSET(USB_STRING_DESCRIPTOR, bString)) /
