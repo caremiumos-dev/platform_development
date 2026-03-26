@@ -235,7 +235,7 @@ bool AdbWinUsbInterfaceObject::GetSerialNumber(void* buffer,
   } else {
     // For wide char output just copy string buffer,
     // and zero-terminate output string.
-    CopyMemory(buffer, ser_num->bString, bytes_written);
+    CopyMemory(buffer, ser_num->bString, str_len * sizeof(wchar_t));
     reinterpret_cast<wchar_t*>(buffer)[str_len] = L'\0';
   }
 
