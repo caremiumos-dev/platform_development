@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "429bf09c_20cd1a39",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1083168
+      },
+      "writtenOn": "2026-03-30T19:34:11Z",
+      "side": 1,
+      "message": "nit: winusb",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 6
+      },
+      "revId": "b2567a0c7db2bac50e3daac786aad65d9d9e2a7a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3bf2efac_bfc240b9",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
