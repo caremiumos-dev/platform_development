@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e60a348b_2de1a536",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1083168
+      },
+      "writtenOn": "2026-03-30T19:37:31Z",
+      "side": 1,
+      "message": "1/ Did you actually build and test these changes? I am asking the question because the build system currently has a .a checked in and I am not sure this file is actually compiled.\n\n2/ This library is currently deprecated. We are working on something called libadbusb to replace it.",
+      "revId": "6a2de1c332fb4ff2cc5b507930edb50471b4c73b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
