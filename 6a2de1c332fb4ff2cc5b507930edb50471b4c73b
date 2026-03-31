@@ -16,6 +16,24 @@
       "message": "1/ Did you actually build and test these changes? I am asking the question because the build system currently has a .a checked in and I am not sure this file is actually compiled.\n\n2/ This library is currently deprecated. We are working on something called libadbusb to replace it.",
       "revId": "6a2de1c332fb4ff2cc5b507930edb50471b4c73b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1f7a9e23_b736b418",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 4729231
+      },
+      "writtenOn": "2026-03-31T10:02:27Z",
+      "side": 1,
+      "message": "1/ You\u0027re right - when building `m dist sdk-repo-platform-tools`, winusb does not appear to be rebuilt.\n\nI did build and test the changes, but only at the library level. Specifically, I rebuilt `AdbWinUsbApi.dll` on a Windows host and validated the behavior by replacing it in `platform-tools` and testing it in that setup.\n\nRegarding the prebuilts - should I be updating them as part of this change?\n\nIf so, is the expected workflow the following:\n1. Build `AdbWinUsbApi.dll` on a Windows host as described in `winusb/BUILDME.TXT`\n2. Copy the resulting `AdbWinUsbApi.dll` and `AdbWinUsbApi.pdb` into the prebuilts\n\nOr is there an existing process/tooling I should be using to regenerate these artifacts?\n\n2/ Is `libadbusb` already available in AOSP for external contributions? If so, I can take a look at whether this change should be applied there instead.\n\nThank you",
+      "parentUuid": "e60a348b_2de1a536",
+      "revId": "6a2de1c332fb4ff2cc5b507930edb50471b4c73b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
