@@ -52,6 +52,24 @@
       "parentUuid": "1f7a9e23_b736b418",
       "revId": "6a2de1c332fb4ff2cc5b507930edb50471b4c73b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f0e789eb_5853792d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 4729231
+      },
+      "writtenOn": "2026-04-03T09:44:15Z",
+      "side": 1,
+      "message": "\u003e However, if these fixes came from a LLM, we will take care of running these internally on libadbusb.\n\nThese changes were based on my own investigation and testing on Windows (including rebuilding and validating the DLL in platform-tools). I only used an LLM to help refine the commit message wording.\n\n\u003e If you have actualy Windows development experience, I can put the CL in Gerrit AOSP and you can give feedback.\n\nI have hands-on experience with Windows development and debugging, including some Windows kernel work. Happy to review it.",
+      "parentUuid": "3571c427_cb93512e",
+      "revId": "6a2de1c332fb4ff2cc5b507930edb50471b4c73b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
