@@ -34,6 +34,24 @@
       "parentUuid": "e60a348b_2de1a536",
       "revId": "6a2de1c332fb4ff2cc5b507930edb50471b4c73b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3571c427_cb93512e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1083168
+      },
+      "writtenOn": "2026-04-03T02:38:37Z",
+      "side": 1,
+      "message": "\u003e Regarding the prebuilts - should I be updating them as part of this change?\n\nNo. This is what we are moving away from with libadbusb. Everything should be built from source.\n\n\u003e Or is there an existing process/tooling I should be using to regenerate these artifacts?\n\nThe Visual Studio project have long rotted. Hence libadbusb.\n\n\u003e Is libadbusb already available in AOSP for external contributions? \n\nUnfortunately, the aosp model has changed. The lib is developed internally. If you have actualy Windows development experience, I can put the CL in Gerrit AOSP and you can give feedback. However, if these fixes came from a LLM, we will take care of running these internally on libadbusb.",
+      "parentUuid": "1f7a9e23_b736b418",
+      "revId": "6a2de1c332fb4ff2cc5b507930edb50471b4c73b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
