@@ -341,14 +341,13 @@ public class Monkey {
 
         public boolean activityResuming(String pkg) {
             StrictMode.ThreadPolicy savedPolicy = StrictMode.allowThreadDiskWrites();
-            Logger.out.println("    // activityResuming(" + pkg + ")");
             boolean allow =
                     MonkeyUtils.getPackageFilter().checkEnteringPackage(pkg)
                             || (DEBUG_ALLOW_ANY_RESTARTS != 0);
-            if (!allow) {
-                if (mVerbose > 0) {
-                    Logger.out.println("    // " + (allow ? "Allowing" : "Rejecting")
-                            + " resume of package " + pkg);
+            if (mVerbose > 0) {
+                Logger.out.println("    // activityResuming(" + pkg + ")");
+                if (!allow) {
+                    Logger.out.println("    // Rejecting resume of package " + pkg);
                 }
             }
             currentPackage = pkg;
@@ -363,10 +362,12 @@ public class Monkey {
             Logger.err.println("// CRASH: " + processName + " (pid " + pid + ")");
             Logger.err.println("// Short Msg: " + shortMsg);
             Logger.err.println("// Long Msg: " + longMsg);
-            Logger.err.println("// Build Label: " + Build.FINGERPRINT);
-            Logger.err.println("// Build Changelist: " + Build.VERSION.INCREMENTAL);
-            Logger.err.println("// Build Time: " + Build.TIME);
-            Logger.err.println("// " + stackTrace.replace("\n", "\n// "));
+            if (mVerbose > 0) {
+                Logger.err.println("// Build Label: " + Build.FINGERPRINT);
+                Logger.err.println("// Build Changelist: " + Build.VERSION.INCREMENTAL);
+                Logger.err.println("// Build Time: " + Build.TIME);
+                Logger.err.println("// " + stackTrace.replace("\n", "\n// "));
+            }
             StrictMode.setThreadPolicy(savedPolicy);
 
             if (mMatchDescription == null
@@ -397,7 +398,9 @@ public class Monkey {
                                     String processStats) {
             StrictMode.ThreadPolicy savedPolicy = StrictMode.allowThreadDiskWrites();
             Logger.err.println("// NOT RESPONDING: " + processName + " (pid " + pid + ")");
-            Logger.err.println(processStats);
+            if (mVerbose > 0) {
+                Logger.err.println(processStats);
+            }
             StrictMode.setThreadPolicy(savedPolicy);
 
             if (mMatchDescription == null || processStats.contains(mMatchDescription)) {
@@ -1314,7 +1317,9 @@ public class Monkey {
                 if (ev != null) {
                     final int injectCode = injectEvent(ev);
                     if (injectCode == MonkeyEvent.INJECT_FAIL) {
-                        Logger.out.println("    // Injection Failed");
+                        if (mVerbose > 0) {
+                            Logger.out.println("    // Injection Failed");
+                        }
                         if (ev instanceof MonkeyKeyEvent) {
                             mDroppedKeyEvents++;
                         } else if (ev instanceof MonkeyMotionEvent) {
