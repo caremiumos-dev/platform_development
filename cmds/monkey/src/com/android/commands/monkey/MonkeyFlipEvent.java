@@ -69,7 +69,9 @@ public class MonkeyFlipEvent extends MonkeyEvent {
             f.close();
             return MonkeyEvent.INJECT_SUCCESS;
         } catch (IOException e) {
-            Logger.out.println("Got IOException performing flip" + e);
+            if (verbose > 0) {
+                Logger.out.println("Got IOException performing flip" + e);
+            }
             return MonkeyEvent.INJECT_FAIL;
         }
     }
