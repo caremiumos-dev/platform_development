@@ -42,8 +42,8 @@ public abstract class Logger {
         }
     };
 
-    public static boolean stdout = true;
-    public static boolean logcat = true;
+    public static boolean stdout = false;
+    public static boolean logcat = false;
 
     public abstract void println(String s);
 

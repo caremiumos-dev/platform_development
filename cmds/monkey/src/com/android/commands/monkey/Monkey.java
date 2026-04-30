@@ -1004,6 +1004,9 @@ public class Monkey {
                 } else if (opt.equals("-h")) {
                     showUsage();
                     return false;
+                } else if (opt.equals("--enable-logs")) {
+                    Logger.stdout = true;
+                    Logger.logcat = true;
                 } else {
                     Logger.err.println("** Error: Unknown option: " + opt);
                     showUsage();
@@ -1577,6 +1580,7 @@ public class Monkey {
         usage.append("              [--bugreport]\n");
         usage.append("              [--periodic-bugreport]\n");
         usage.append("              [--permission-target-system]\n");
+        usage.append("              [--enable-logs]\n");
         usage.append("              COUNT\n");
         Logger.err.println(usage.toString());
     }
