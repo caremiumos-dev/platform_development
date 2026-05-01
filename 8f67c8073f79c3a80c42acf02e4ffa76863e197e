@@ -62,6 +62,24 @@
       "message": "Could you explain how this patch is related to this bug? I don\u0027t see anything in the bug comments that mentions Monkey.",
       "revId": "8f67c8073f79c3a80c42acf02e4ffa76863e197e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c35a2807_2cc104ea",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2026-05-01T22:30:46Z",
+      "side": 1,
+      "message": "Ah, this was probably supposed to be b/507904166",
+      "parentUuid": "92021aac_c85dc0d8",
+      "revId": "8f67c8073f79c3a80c42acf02e4ffa76863e197e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
