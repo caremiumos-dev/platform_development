@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3327ca1f_7e6d8d2e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1951823
+      },
+      "writtenOn": "2026-05-01T11:48:30Z",
+      "side": 1,
+      "message": "Can you give reproduction steps for this issue?",
+      "range": {
+        "startLine": 10,
+        "startChar": 59,
+        "endLine": 11,
+        "endChar": 5
+      },
+      "revId": "8f67c8073f79c3a80c42acf02e4ffa76863e197e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "187a0b26_910eb676",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1951823
+      },
+      "writtenOn": "2026-05-01T11:48:30Z",
+      "side": 1,
+      "message": "Nit: typo",
+      "range": {
+        "startLine": 24,
+        "startChar": 6,
+        "endLine": 24,
+        "endChar": 12
+      },
+      "revId": "8f67c8073f79c3a80c42acf02e4ffa76863e197e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "92021aac_c85dc0d8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1951823
+      },
+      "writtenOn": "2026-05-01T11:48:30Z",
+      "side": 1,
+      "message": "Could you explain how this patch is related to this bug? I don\u0027t see anything in the bug comments that mentions Monkey.",
+      "revId": "8f67c8073f79c3a80c42acf02e4ffa76863e197e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
