@@ -80,6 +80,24 @@
       "parentUuid": "92021aac_c85dc0d8",
       "revId": "8f67c8073f79c3a80c42acf02e4ffa76863e197e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "74629e66_67568dbf",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1951823
+      },
+      "writtenOn": "2026-05-05T16:38:08Z",
+      "side": 1,
+      "message": "Yeah, that looks much more relevant. @xiaohuin@qti.qualcomm.com, please update the CL description with that bug link\n\nI\u0027m not opposed to the idea of disabling logs from Monkey, but isn\u0027t the fact that a single process can cause the whole system to freeze simply by spamming logs a more important underlying issue (potentially a security problem) that we should fix?",
+      "parentUuid": "c35a2807_2cc104ea",
+      "revId": "8f67c8073f79c3a80c42acf02e4ffa76863e197e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
