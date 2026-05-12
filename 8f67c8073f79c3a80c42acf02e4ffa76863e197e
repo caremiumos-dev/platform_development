@@ -98,6 +98,24 @@
       "parentUuid": "c35a2807_2cc104ea",
       "revId": "8f67c8073f79c3a80c42acf02e4ffa76863e197e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6affb511_30850ec5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1305555
+      },
+      "writtenOn": "2026-05-12T10:09:18Z",
+      "side": 1,
+      "message": "Apologies for the delay — I’ve been trying to identify a reproducible scenario. Please refer to the attachment. I wrote a Python script to simulate how this issue happens. This does not appear to be a low-level issue, but rather one related to the environment where Monkey is executed. Please check the detail reproduce script in https://partnerissuetracker.corp.google.com/issues/507904166",
+      "parentUuid": "74629e66_67568dbf",
+      "revId": "8f67c8073f79c3a80c42acf02e4ffa76863e197e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
