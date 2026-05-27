@@ -88,6 +88,23 @@
       "parentUuid": "f0e789eb_5853792d",
       "revId": "6a2de1c332fb4ff2cc5b507930edb50471b4c73b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6729e956_a61119ee",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1083168
+      },
+      "writtenOn": "2026-05-27T14:05:16Z",
+      "side": 1,
+      "message": "Thank you for submitting this fix but WinAPI has been deprecated. It is replaced with libadbusb in ADB 37.0.01.\n\nThis code is now set for deletion and I would rather not touch it.",
+      "revId": "6a2de1c332fb4ff2cc5b507930edb50471b4c73b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
