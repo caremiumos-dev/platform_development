@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "efcaf811_3dacbc59",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2026-06-26T21:59:03Z",
+      "side": 1,
+      "message": "I put some more thought into this. Rather than disabling the logs, how about we audit the logs and have them disabled by default? If we really need more logs, then we can provide a monkey option to _enable_ them instead.\n\n@ Xiaohui Niu - what do you think?",
+      "revId": "209f219b2313d085ac0a48076e56d0959904f077",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
