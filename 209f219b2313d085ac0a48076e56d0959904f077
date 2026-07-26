@@ -16,6 +16,24 @@
       "message": "I put some more thought into this. Rather than disabling the logs, how about we audit the logs and have them disabled by default? If we really need more logs, then we can provide a monkey option to _enable_ them instead.\n\n@ Xiaohui Niu - what do you think?",
       "revId": "209f219b2313d085ac0a48076e56d0959904f077",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d3102209_bc4bc5bf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305555
+      },
+      "writtenOn": "2026-07-26T11:16:04Z",
+      "side": 1,
+      "message": "Hi Siarhei Vishniakou, Thanks, auditing the logs makes a lot of sense. My only concern with disabling logs by default is: many app developers rely on monkey\u0027s stdout output to get crash/ANR info, so turning it off by default would break their workflows and log collection.\n\nFrom the freeze cases we\u0027ve seen so far, the culprit is specifically the blocking `System.err.println(s)` path (stdout). So instead of disabling logs by default, how about we add an option that only disables the stdout-type logging while keeping logcat on? That keeps default behavior (and developer-facing logs) intact, but lets stability/large-scale runs opt out of the blocking stdout writes.",
+      "parentUuid": "efcaf811_3dacbc59",
+      "revId": "209f219b2313d085ac0a48076e56d0959904f077",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
