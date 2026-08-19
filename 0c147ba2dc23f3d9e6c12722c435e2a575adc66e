@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e4e1c6a8_add44845",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5093947
+      },
+      "writtenOn": "2026-08-19T00:35:43Z",
+      "side": 1,
+      "message": "https://android-review.googlesource.com/c/platform/development/+/68012/3#message-5e172840da576b2cb6d1148c391781a068afc28b",
+      "revId": "0c147ba2dc23f3d9e6c12722c435e2a575adc66e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
