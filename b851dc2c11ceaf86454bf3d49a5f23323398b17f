@@ -58,6 +58,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "129462a3_f6294c8e",
+        "filename": "cmds/monkey/src/com/android/commands/monkey/Monkey.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 350,
+      "author": {
+        "id": 1305555
+      },
+      "writtenOn": "2026-08-25T09:17:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6d9da411_4bda7b5e",
+      "range": {
+        "startLine": 350,
+        "startChar": 0,
+        "endLine": 350,
+        "endChar": 0
+      },
+      "revId": "b851dc2c11ceaf86454bf3d49a5f23323398b17f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e2892334_c1775eea",
@@ -71,6 +95,30 @@
       "writtenOn": "2026-08-24T22:58:23Z",
       "side": 1,
       "message": "Since you are guarding this log, you might also want to add a space after `flip` to prevent the exception text from running directly into the message:\n\n```java\nLogger.out.println(\"Got IOException performing flip \" + e);\n```",
+      "range": {
+        "startLine": 73,
+        "startChar": 0,
+        "endLine": 73,
+        "endChar": 0
+      },
+      "revId": "b851dc2c11ceaf86454bf3d49a5f23323398b17f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dd8121ec_a6fb88d9",
+        "filename": "cmds/monkey/src/com/android/commands/monkey/MonkeyFlipEvent.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1305555
+      },
+      "writtenOn": "2026-08-25T09:17:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e2892334_c1775eea",
       "range": {
         "startLine": 73,
         "startChar": 0,
